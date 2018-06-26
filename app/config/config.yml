@@ -1,0 +1,13 @@
+environment-level: production
+database:
+  name: sig-sys_dbname
+  user: sig-sys_dbuser
+  pass: sig-sys_dbpass
+  host: sig-sys_dbhost
+  port: sig-sys_dbport
+media:
+  images-path: /images/Fittings/generic
+  product-images-path: sig-sys_be-uri/images/Fittings/generic/Prod_Pic
+  uploads: sig-sys_be-uri/images/Fittings/generic/Upload_Pictures/Prod_Pic
+# Cart
+cart-full-json-path: '/var/tmp/generic/cart/'
