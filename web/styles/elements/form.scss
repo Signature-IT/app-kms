@@ -1,0 +1,24 @@
+@import "../inc/colors";
+
+
+.form-control{
+  border-color: rgba(0,0,0,.15) !important;
+  border-radius: .25rem;
+    &:focus{
+        border-color: $ratag-green !important;
+    }
+  &[readonly],&:disabled{
+    background-color: #eceeef;
+    opacity: 0.5;
+    cursor: not-allowed;
+    &:focus{
+      border-color: rgba(0,0,0,.15) !important;
+    }
+  }
+}
+.custom-control-indicator{
+  top: 0;
+}
+.form-control-success{
+  padding: 0.5rem 0.75rem;
+}

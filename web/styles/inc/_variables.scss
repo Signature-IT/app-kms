@@ -1,0 +1,23 @@
+//responsive breakpoint
+//$max-app-width: 1280px;
+
+// fonts
+$font-family: "Arial", "Helvetica", sans-serif !default;
+$font-family-light: "AtlasLight", $font-family;
+$font-family-regular: "AtlasRegular", $font-family;
+$font-family-medium: "AtlasMedium", $font-family;
+$font-family-bold: "AtlasBold", $font-family;
+$font-family-black: "AtlasBlack", $font-family;
+
+@import "~@signature-it/ngx-generic/web/styles/inc/variables";
+
+
+@import "~@signature-it/ngx-catalogue/web/styles/inc/variables";
+
+@include cat-fonts(
+    $font-light: $font-family-light,
+    $font-regular: $font-family-regular,
+    $font-medium: $font-family-medium,
+    $font-bold: $font-family-bold,
+    $font-black: $font-family-black
+);

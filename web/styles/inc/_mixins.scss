@@ -1,0 +1,11 @@
+@import "~@signature-it/ngx-generic/web/styles/inc/mixins";
+@import "colors";
+
+@mixin bg-ratag-green {
+  background-color: $ratag-green !important;
+  color: white !important;
+}
+@mixin bg-ratag-green-secondary{
+  background-color: $ratag-green-secondary !important;
+  color: $ratag-green !important;
+}

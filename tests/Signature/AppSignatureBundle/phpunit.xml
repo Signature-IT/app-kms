@@ -1,0 +1,17 @@
+<phpunit bootstrap="../../../bootstrap.php">
+    <php>
+        <ini name="memory_limit" value="3000M"/>
+        <ini name="max_execution_time" value="14400"/>
+    </php>
+    <logging>
+        <log type="coverage-html" target="../../../tests/Coverage" charset="UTF-8" yui="true" highlight="false"/>
+    </logging>
+    <filter>
+        <whitelist addUncoveredFilesFromWhitelist="true">
+            <directory suffix=".php">../../../${BUNDLE_SRC_DIR}</directory>
+            <exclude>
+                <directory suffix=".php">.</directory>
+            </exclude>
+        </whitelist>
+    </filter>
+</phpunit>

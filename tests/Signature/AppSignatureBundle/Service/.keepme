@@ -1,0 +1,1 @@
+Twig will fail to work if default templates directory will be inaccessible.

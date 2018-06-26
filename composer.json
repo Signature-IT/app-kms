@@ -1,0 +1,58 @@
+{
+    "name": "signature/ngx-app-signature", 
+    "description": "Signature-IT's e-commerce core application", 
+    "minimum-stability": "dev", 
+    "prefer-stable": true, 
+    "license": "proprietary", 
+    "authors": [
+        {
+            "name": "Dima Hershkovitz", 
+            "email": "dimah@signature-it.com"
+        }, 
+        {
+            "name": "Shani Buchsbaum", 
+            "email": "shani@signature-it.com"
+        }
+    ], 
+    "require": {
+        "signature/authority": "dev-ngx-generic", 
+        "signature/cart": "dev-ngx-generic", 
+        "signature/core": "^0.8", 
+        "signature/cms": "dev-1.x-dev",
+        "signature/language": "^1.0", 
+        "signature/manifest": "^0.1", 
+        "signature/system": "dev-trunk", 
+        "signature/user": "dev-ngx-generic", 
+        "signature/menu": "dev-master", 
+        "signature/bridge-querytable": "dev-master"
+    }, 
+    "require-dev": {
+        "phpunit/phpunit": "^5.5", 
+        "mockery/mockery": "^0.9"
+    }, 
+    "repositories": [
+        {
+            "type": "path", 
+            "url": "../generic",
+            "options": {
+                "symlink": true
+            }
+        }, 
+        {
+            "type": "composer", 
+            "url": "http://packages.signature-it.com/toran/app.php/repo/private/"
+        }
+    ], 
+    "autoload": {
+        "psr-4": {
+            "Signature\\": "src/Signature"
+        }
+    }, 
+    "config": {
+        "process-timeout": 0, 
+        "platform": {
+            "php": "5.6.20"
+        }, 
+        "secure-http": false
+    }
+}

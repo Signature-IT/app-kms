@@ -1,0 +1,86 @@
+<div class="card card-with-title bg-white" style="border:1px solid #ddd; margin-bottom: 40px;">
+    <h4 class="card-title"
+        style="background-color: #004D41;
+               border-bottom: 4px solid #BADA55;
+               color: white;
+               font-size: 23px;
+               padding: 7px 20px;
+               margin-top: 0;
+               margin-bottom: 0;
+               font-weight: bold">{{ tg('Order Summary') }}</h4>
+    <div class="card-block p-0">
+        {% if order_table is not empty %}
+            {# order details table #}
+            <div style="padding: 20px;">
+            <table class="table mb-0" style="width: 100%;max-width: 100%;">
+                <tbody>
+                {# values #}
+                {% for item in order_table if order_table is iterable %}
+                    <tr class="item-wrap">
+                        {% autoescape false %}
+                            <td class="mobile-view" style="border: none">
+                                <table style="width: 100%; direction: rtl;">
+                                   <tr>
+                                    <td style="border: none;padding:0;">
+                                            <img src="{{ product_images_path }}/{{ item.Barcode }}/{{ item.Barcode }}_Sma.jpg"
+                                                 style="max-width: 60px;"
+                                            />
+                                    </td>
+                                    <td style="border: none;padding:0;">
+                                        <p dir="ltr" class="mb-0 item-description">{{ item.ItemDescription }}</p>
+                                        {% if item.isSubscription == false %}
+                                            <p class="mb-0"><span>Quantity</span>:&nbsp;<span dir="ltr">{{item.ItemQuantity}}</span></p>
+                                        {% endif %}
+                                        <p class="mb-0"><span>{{ tg('Price') }}</span>: {{ currency_symbol ~ item.PricePerItem }}</p>
+                                        {% if item.DiscountPercent > 0 %}
+                                            <p class="mb-0">
+                                                <span>{{ tg('Discount') }}</span>: {{ item.DiscountPercent ~ '%' }}
+                                            </p>
+                                        {% endif %}
+                                        {% if item.DiscountPercent > 0 or item.PricePerItem != item.TotalPrice %}
+                                            <p class="mb-0">
+                                                <span>{{ tg('Total Price') }}</span>:{{ currency_symbol ~ item.TotalPrice }}
+                                            </p>
+                                        {% endif %}
+                                    </td>
+                                   </tr>
+                                </table>
+                            </td>
+                        {% endautoescape %}
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            </div>
+            {# delivery details #}
+            <div style="background-color: #f0efed;
+                        padding: 0 10px;
+            ">
+                <table class="font-weight-medium" style="width: 100%;border-bottom: 1px solid #ccc; direction: rtl;">
+                    <tr>
+                        <td style="padding:15px;">{{ tg('Delivery') }}:</td>
+                        <td style="padding:15px;width: 1px;white-space: nowrap;">{{ currency_symbol ~ delivery_price }}</td>
+                    </tr>
+                </table>
+            </div>
+            {# final price #}
+            <div style="background-color: #f0efed;
+                        padding: 0 10px;
+            ">
+                    <table class="font-weight-bold"
+                        style="color:#004D41;
+                               width: 100%;
+                               font-size: 21px;
+                                direction: rtl;
+                    ">
+                        <tr>
+                            <td style="padding:15px;">{{ tg('Final Price') }}:</td>
+                            <td style="padding:15px;width: 1px;white-space: nowrap;">{{ currency_symbol ~ final_price }}</td>
+                        </tr>
+                    </table>
+            </div>
+        {% else %}
+            <p>{{ tg('No order details found') }}</p>
+        {% endif %}
+    </div>
+</div>

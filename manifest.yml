@@ -1,0 +1,6 @@
+version: v1.2.3
+system: Signature-IT / ngx-app-signature
+about: Signature-IT's e-commerce core application
+changelog:
+  0.0.0:
+  - Initial commit test.
