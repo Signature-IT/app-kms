@@ -9,7 +9,8 @@ module.exports = Object.assign(confGeneric, confCatalogueGeneric, {
     systemName: 'generic',
     logoPath: '/skins/ratag_style/images/logo_xs.png',
     productImagesPath: '/images/Fittings/ratag/Prod_Pic',
-    noImagePic: '/images/Fittings/ratag/No_Pic/No_Pic_Sma.jpg',
+//    noImagePic: '',
+//    noProductPic: '',
     contactUsURL: 'https://www.parks.org.il/%D7%A6%D7%A8%D7%95-%D7%90%D7%99%D7%AA%D7%A0%D7%95-%D7%A7%D7%A9%D7%A8/',
     showBusinessLogin: false,
     tabContexts: [
