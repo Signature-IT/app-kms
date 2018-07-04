@@ -1,33 +1,33 @@
-$ratag-green: #004D41;
-$ratag-green-secondary: #BADA55;
-//$danger: #FF3333;
-
-@import "~@signature-it/ngx-generic/web/styles/inc/colors";
-
-
-// overrides --- variables from ng-catalog
-
-@import "~@signature-it/ngx-catalogue/web/styles/inc/colors";
-
-
-@include cat-colors(
-  //$app-main-color: $ratag-green,
-  $active:  $ratag-green,
-  $page-title: $ratag-green,
-  //$card-back,
-  //$card-border,
-  $card-title-color: $ratag-green,
-  //$compare-btn-back,
-  //$compare-btn-color,
-  $leaf-btn-color: $ratag-green,
-  $leaf-btn-back: $ratag-green-secondary,
-  //$leaf-btn-border,
-  $view-all-color: #fff,
-  $view-all-back: $ratag-green
-);
-
+//$ratag-green: #004D41;
+//$ratag-green-secondary: #BADA55;
+////$danger: #FF3333;
+//
+//@import "~@signature-it/ngx-generic/web/styles/inc/colors";
+//
+//
+//// overrides --- variables from ng-catalog
+//
+//@import "~@signature-it/ngx-catalogue/web/styles/inc/colors";
+//
+//
+//@include cat-colors(
+//  //$app-main-color: $ratag-green,
+//  $active:  $ratag-green,
+//  $page-title: $ratag-green,
+//  $card-back,
+//  $card-border,
+//  $card-title-color: $ratag-green,
+//  $compare-btn-back,
+//  $compare-btn-color,
+//  $leaf-btn-color: $ratag-green,
+//  $leaf-btn-back: $ratag-green-secondary,
+//  $leaf-btn-border,
+//  $view-all-color: #fff,
+//  $view-all-back: $ratag-green
+//);
+//
 //@include mat-input-field($color: $ratag-green);
-
+//
 //
 //$active: map-get($colors, 'light-blue-a700'),
 //$page-title: #000,
