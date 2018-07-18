@@ -19,7 +19,7 @@
   },
   "angularCompilerOptions": {
     "genDir": "./dist/ngfactory",
-    "entryModule": "./node_modules/@signature-it/ngx-generic/web/app/app.module#AppModuleGeneric",
+    "entryModule": "./web/app/app.module#AppModule",
     "fullTemplateTypeCheck": true,
     "preserveWhiteSpace": false,
     "strictMetadataEmit" : true

@@ -1,7 +1,7 @@
 import { enableProdMode } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-//import { AppModule } from './app/app.module';
-import { AppModuleGeneric } from '@signature-it/ngx-generic/web/app/app.module'; // <-- for generic module
+import { AppModule } from './app/app.module';
+//import { AppModuleGeneric } from '@signature-it/ngx-generic/web/app/app.module'; // <-- for generic module
 import { environment } from './environments/environment';
 import { hmrBootstrap } from './hmr';
 import 'hammerjs';
@@ -10,8 +10,8 @@ if (environment.production) {
   enableProdMode();
 }
 
-//const bootstrap = () => platformBrowserDynamic().bootstrapModule(AppModule);
-const bootstrap = () => platformBrowserDynamic().bootstrapModule(AppModuleGeneric); // <-- for generic module
+const bootstrap = () => platformBrowserDynamic().bootstrapModule(AppModule);
+//const bootstrap = () => platformBrowserDynamic().bootstrapModule(AppModuleGeneric); // <-- for generic module
 
 if (environment.hmr) {
   if (module[ 'hot' ]) {
