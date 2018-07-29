@@ -30,7 +30,7 @@ import {CatalogueMainLayoutComponent_Catalogue, GroupResolver} from '@signature-
                         resolve: { groupId: GroupResolver }
                     },
                     {
-                        path: 'compare_products',
+                        path: 'compare-products',
                         loadChildren: '../modules/catalogue/compare-products.module#CompareProductsModule_Catalogue'
                     }
                 ]
