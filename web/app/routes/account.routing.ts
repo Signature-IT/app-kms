@@ -19,6 +19,10 @@ const routes: Routes = [
             {
                 path: 'profile-details',
                 loadChildren: '../modules/account/profileDetails.module#ProfileDetailsModule',
+            },
+            {
+                path: 'favorites',
+                loadChildren: '../modules/account/favorites.module#FavoritesModule'
             }
         ]
     }
