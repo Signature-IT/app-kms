@@ -22,16 +22,18 @@ $app = new BaseApplication();
 
 $app->before(function(Request $request, BaseApplication $app) {
     try {
-        // checking if the system has not expired session for logged user
-        if (!Service\User::current($app)->isSessionLoggedIn()) {
-            $path = $request->getPathInfo();
-            // if trying to access to private REST APIs
-            if (!(bool)preg_match('/^\/public|external\//', $path) && !(bool)preg_match('/^\/$/', $path)) {
-                // poker face on it.
-                return new JsonResponse(
-                    SigAuthenticationEntryPoint::MSG_UNAUTHORIZED,
-                    Response::HTTP_UNAUTHORIZED
-                );
+        if($request->getMethod() != Request::METHOD_OPTIONS) {
+            // checking if the system has not expired session for logged user
+            if (!Service\User::current($app)->isSessionLoggedIn()) {
+                $path = $request->getPathInfo();
+                // if trying to access to private REST APIs
+                if (!(bool)preg_match('/^\/public|external\//', $path) && !(bool)preg_match('/^\/$/', $path)) {
+                    // poker face on it.
+                    return new JsonResponse(
+                        SigAuthenticationEntryPoint::MSG_UNAUTHORIZED,
+                        Response::HTTP_UNAUTHORIZED
+                    );
+                }
             }
         }
     } catch (\Exception $e) {
@@ -40,11 +42,6 @@ $app->before(function(Request $request, BaseApplication $app) {
             $e->getMessage(),
             $e->getCode()>0?$e->getCode():Response::HTTP_INTERNAL_SERVER_ERROR
         );
-    }
-    // set Edea's POS config
-    if(!isset($_SESSION['currency'])) {
-        $context = SigSystem::current()->getContext();
-        \ModulePriceCurrency::create($context)->createCurrencySessions();
     }
 });
 
