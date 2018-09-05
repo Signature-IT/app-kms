@@ -1,19 +1,19 @@
-@import "../inc/colors";
-
-@mixin card-title {
-  background-color: $ratag-green !important;
-  border-bottom: 4px solid $ratag-green-secondary !important;
-}
-
-.card {
-  &.card-with-title {
-    > .card-title {
-      @include card-title;
-    }
-  }
-  > .card-block {
-    ul.list-group > .list-group-item a {
-      color: $ratag-green;
-    }
-  }
-}
+//@import "../inc/colors";
+//
+//@mixin card-title {
+//  background-color: $ratag-green !important;
+//  border-bottom: 4px solid $ratag-green-secondary !important;
+//}
+//
+//.card {
+//  &.card-with-title {
+//    > .card-title {
+//      @include card-title;
+//    }
+//  }
+//  > .card-block {
+//    ul.list-group > .list-group-item a {
+//      color: $ratag-green;
+//    }
+//  }
+//}

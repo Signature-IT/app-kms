@@ -5,9 +5,11 @@ database:
   pass: sig-sys_dbpass
   host: sig-sys_dbhost
   port: sig-sys_dbport
+self-be: sig-sys_be-uri # Example: http://dealer.m404.signature-it.com
 media:
   images-path: /images/Fittings/generic
-  product-images-path: sig-sys_be-uri/images/Fittings/generic/Prod_Pic
-  uploads: sig-sys_be-uri/images/Fittings/generic/Upload_Pictures/Prod_Pic
+  product-images-path: /images/Fittings/generic/Prod_Pic
+  no-product-image-path: /skins/webx_style/images/nopic
+  uploads-path: /images/Fittings/generic/Upload_Pictures/Prod_Pic
 # Cart
-cart-full-json-path: '/var/tmp/generic/cart/'
+cart-full-json-path: /var/tmp/generic/cart/
