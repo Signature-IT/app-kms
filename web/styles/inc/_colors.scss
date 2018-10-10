@@ -2,13 +2,13 @@
 //$ratag-green-secondary: #BADA55;
 ////$danger: #FF3333;
 //
-//@import "~@signature-it/ngx-generic/web/styles/inc/colors";
 //
 //
 //// overrides --- variables from ng-catalog
 //
-//@import "~@signature-it/ngx-catalogue/web/styles/inc/colors";
 //
+
+//@import "~@signature-it/ngx-catalogue/web/styles/inc/colors";
 //
 //@include cat-colors(
 //  //$app-main-color: $ratag-green,
@@ -26,6 +26,25 @@
 //  $view-all-back: $ratag-green
 //);
 //
+
+
+
+@import "~@signature-it/ngx-generic/web/styles/inc/colors";
+@include gen-colors(
+        //$app-primary-color: #b71c1c,
+        //$app-secondary-color: #e6c091,
+        //$app-header-1-bg: #333,
+        //$app-header-1-color: #ffecd4,
+        //$app-header-2-bg: #eee,
+        //$app-header-2-color: #212121,
+        //$header-dropdown-bg: lighten($app-header-2-bg, 4%),
+        //$cart-icon-color: $app-header-1-color,
+        //$cart-count-bg: pink,
+        //$cart-count-color: red,
+        //$cart-count-border-color: red,
+        //$user-login-color: $app-header-1-color
+);
+
 //@include mat-input-field($color: $ratag-green);
 //
 //
