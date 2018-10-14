@@ -1,48 +1,74 @@
-//$ratag-green: #004D41;
-//$ratag-green-secondary: #BADA55;
-////$danger: #FF3333;
-//
-//
+$app-primary-color: #b71c1c;
+//$app-secondary-color: #e6c091;
+$app-header-1-bg: #333;
+//$app-header-1-color: #ffecd4;
+$app-header-2-bg: #eee;
+//$app-header-2-color: #212121;
+//$header-dropdown-bg: lighten($app-header-2-bg, 4%);
+//$cart-icon-color: $app-primary-color;
+//$cart-count-bg: $app-secondary-color;
+//$cart-count-color: $app-primary-color;
+//$cart-count-border-color: #fff;
+//$header-cart-icon-color: $app-header-1-color;
+//$header-cart-count-bg: $app-secondary-color;
+//$header-cart-count-color: $app-header-1-bg;
+//$header-cart-count-border-color: $app-header-1-bg;
+//$user-login-color: $app-header-1-color;
+
 //
 //// overrides --- variables from ng-catalog
 //
 //
 
-//@import "~@signature-it/ngx-catalogue/web/styles/inc/colors";
-//
-//@include cat-colors(
-//  //$app-main-color: $ratag-green,
-//  $active:  $ratag-green,
-//  $page-title: $ratag-green,
-//  $card-back,
-//  $card-border,
-//  $card-title-color: $ratag-green,
-//  $compare-btn-back,
-//  $compare-btn-color,
-//  $leaf-btn-color: $ratag-green,
-//  $leaf-btn-back: $ratag-green-secondary,
-//  $leaf-btn-border,
-//  $view-all-color: #fff,
-//  $view-all-back: $ratag-green
-//);
-//
+@import "~@signature-it/ngx-catalogue/web/styles/inc/colors";
+
+@include cat-colors(
+        //$app-main-color: #000,
+        //$active: #007cb9,
+        //$page-title: #000,
+        //$card-back: none,
+        //$card-border: none,
+        //$card-title-color: #007cb9,
+        //$compare-btn-back: null,
+        //$compare-btn-color: #555,
+        //$add-to-card-color: #fff,
+        $add-to-card-back: $app-primary-color,
+        $add-to-card-border: $app-primary-color,
+        //$add-to-card-color-m: #fff,
+        //$add-to-card-back-m: #fc4e52,
+        //$add-to-card-border-m: transparent,
+        //$view-all-color: #fff,
+        $view-all-back: $app-header-1-bg
+        //$view-all-color-m: #fff,
+        //$view-all-back-m: #006600,
+        //$pagination-back-active: transparent,
+        //$pagination-color-active: #007cb9,
+        //$pagination-back-hover: #f1f1f1,
+        //$pagination-color: #9e9e9e
+);
+
 
 
 
 @import "~@signature-it/ngx-generic/web/styles/inc/colors";
 @include gen-colors(
-        //$app-primary-color: #b71c1c,
+        //$app-primary-color: pink,
         //$app-secondary-color: #e6c091,
         //$app-header-1-bg: #333,
         //$app-header-1-color: #ffecd4,
         //$app-header-2-bg: #eee,
         //$app-header-2-color: #212121,
         //$header-dropdown-bg: lighten($app-header-2-bg, 4%),
-        //$cart-icon-color: $app-header-1-color,
-        //$cart-count-bg: pink,
-        //$cart-count-color: red,
-        //$cart-count-border-color: red,
+        //$cart-icon-color: pink,
+        //$cart-count-bg: $app-secondary-color,
+        //$cart-count-color: $app-primary-color,
+        //$cart-count-border-color: #fff,
+        $header-cart-icon-color: $app-header-1-bg,
+        $header-cart-count-bg: $app-primary-color,
+        $header-cart-count-color: #fff,
+        $header-cart-count-border-color: $app-header-2-bg
         //$user-login-color: $app-header-1-color
+
 );
 
 //@include mat-input-field($color: $ratag-green);
