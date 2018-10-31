@@ -10,7 +10,7 @@
       "assets": [
         { "glob": "**/*", "input": "../node_modules/@signature-it/ngx-catalogue/web/assets/images", "output": "./assets/images/" },
         { "glob": "**/*", "input": "../node_modules/@signature-it/ngx-generic/web/assets", "output": "./assets/"},
-        { "glob": "**/*", "input": "../bower_components/delta-dashboard-angular/src/fonts", "output": "./fonts/" },
+        { "glob": "**/*", "input": "../node_modules/delta-angular/src/fonts", "output": "./fonts/" },
         { "glob": "**/*", "input": "fonts", "output": "./fonts/"},
         { "glob": "**/*", "input": "assets", "output": "./assets/" },
         ".htaccess"
@@ -32,25 +32,25 @@
       ],
       "stylePreprocessorOptions": {
         "includePaths": [
-          "../bower_components/delta-dashboard-angular/src/styles",
+          "../node_modules/delta-angular/src/styles",
           "../node_modules/@signature-it/ngx-generic/web/styles",
           "styles"
         ]
       },
       "scripts": [
-        "../bower_components/delta-dashboard-angular/bower_components/jquery-1.9.1/index.js",
-        "../bower_components/delta-dashboard-angular/bower_components/tether/dist/js/tether.min.js",
-        "../bower_components/delta-dashboard-angular/bower_components/bootstrap/dist/js/bootstrap.min.js",
-        "../bower_components/delta-dashboard-angular/bower_components/lodash/dist/lodash.min.js",
-        "../bower_components/delta-dashboard-angular/bower_components/js-storage/js.storage.min.js",
-        "../bower_components/delta-dashboard-angular/bower_components/moment/moment.js",
-        "../bower_components/delta-dashboard-angular/bower_components/PACE/pace.min.js",
-        "../bower_components/delta-dashboard-angular/bower_components/sweetalert2/dist/sweetalert2.min.js",
-        "../bower_components/delta-dashboard-angular/bower_components/toastr/toastr.min.js",
-        "../bower_components/delta-dashboard-angular/bower_components/approvejs/dist/approve.min.js",
-        "../bower_components/delta-dashboard-angular/bower_components/nouislider/distribute/nouislider.min.js",
-        "../bower_components/delta-dashboard-angular/bower_components/jquery-treegrid/js/jquery.treegrid.min.js",
-        "../bower_components/delta-dashboard-angular/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js",
+        "../node_modules/delta-angular/bower_components/jquery-1.9.1/index.js",
+        "../node_modules/delta-angular/bower_components/tether/dist/js/tether.min.js",
+        "../node_modules/delta-angular/bower_components/bootstrap/dist/js/bootstrap.min.js",
+        "../node_modules/delta-angular/bower_components/lodash/dist/lodash.min.js",
+        "../node_modules/delta-angular/bower_components/js-storage/js.storage.min.js",
+        "../node_modules/delta-angular/bower_components/moment/moment.js",
+        "../node_modules/delta-angular/bower_components/PACE/pace.min.js",
+        "../node_modules/delta-angular/bower_components/sweetalert2/dist/sweetalert2.min.js",
+        "../node_modules/delta-angular/bower_components/toastr/toastr.min.js",
+        "../node_modules/delta-angular/bower_components/approvejs/dist/approve.min.js",
+        "../node_modules/delta-angular/bower_components/nouislider/distribute/nouislider.min.js",
+        "../node_modules/delta-angular/bower_components/jquery-treegrid/js/jquery.treegrid.min.js",
+        "../node_modules/delta-angular/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js",
         "../node_modules/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"
       ],
       "environmentSource": "./environments/environment.ts",
