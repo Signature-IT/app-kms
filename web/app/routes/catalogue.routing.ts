@@ -28,12 +28,12 @@ import {CatalogueMainLayoutComponent_Catalogue, GroupResolver} from '@signature-
                         path: 'group/:groupId/:leafGroup/:familyName',
                         loadChildren: '../modules/catalogue/family.module#FamilyModule_Catalogue',
                         resolve: { groupId: GroupResolver }
-                    },
-                    {
-                        path: 'compare-products',
-                        loadChildren: '../modules/catalogue/compare-products.module#CompareProductsModule_Catalogue'
                     }
                 ]
+            },
+            {
+                path: 'compare-products',
+                loadChildren: '../modules/catalogue/compare-products.module#CompareProductsModule_Catalogue'
             }
         ])
     ],
