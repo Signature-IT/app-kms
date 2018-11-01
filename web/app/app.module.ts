@@ -28,6 +28,7 @@ import {
     HttpLoaderFactory
 } from "@signature-it/ngx-generic";
 import {AppComponent} from "./app.component";
+import {AppStoreModule} from "./stores/app/app.store";
 
 @NgModule({
     imports: [
@@ -47,7 +48,8 @@ import {AppComponent} from "./app.component";
             prefix: 'app',
             storageType: 'localStorage'
         }),
-        AppRoutingModule
+        AppRoutingModule,
+        AppStoreModule
     ],
     declarations: [
         AppComponent
