@@ -13,3 +13,5 @@ media:
   uploads-path: /images/Fittings/generic/Upload_Pictures/Prod_Pic
 # Cart
 cart-full-json-path: /var/tmp/generic/cart/
+cart:
+  description-product-field: FamilyName
