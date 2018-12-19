@@ -23,6 +23,10 @@ const routes: Routes = [
             {
                 path: 'favorites',
                 loadChildren: '../modules/account/favorites.module#FavoritesModule'
+            },
+            {
+                path: 'previous-orders',
+                loadChildren: '../modules/account/previousOrders.module#PreviousOrdersModule'
             }
         ]
     }
