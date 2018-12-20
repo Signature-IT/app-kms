@@ -66,6 +66,7 @@ $app->after(function (Request $request, Response $response) {
 });
 
 /** Register generic bundles */
+Signature\CommonBundle\Loader::injectInto($app);
 Signature\LanguageBundle\Loader::injectInto($app);
 Signature\CMSBundle\Loader::injectInto($app);
 Signature\MenuBundle\Loader::injectInto($app);
