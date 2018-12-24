@@ -14,6 +14,7 @@ use Signature\AuthorityBundle\Provider\UserProvider;
 use Signature\UserBundle\Service;
 
 require_once __DIR__ . '/bootstrap.php';
+require_once __DIR__ . '/app/config/config.routes.php';
 
 ini_set("log_errors", 1);
 ini_set("error_log", "/var/tmp/generic/log/"."error_".date('Y-m-d').".txt");
