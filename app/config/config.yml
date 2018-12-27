@@ -16,3 +16,17 @@ cart-full-json-path: /var/tmp/generic/cart/
 cart:
   description-product-field: ProductName
   items-count: lines # lines or total
+# Pelecard
+pelecard-url-init: 'https://gateway20.pelecard.biz/PaymentGW/init'
+pelecard-url-validate: 'https://gateway20.pelecard.biz/PaymentGW/ValidateByUniqueKey'
+pelecard-url-get-transaction: 'https://gateway20.pelecard.biz/PaymentGW/GetTransaction'
+pelecard-url-debit-regular-card: 'https://gateway20.pelecard.biz/services/DebitRegularType'
+pelecard-url-debit-payments-card: 'https://gateway20.pelecard.biz/services/DebitPaymentsType'
+pelecard:
+  pelecard-terminal: '0962210'
+  pelecard-username: 'testpelecard2'
+  pelecard-password: 'Q3EJB8Ah'
+  # Testing environment
+  pelecard-param-x: 'test payment'
+  pelecard-good-url: 'http://fe-generic.oritp.d.il1-d7.signature-it.com/cart/confirmation'
+  pelecard-bad-url: 'http://fe-generic.oritp.d.il1-d7.signature-it.com/cart/confirmation'
