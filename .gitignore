@@ -14,7 +14,8 @@ tests/Coverage
 /dist
 /tmp
 /out-tsc
-web/assets/i18n
+web/assets/i18n/*
+!web/assets/i18n/.gitkeep
 
 # dependencies
 /node_modules
