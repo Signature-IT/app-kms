@@ -1,20 +1,20 @@
-import { NgModule } from "@angular/core";
-import { StoreModule } from "@ngrx/store";
-import { StoreDevtoolsModule } from "@ngrx/store-devtools";
-import { catalogueReducer, CatalogueStoreModule } from "@signature-it/ngx-catalogue";
+import { NgModule } from '@angular/core';
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { catalogueReducer, CatalogueStoreModule } from '@signature-it/ngx-catalogue';
 import { cartReducerGeneric, CartStoreModule} from '@signature-it/ngx-generic';
-import { appReducer } from "./reducers/app.reducer";
+import { appReducer } from './reducers/app.reducer';
 
 @NgModule({
     imports: [
-        StoreModule.provideStore({
+        StoreModule.forRoot({
             app: appReducer,
             catalogue: catalogueReducer,
             cartState: cartReducerGeneric
         }),
         CatalogueStoreModule,
         CartStoreModule,
-        StoreDevtoolsModule.instrumentOnlyWithExtension({
+        StoreDevtoolsModule.instrument({
             maxAge: 25
         })
     ],
