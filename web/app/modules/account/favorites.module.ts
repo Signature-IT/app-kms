@@ -1,5 +1,5 @@
 import { NgModule } from "@angular/core";
-import { FavoritesModuleGeneric } from "@signature-it/ngx-generic";
+import { FavoritesModuleGeneric } from "@signature-it/ngx-catalogue";
 
 @NgModule({
     imports: [

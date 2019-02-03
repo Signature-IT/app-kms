@@ -1,8 +1,15 @@
-//.fa-shopping-cart{
-//  .badge{
-//    margin: 0;
-//    border-radius: 50%;
-//    border: 2px solid #fff;
-//    box-shadow: none;
-//  }
-//}
+.fa-shopping-cart{
+  position: relative;
+  //color: $ratag-green;
+  .badge{
+    position: absolute;
+    top: 0;
+    box-shadow: none !important;
+    border-width: 2px;
+    border-style: solid;
+    margin: 0;
+    border-radius: 50%;
+    //@include bg-ratag-green-secondary;
+  }
+}
+

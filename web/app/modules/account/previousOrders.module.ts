@@ -1,5 +1,5 @@
 import { NgModule } from "@angular/core";
-import { PreviousOrdersModuleGeneric } from "@signature-it/ngx-generic";
+import { PreviousOrdersModuleGeneric } from "@signature-it/ngx-catalogue";
 
 @NgModule({
     imports: [

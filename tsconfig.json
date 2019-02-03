@@ -1,6 +1,7 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "declaration": false,
@@ -13,17 +14,33 @@
     "typeRoots": [
       "node_modules/@types"
     ],
+    "types": [],
     "lib": [
       "es2018",
       "dom"
     ],
-    "allowJs": true
-  },
-  "angularCompilerOptions": {
-    "genDir": "./dist/ngfactory",
-    "entryModule": "./app/app.module#AppModule",
-    "fullTemplateTypeCheck": true,
-    "preserveWhiteSpace": false,
-    "strictMetadataEmit" : true
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "allowJs": true,
+    "paths": {
+      "@signature-it/ngx-generic": [
+        "dist/signature-it/ngx-generic"
+      ],
+      "@signature-it/ngx-generic/*": [
+        "dist/signature-it/ngx-generic/*"
+      ],
+      "@signature-it/ngx-catalogue": [
+        "dist/signature-it/ngx-catalogue"
+      ],
+      "@signature-it/ngx-catalogue/*": [
+        "dist/signature-it/ngx-catalogue/*"
+      ],
+      "@signature-it/ngx-media": [
+        "dist/signature-it/ngx-media"
+      ],
+      "@signature-it/ngx-media/*": [
+        "dist/signature-it/ngx-media/*"
+      ]
+    }
   }
 }

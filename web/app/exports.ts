@@ -1,7 +1,7 @@
 
 /**************************************** Generic ********************************************************/
 
-export * from "@signature-it/ngx-generic";
+// export * from "@signature-it/ngx-generic";
 
 /**************************************** Custom ********************************************************/
 
@@ -23,6 +23,8 @@ export * from "@signature-it/ngx-generic";
 // /** Modules + Routes */
 //
 // /** Loaders */
+
+// export { HashTranslateLoader } from './loaders/webpack-translate-loader';
 
 // NOTE: This export must be the last line. This module contains all previous module's declarations
 export { AppRoutingModule } from './app.routes'; /** @Override */

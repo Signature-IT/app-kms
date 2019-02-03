@@ -1,1 +1,181 @@
-@import "~@signature-it/ngx-generic/web/styles/main.rtl";
+@import "inc/colors";
+
+/**
+ * RTL
+ */
+
+body[dir="rtl"] {
+  table {
+    thead th { text-align: right; }
+  }
+
+  .float-right,
+  .float-sm-right,
+  .float-md-right,
+  .float-lg-right,
+  .float-xl-right{
+    float: left !important;
+  }
+  .float-left,
+  .float-sm-left,
+  .float-md-left,
+  .float-lg-left,
+  .float-xl-left{
+    float: right !important;
+  }
+
+  .pull-left {
+    float: right !important;
+    &.fa{
+      margin-left: .3em;
+      margin-right: initial;
+    }
+  }
+  .pull-right {
+    float: left !important;
+    &.fa{
+      margin-right: .3em;
+      margin-left: initial;
+    }
+  }
+
+  .text-left { text-align: right !important; }
+  .text-right { text-align: left !important; }
+
+  .mr-auto { margin-left: auto !important; }
+  .ml-auto { margin-right: auto !important; }
+
+  .mr-0{ margin-left: 0 !important; }
+  .ml-0{ margin-right: 0 !important; }
+
+  ngx-datatable {
+    datatable-header-cell, datatable-body-cell{
+      text-align: right !important;
+    }
+    datatable-footer {
+      .datatable-pager {
+        text-align: left !important;
+        ul.pager > li:not(.pages) {
+          vertical-align: sub;
+          line-height: 2;
+          a {
+            transform: rotate(180deg);
+          }
+        }
+      }
+    }
+  }
+  .title > i {
+    float: right;
+    margin: -2px 0 0 5px;
+  }
+
+  ngb-datepicker {
+    ngb-datepicker-navigation {
+      button .ngb-dp-navigation-chevron {
+        padding: 20px;
+        &:not(.right)::before {
+          -webkit-transform: rotate(45deg);
+          -moz-transform: rotate(45deg);
+          -ms-transform: rotate(45deg);
+          -o-transform: rotate(45deg);
+          transform: rotate(45deg);
+        }
+        &.right::before {
+          -webkit-transform: rotate(-135deg);
+          -moz-transform: rotate(-135deg);
+          -ms-transform: rotate(-135deg);
+          -o-transform: rotate(-135deg);
+          transform: rotate(-135deg);
+        }
+      }
+    }
+    ngb-datepicker-navigation-select {
+      > select option {
+        text-align: left !important;
+      }
+    }
+  }
+  tree-node {
+    .toggle-children {
+      transform: rotate(-180deg) !important;
+    }
+    tree-node-children {
+      > .tree-children {
+        //padding-left: 0;
+        //padding-right: 10px;
+      }
+    }
+  }
+
+  ul.list-group {
+    li.list-group-item {
+      text-align: right;
+    }
+  }
+
+  .custom-control-indicator {
+    left: auto !important;
+    right: 0 !important;
+  }
+  .custom-control{
+    padding-left: 0;
+    padding-right: 1.5rem;
+    margin-left: 1rem;
+    margin-right: 0;
+  }
+
+  .dropdown{
+    .dropdown-menu{
+      right: 0;
+      left: auto;
+    }
+  }
+  .dropdown-menu {
+    &, .dropdown-item{
+      text-align: right;
+    }
+  }
+
+  .required {
+    &:before{ content:""; }
+    &:after {
+      content:"* ";
+      color: map-get($colors, 'red-900') !important;
+    }
+  }
+
+  .input-group .input-group-addon:nth-child(2) {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+  }
+
+  .md-menu-item {
+    text-align: left;
+  }
+
+  input[type="email"] {
+    direction: ltr;
+    text-align: right;
+  }
+
+  //catalog
+  .catalogue-style{
+    //catalog sidebar
+    .left-sidebar {
+      .section-title{
+        margin-right: 25px;
+      }
+      .btn.has-children{
+        &:before{
+          right: auto;
+          left: 20px;
+          -webkit-transform: rotate(-180deg);
+          transform: rotate(-180deg);
+        }
+      }
+    }
+  }
+}

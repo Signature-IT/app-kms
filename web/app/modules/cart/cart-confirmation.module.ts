@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CartConfirmationModuleGeneric } from '@signature-it/ngx-generic';
+import { CartConfirmationModuleGeneric } from '@signature-it/ngx-catalogue';
 
 @NgModule({
   imports: [CartConfirmationModuleGeneric]

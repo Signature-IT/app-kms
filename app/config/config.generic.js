@@ -1,11 +1,13 @@
 /**
  * Created by shani on 12/09/17.
  */
-
-var confGeneric = require('@signature-it/ngx-generic/app/config/config.generic');
-var confCatalogueGeneric = require('@signature-it/ngx-catalogue/app/config/config.generic');
-
-module.exports = Object.assign(confGeneric, confCatalogueGeneric, {
+window.GenericConfig = {
+    isDam: false,
+    loginRedirect: '',
+    imagesPath: '',
+    deliveryProductCode: '',
+    productRelatedItemsField: '',
+    item_per_page: {},
     // general
     systemName: 'generic',
     logoPath: '/skins/ratag_style/images/logo_xs.png',
@@ -13,7 +15,8 @@ module.exports = Object.assign(confGeneric, confCatalogueGeneric, {
     // product page
 //    noImagePic: '',
 //    noProductPic: '',
-    productImagesPath: '/images/Fittings/ratag/Prod_Pic',
+    noImagePic: '/images/Fittings/keterpim/No_Pic/No_Pic_{size}.jpg',
+    productImagesPath: '/images/Fittings/',
     productTabContexts: [
         {context_id: 29,field_layout: "table",order:1,name: "Product Specifications"},
         {context_id: 14,field_layout: "paragraph",order:2,name: "Product Features"},
@@ -26,5 +29,15 @@ module.exports = Object.assign(confGeneric, confCatalogueGeneric, {
     // catalogue
     catalog_selection_fields: ['BrandName_ss'],
     show_products_by_group: false,
-    noSidebar: true
-});
+    noSidebar: false,
+    disable_friendly_url: true,
+    productPageMainTitleField: 'ProductName_s',
+    productPageSecondaryTitleField: 'Name_s',
+    productCardMainTitleField: 'ProductName_s',
+    productCardSecondaryTitleField: 'Name_s',
+    familyCardMainTitleField: 'ProductName_s',
+    familyCardSecondaryTitleField: 'Name_s',
+    headerCmsName: 'ngx-header',
+    personalAccountLink: '/account/previous-orders',
+    item_per_page: [16, 24, 32]
+};

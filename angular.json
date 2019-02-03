@@ -17,20 +17,41 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist",
+            "outputPath": "dist/app-generic-new",
             "index": "web/index.html",
             "main": "web/main.ts",
             "polyfills": "web/polyfills.ts",
             "tsConfig": "web/tsconfig.app.json",
             "assets": [
-              { "glob": "**/*", "input": "./node_modules/@signature-it/ngx-catalogue/web/assets/images", "output": "./assets/images/" },
-              { "glob": "**/*", "input": "./node_modules/@signature-it/ngx-generic/web/assets", "output": "./assets/"},
-              { "glob": "**/*", "input": "./node_modules/delta-angular/src/fonts", "output": "./fonts/" },
-              { "glob": "**/*", "input": "fonts", "output": "./fonts/"},
-              { "glob": "**/*", "input": "assets", "output": "./assets/" },
+              {
+                "glob": "**/*",
+                "input": "./node_modules/@signature-it/ngx-catalogue/web/assets/images",
+                "output": "./assets/images/"
+              },
+              {
+                "glob": "**/*",
+                "input": "./node_modules/@signature-it/ngx-generic/web/assets",
+                "output": "./assets/"
+              },
+              {
+                "glob": "**/*",
+                "input": "./node_modules/delta-angular/src/fonts",
+                "output": "./fonts/"
+              },
+              {
+                "glob": "**/*",
+                "input": "fonts",
+                "output": "./fonts/"
+              },
+              {
+                "glob": "**/*",
+                "input": "web/assets",
+                "output": "./assets/"
+              },
               "web/.htaccess"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "web/styles/inc/_fonts.scss",
               "web/styles/inc/_colors.scss",
               "web/styles/inc/_variables.scss",
@@ -47,6 +68,7 @@
               ]
             },
             "scripts": [
+              "./app/config/config.generic.js",
               "./node_modules/delta-angular/bower_components/jquery-1.9.1/index.js",
               "./node_modules/delta-angular/bower_components/tether/dist/js/tether.min.js",
               "./node_modules/delta-angular/bower_components/bootstrap/dist/js/bootstrap.min.js",
@@ -67,8 +89,8 @@
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.prod.ts"
+                  "replace": "web/environments/environment.ts",
+                  "with": "web/environments/environment.prod.ts"
                 }
               ],
               "optimization": true,
@@ -101,6 +123,7 @@
             }
           }
         },
+
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
@@ -110,17 +133,17 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "src/test.ts",
-            "polyfills": "src/polyfills.ts",
-            "tsConfig": "src/tsconfig.spec.json",
-            "karmaConfig": "src/karma.conf.js",
+            "main": "web/test.ts",
+            "polyfills": "web/polyfills.ts",
+            "tsConfig": "web/tsconfig.spec.json",
+            "karmaConfig": "web/karma.conf.js",
             "styles": [
-              "src/styles.scss"
+              "web/styles.scss"
             ],
             "scripts": [],
             "assets": [
-              "src/favicon.ico",
-              "src/assets"
+              "web/favicon.ico",
+              "web/assets"
             ]
           }
         },
@@ -128,8 +151,8 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "src/tsconfig.app.json",
-              "src/tsconfig.spec.json"
+              "web/tsconfig.app.json",
+              "web/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"
@@ -159,6 +182,111 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": "e2e/tsconfig.e2e.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "@signature-it/ngx-generic": {
+      "root": "projects/signature-it/ngx-generic",
+      "sourceRoot": "projects/signature-it/ngx-generic/src",
+      "projectType": "library",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/signature-it/ngx-generic/tsconfig.lib.json",
+            "project": "projects/signature-it/ngx-generic/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/signature-it/ngx-generic/src/test.ts",
+            "tsConfig": "projects/signature-it/ngx-generic/tsconfig.spec.json",
+            "karmaConfig": "projects/signature-it/ngx-generic/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/signature-it/ngx-generic/tsconfig.lib.json",
+              "projects/signature-it/ngx-generic/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "@signature-it/ngx-catalogue": {
+      "root": "projects/signature-it/ngx-catalogue",
+      "sourceRoot": "projects/signature-it/ngx-catalogue/src",
+      "projectType": "library",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/signature-it/ngx-catalogue/tsconfig.lib.json",
+            "project": "projects/signature-it/ngx-catalogue/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/signature-it/ngx-catalogue/src/test.ts",
+            "tsConfig": "projects/signature-it/ngx-catalogue/tsconfig.spec.json",
+            "karmaConfig": "projects/signature-it/ngx-catalogue/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/signature-it/ngx-catalogue/tsconfig.lib.json",
+              "projects/signature-it/ngx-catalogue/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "@signature-it/ngx-media": {
+      "root": "projects/signature-it/ngx-media",
+      "sourceRoot": "projects/signature-it/ngx-media/src",
+      "projectType": "library",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/signature-it/ngx-media/tsconfig.lib.json",
+            "project": "projects/signature-it/ngx-media/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/signature-it/ngx-media/src/test.ts",
+            "tsConfig": "projects/signature-it/ngx-media/tsconfig.spec.json",
+            "karmaConfig": "projects/signature-it/ngx-media/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/signature-it/ngx-media/tsconfig.lib.json",
+              "projects/signature-it/ngx-media/tsconfig.spec.json"
+            ],
             "exclude": [
               "**/node_modules/**"
             ]

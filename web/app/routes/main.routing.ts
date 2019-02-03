@@ -1,7 +1,7 @@
 import { RouterModule, Routes } from "@angular/router";
 import { NgModule } from '@angular/core';
 import { AuthRoutesGuard } from "@signature-it/ngx-generic";
-import { MainLayoutComponentGeneric } from "@signature-it/ngx-generic/web/app/components/layouts/main/main";
+import { MainLayoutComponentGeneric } from "@signature-it/ngx-generic";
 
 const routes: Routes = [
     {
@@ -77,7 +77,5 @@ const routes: Routes = [
     imports: [RouterModule.forChild(routes)],
     exports: [RouterModule]
 })
-/**
- * @extends MainRoutingModuleGeneric
- */
+
 export class MainRoutingModule {}

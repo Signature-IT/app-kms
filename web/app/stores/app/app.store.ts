@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { catalogueReducer, CatalogueStoreModule } from '@signature-it/ngx-catalogue';
-import { cartReducerGeneric, CartStoreModule} from '@signature-it/ngx-generic';
+import { catalogueReducer, CatalogueStoreModule, cartReducerGeneric, CartStoreModule, CartEffects, CatalogueEffects } from '@signature-it/ngx-catalogue';
 import { appReducer } from './reducers/app.reducer';
 
 @NgModule({
@@ -16,10 +16,8 @@ import { appReducer } from './reducers/app.reducer';
         CartStoreModule,
         StoreDevtoolsModule.instrument({
             maxAge: 25
-        })
-    ],
-    providers: [
-        CartStoreModule
+        }),
+        EffectsModule.forRoot([])
     ]
 })
 export class AppStoreModule { }

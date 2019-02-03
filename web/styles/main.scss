@@ -1,8 +1,6 @@
 @import "inc/variables";
-
-@import "~@signature-it/ngx-generic/web/styles/main";
-@import "~@signature-it/ngx-catalogue/web/styles/main";
-
+@import "main-generic";
+@import "main-catalogue";
 @import "elements/card";
 @import "elements/accordion";
 @import "elements/form";

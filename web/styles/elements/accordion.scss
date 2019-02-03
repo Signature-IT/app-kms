@@ -12,3 +12,34 @@ accordion{
     border-bottom: 1px solid #d8d8d8;
   }
 }
+
+@mixin accordion-card-title-green {
+  @include card-title;
+}
+
+accordion {
+  .card.panel-default {
+    border-color: #d8d8d8;
+    .panel-title {
+      margin-bottom: 0 !important;
+      .accordion-toggle i {
+        font-size: 14px;
+        margin-top: 3px;
+      }
+    }
+    .panel-body {
+      padding: 0;
+    }
+  }
+}
+
+/**
+ * RTL
+ */
+body[dir="rtl"] accordion {
+  .panel-title {
+    .accordion-toggle i {
+      float: right;
+    }
+  }
+}

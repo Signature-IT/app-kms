@@ -1,19 +1,37 @@
-//@import "../inc/colors";
-//
-//@mixin card-title {
-//  background-color: $ratag-green !important;
-//  border-bottom: 4px solid $ratag-green-secondary !important;
-//}
-//
-//.card {
-//  &.card-with-title {
-//    > .card-title {
-//      @include card-title;
-//    }
-//  }
-//  > .card-block {
-//    ul.list-group > .list-group-item a {
-//      color: $ratag-green;
-//    }
-//  }
-//}
+@mixin card-title {
+  background-color: #212121;
+  //border-bottom: 4px solid #ccc;
+  color: white;
+  padding: 1rem 1rem;
+  margin-bottom: 0;
+  font-weight: bold;
+  i {
+    display: inline;
+    vertical-align: sub;
+    font-size: 26px;
+    line-height: 1;
+  }
+}
+
+.card {
+  &.card-with-title {
+    > .card-title {
+      @include card-title;
+    }
+  }
+  > .card-block {
+    ul.list-group > .list-group-item {
+      background-color: white !important;
+      border-left: 0;
+      border-right: 0;
+      &.active {
+        background-color: #eeeeee !important;
+        border-color: inherit;
+      }
+      a {
+        font-weight: bold;
+        padding: 1rem;
+      }
+    }
+  }
+}

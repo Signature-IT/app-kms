@@ -1,6 +1,5 @@
 import { RouterModule, Routes } from "@angular/router";
 import { NgModule } from '@angular/core';
-import { AccountPortalLayoutComponent, AuthRoutesGuard } from "@signature-it/ngx-generic";
 
 const routes: Routes = [
 ];
