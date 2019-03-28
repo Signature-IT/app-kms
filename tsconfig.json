@@ -21,7 +21,7 @@
     ],
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
-    "allowJs": true,
+    "allowJs": false,
     "paths": {
       "@signature-it/ngx-generic": [
         "dist/signature-it/ngx-generic"
