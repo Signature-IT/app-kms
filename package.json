@@ -7,6 +7,8 @@
     "prestart": "npm run build:prod && ngc",
     "start": "ts-node web/server.ts",
     "hmr": "ng serve -sm=false -o=true -hmr=true -e=hmr",
+    "build:ngx-generic": "ng build @signature-it/ngx-generic",
+    "build:ngx-catalogue": "ng build @signature-it/ngx-catalogue",
     "build-sass": "cd node_modules/node-sass && node scripts/build -f && cd ../../",
     "build:prod": "ng build -prod --vendor-chunk=false",
     "build:prod:no-hash": "npm run build:prod --output-hashing none",
