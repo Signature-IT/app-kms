@@ -1,12 +1,12 @@
 import { RouterModule, Routes } from "@angular/router";
 import { NgModule } from '@angular/core';
 import { AuthRoutesGuard } from "@signature-it/ngx-generic";
-import { MainLayoutComponentGeneric } from "@signature-it/ngx-generic";
+import { MainLayoutComponent } from "../modules/main/main";
 
 const routes: Routes = [
     {
         path: '',
-        component: MainLayoutComponentGeneric,
+        component: MainLayoutComponent,
         children: [
             {
                 path: '',
