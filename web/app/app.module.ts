@@ -20,7 +20,6 @@ import {
     ShareDataService,
     GoogleAnalyticsService,
     FakeloaderComponentModule,
-    AuthRoutesGuard,
     NoopInterceptor
 } from "@signature-it/ngx-generic";
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -54,8 +53,7 @@ import {AppStoreModule} from "./stores/app/app.store";
         CookieService,
         { provide: HTTP_INTERCEPTORS, useClass: NoopInterceptor, multi: true },
         ShareDataService,
-        GoogleAnalyticsService,
-        AuthRoutesGuard
+        GoogleAnalyticsService
     ],
     bootstrap: [AppComponent]
 })

@@ -35,7 +35,6 @@ import {MainHeaderModule} from './main/header/main-header.module';
     entryComponents: [MainFooterComponent],
     providers:[
         RequestOptionsProvider,
-        LoginService,
         MenuNavigationService
     ]
 })
