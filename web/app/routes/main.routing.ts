@@ -58,6 +58,10 @@ const routes: Routes = [
                 loadChildren: '../modules/cms-page.module#CmsPageModule'
             },
             {
+                path: 'quick-pad',
+                loadChildren: '../modules/quick-pad.module#QuickPadModule'
+            },
+            {
                 path: '401',
                 loadChildren: '../modules/error/unauthorized-user.module#ErrorUnauthorizedUserModule'
             },
