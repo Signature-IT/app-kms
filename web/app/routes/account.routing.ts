@@ -17,6 +17,10 @@ const routes: Routes = [
                 loadChildren: '../modules/account/dashboard.module#AccountDashboardModule',
             },
             {
+                path: ':name',
+                loadChildren: '../modules/cms-page.module#CmsPageModule',
+            },
+            {
                 path: 'profile-details',
                 loadChildren: '../modules/account/profileDetails.module#ProfileDetailsModule',
             },
