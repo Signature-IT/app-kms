@@ -78,6 +78,7 @@ $app-font-size: 1rem !default;
 @mixin product-card-features(
   $gutter-right: -1px,
   $gutter-left: 0px,
+  $gutter-left-bs-fix: $gutter-left,
   $gutter-top: -1px,
   $gutter-bottom: 0,
   $border-style: solid,
@@ -90,6 +91,12 @@ $app-font-size: 1rem !default;
   $no-sidebar-items-per-row: 5,
   $no-sidebar-items-per-row-med: 4)
 {
+
+  .card-group{
+    margin-right: -($gutter-right);
+    margin-left: -($gutter-left);
+  }
+
   @include media-breakpoint-up(lg){
     //products-cards, favorites, compare-products{
     .grid .card-item.card{
@@ -102,10 +109,16 @@ $app-font-size: 1rem !default;
       -ms-flex-preferred-size:  calc((100%/#{$cat-items-per-row}) - (#{$gutter-right} + #{$gutter-left})) !important;
       flex-basis:  calc((100%/#{$cat-items-per-row}) - (#{$gutter-right} + #{$gutter-left})) !important;
       max-width: calc((100%/#{$cat-items-per-row}) - (#{$gutter-right} + #{$gutter-left})) !important;
+      + .card{
+        margin-left:  $gutter-left;
+      }
       .no-sidebar-mode & {
         -ms-flex-preferred-size: calc((100%/#{$no-sidebar-items-per-row}) - (#{$gutter-right} + #{$gutter-left})) !important;
         flex-basis: calc((100%/#{$no-sidebar-items-per-row}) - (#{$gutter-right} + #{$gutter-left})) !important;
         max-width: calc((100%/#{$no-sidebar-items-per-row}) - (#{$gutter-right} + #{$gutter-left})) !important;
+        + .card{
+          margin-left:  $gutter-left;
+        }
       }
     }
     .grid family-card.card-item.card{
@@ -133,7 +146,7 @@ $app-font-size: 1rem !default;
     .card-group {
       .card {
         + .card {
-          margin-left: $gutter-left;
+          margin-left: $gutter-left-bs-fix;
         }
       }
     }

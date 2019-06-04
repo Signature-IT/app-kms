@@ -1,12 +1,12 @@
-<div class="main-layout-wrap">
+<div class="main-layout-wrap"  [ngClass]="{'mobile-mode':sharedSvc.isMobileMode(), 'app-header-fixed': fixedHeader}">
     <div class="content-minus-footer">
         <!-- main-header -->
         <main-header></main-header>
         <!-- end main-header -->
         <!-- main-content -->
-        <div class="container-fluid max-app-width">
-            <div class="row">
-                <main class="col main">
+        <div class="page-content">
+            <div class="">
+                <main class="main">
                     <breadcrumbs></breadcrumbs>
                     <page-title></page-title>
                     <div class="page">
