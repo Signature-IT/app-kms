@@ -17,18 +17,12 @@ import { LocalStorageModule } from "angular-2-local-storage/dist";
 import {AppRoutingModule} from "./app.routes";
 // Components
 import {
-    RestUrlsConfig,
     ShareDataService,
-    RequestOptionsProvider,
-    MenuNavigationService,
-    LanguageService,
-    AuthService,
-    UserService,
     GoogleAnalyticsService,
-    PageNotificationService,
     FakeloaderComponentModule,
-    AuthRoutesGuard,
+    NoopInterceptor
 } from "@signature-it/ngx-generic";
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import {AppComponent} from "./app.component";
 import {HttpTranslateLoaderFactory} from './loaders/translate-http-loader';
 import {AppStoreModule} from "./stores/app/app.store";
@@ -57,18 +51,9 @@ import {AppStoreModule} from "./stores/app/app.store";
     ],
     providers: [
         CookieService,
-        RestUrlsConfig,
-        RequestOptionsProvider,
-        MenuNavigationService,
+        { provide: HTTP_INTERCEPTORS, useClass: NoopInterceptor, multi: true },
         ShareDataService,
-        LanguageService,
-        GoogleAnalyticsService,
-        PageNotificationService,
-        UserService,
-        AuthService,
-        // MousetrapService,
-        // CustomEventsService,
-        AuthRoutesGuard
+        GoogleAnalyticsService
     ],
     bootstrap: [AppComponent]
 })

@@ -8,7 +8,7 @@ import { AppCustomPreloader } from "@signature-it/ngx-generic";
         RouterModule.forRoot([
                 {
                     path: '',
-                    loadChildren: './modules/layout.module#MainLayoutModule'
+                    loadChildren: './modules/layout.module#MainLayoutModule_Wrapper'
                 },
                 {
                     path: '**',

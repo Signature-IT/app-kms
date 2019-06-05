@@ -1,14 +1,54 @@
 import { NgModule } from "@angular/core";
 import { MainLayoutModuleGeneric } from "@signature-it/ngx-generic";
 import { MainRoutingModule } from "../routes/main.routing";
+import {PageTitleModuleGeneric} from '../../../projects/signature-it/ngx-generic/src/lib/components/page-title/page-title.module';
+import {MainFooterModuleGeneric} from '../../../projects/signature-it/ngx-generic/src/lib/components/layouts/main/footer/main-footer.module';
+import {MainFooterComponent} from '../../../projects/signature-it/ngx-generic/src/lib/components/layouts/main/footer/main-footer';
+import {RouterModule} from '@angular/router';
+import {BreadcrumbsModule,
+    ContentloaderModule,
+    RequestOptionsProvider,
+    CmsModule,
+    MenuNavigationService} from '@signature-it/ngx-generic';
+import {MatSidenavModule} from '@angular/material';
+import {CommonModule} from '@angular/common';
+import {TranslateModule} from '@ngx-translate/core';
+import {MainLayoutComponent} from './main/main';
+import {MainHeaderModule} from './main/header/main-header.module';
 
 @NgModule({
     imports: [
-        MainLayoutModuleGeneric,
+        CommonModule,
+        TranslateModule,
+        RouterModule,
+        CmsModule,
+        ContentloaderModule,
+        MatSidenavModule,
+        BreadcrumbsModule,
+        PageTitleModuleGeneric,
+        MainHeaderModule,
+        MainFooterModuleGeneric
+    ],
+    exports: [MainLayoutComponent],
+    declarations: [MainLayoutComponent],
+    entryComponents: [MainFooterComponent],
+    providers:[
+        RequestOptionsProvider,
+        MenuNavigationService
+    ]
+})
+/**
+ * @extends MainLayoutModuleGeneric
+ */
+export class MainLayoutModule {}
+
+@NgModule({
+    imports: [
+        MainLayoutModule,
         MainRoutingModule
     ]
 })
 /**
  * @extends MainLayoutModuleGeneric_Wrapper
  */
-export class MainLayoutModule {}
+export class MainLayoutModule_Wrapper {}

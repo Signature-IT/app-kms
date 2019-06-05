@@ -1,0 +1,23 @@
+<div class="main-layout-wrap"  [ngClass]="{'mobile-mode':sharedSvc.isMobileMode(), 'app-header-fixed': fixedHeader}">
+    <div class="content-minus-footer">
+        <!-- main-header -->
+        <main-header></main-header>
+        <!-- end main-header -->
+        <!-- main-content -->
+        <div class="page-content">
+            <div class="">
+                <main class="main">
+                    <breadcrumbs></breadcrumbs>
+                    <page-title></page-title>
+                    <div class="page">
+                        <router-outlet></router-outlet>
+                    </div>
+                </main>
+            </div>
+        </div>
+        <!-- end main-content -->
+    </div>
+    <!-- main-footer -->
+    <main-footer></main-footer>
+    <!-- end main-footer -->
+</div>

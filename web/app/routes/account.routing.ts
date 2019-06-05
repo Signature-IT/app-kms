@@ -27,6 +27,10 @@ const routes: Routes = [
             {
                 path: 'previous-orders',
                 loadChildren: '../modules/account/previousOrders.module#PreviousOrdersModule'
+            },
+            {
+                path: ':name',
+                loadChildren: '../modules/cms-page.module#CmsPageModule',
             }
         ]
     }

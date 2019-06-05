@@ -1,0 +1,21 @@
+<header>
+    <!-- header-cms -->
+    <cms [title]="cmsTitle" #cmsComp></cms>
+    <!-- end header-cms -->
+    <!-- components-to-replace -->
+    <section #containerRef [hidden]="true">
+        <ng-container *ngIf="!shareSvc.isMobileMode(); else MobileTpl;">
+            <dropdown-langs></dropdown-langs>
+            <main-header-search-form></main-header-search-form>
+            <!--<main-header-media-cart *ngIf="isDam"></main-header-media-cart>-->
+            <search></search>
+            <main-header-cart></main-header-cart>
+            <user-login></user-login>
+            <main-top-navigation></main-top-navigation>
+        </ng-container>
+        <ng-template #MobileTpl>
+            <main-header-navbar-mobile></main-header-navbar-mobile>
+        </ng-template>
+    </section>
+    <!-- end components-to-replace -->
+</header>
