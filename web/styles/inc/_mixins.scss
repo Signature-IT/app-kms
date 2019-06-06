@@ -18,7 +18,7 @@
   color: white;
 }
 
-@mixin footer-margins($footer-margin-top: 50px) {
+@mixin footer-margins($footer-margin-top: 0) {
   main-footer, shared-footer{
     margin-top: $footer-margin-top;
   }
