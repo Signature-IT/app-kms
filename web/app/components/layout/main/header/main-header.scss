@@ -1,0 +1,78 @@
+@import "web/styles/inc/colors";
+@import "~delta-angular/src/styles/bootstrap/scss/custom";
+@import "~delta-angular/src/styles/bootstrap/scss/mixins/breakpoints";
+
+main-header {
+  .navbar.navbar-1{
+    left: 0;
+    z-index: 1;
+    height: auto;
+    ul {
+      width: 100%;
+      > li {
+        &.lang-wrap{
+          vertical-align: bottom;
+        }
+        &.logo-wrap img{
+          width: 80px;
+        }
+        a {
+          color: map-get($colors, 'grey-900')
+        }
+      }
+    }
+    section.left {
+      ul.nav-list {
+        text-align: left;
+      }
+    }
+    section.right {
+      ul.nav-list {
+        text-align: right;
+      }
+    }
+  }
+  .navbar-mobile {
+    //background-color: $ratag-green;
+    //color: white;
+  }
+}
+
+body.mat-sidenav-show main-header {
+  .navbar-mobile {
+    background-color: #f3f3f3;
+    //color: $ratag-green;
+  }
+}
+
+
+/**
+ * Media
+ */
+
+@include media-breakpoint-up(lg){
+  .fa-user{
+    font-size: 1.2rem;
+  }
+}
+
+
+/**
+ * RTL
+ */
+
+body[dir="rtl"] main-header {
+  .navbar.navbar-1 {
+    left: 0;
+    section.left {
+      ul.nav-list {
+        text-align: right;
+      }
+    }
+    section.right {
+      ul.nav-list {
+        text-align: left;
+      }
+    }
+  }
+}

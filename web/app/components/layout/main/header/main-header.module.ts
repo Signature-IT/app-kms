@@ -4,12 +4,14 @@ import { RouterModule } from '@angular/router';
 import {
     CmsModule,
     UserLoginModuleGeneric,
-    MainHeaderSearchFormModuleGeneric,
-    MainHeaderNavbarMobileModuleGeneric,
     MainTopNavigationModuleGeneric,
-    DropdownLangsModuleGeneric
-     } from "@signature-it/ngx-generic";
-import { SearchModule_Catalogue, MainHeaderCartModuleGeneric } from "@signature-it/ngx-catalogue";
+    DropdownLangsModuleGeneric,
+    MainHeaderSearchFormModuleGeneric
+} from '@signature-it/ngx-generic';
+
+import { SearchModule_Catalogue, MainHeaderCartModuleGeneric } from '@signature-it/ngx-catalogue';
+import { MainHeaderNavbarMobileModule } from './navbar-mobile/navbar-mobile.module';
+import { MainHeaderNavbarMobileTopModule } from './navbar-mobile/top/navbar-mobile-top.module';
 import {MainHeaderComponent} from './main-header';
 
 @NgModule({
@@ -22,8 +24,9 @@ import {MainHeaderComponent} from './main-header';
         UserLoginModuleGeneric,
         MainHeaderSearchFormModuleGeneric,
         MainHeaderCartModuleGeneric,
-        MainHeaderNavbarMobileModuleGeneric,
+        MainHeaderNavbarMobileTopModule,
         SearchModule_Catalogue,
+        MainHeaderNavbarMobileModule
     ],
     declarations: [MainHeaderComponent],
     entryComponents: [MainHeaderComponent],

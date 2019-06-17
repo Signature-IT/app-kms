@@ -13,8 +13,8 @@ import {BreadcrumbsModule,
 import {MatSidenavModule} from '@angular/material';
 import {CommonModule} from '@angular/common';
 import {TranslateModule} from '@ngx-translate/core';
-import {MainLayoutComponent} from './main/main';
-import {MainHeaderModule} from './main/header/main-header.module';
+import {MainLayoutComponent} from '../components/layout/main/main';
+import {MainHeaderModule} from '../components/layout/main/header/main-header.module';
 
 @NgModule({
     imports: [
