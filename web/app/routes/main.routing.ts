@@ -1,7 +1,7 @@
 import { RouterModule, Routes } from "@angular/router";
 import { NgModule } from '@angular/core';
 import { AuthRoutesGuard } from "@signature-it/ngx-generic";
-import { MainLayoutComponent } from "../modules/main/main";
+import { MainLayoutComponent } from "../components/layout/main/main";
 
 const routes: Routes = [
     {
