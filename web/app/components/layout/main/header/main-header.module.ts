@@ -12,7 +12,7 @@ import {
 import { SearchModule_Catalogue, MainHeaderCartModuleGeneric } from '@signature-it/ngx-catalogue';
 import { MainHeaderNavbarMobileModule } from './navbar-mobile/navbar-mobile.module';
 import { MainHeaderNavbarMobileTopModule } from './navbar-mobile/top/navbar-mobile-top.module';
-import {MainHeaderComponent} from './main-header';
+import { MainHeaderComponent } from './main-header';
 
 @NgModule({
     imports: [

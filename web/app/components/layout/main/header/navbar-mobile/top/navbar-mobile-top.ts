@@ -7,6 +7,10 @@ declare let _: any;
     selector: 'main-header-navbar-mobile-top',
     templateUrl: './navbar-mobile-top.html',
     styleUrls: ['./navbar-mobile-top.scss'],
-    encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.None,
+    inputs: [
+        'data',
+        'is-sidebar-open'
+    ]
 })
 export class MainHeaderNavbarMobileTopComponent extends MainHeaderNavbarMobileTopComponentGeneric {}
