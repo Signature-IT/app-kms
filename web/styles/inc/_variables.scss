@@ -162,9 +162,11 @@ $app-font-size: 1rem !default;
 );
 
 
-// others
-$app-header-height: 160px;
+// fixed header
+$app-header-desktop-height: 160px;
+$app-header-mobile-height: 58px;
+$app-hp-banner-height-proportion: 23.79%;
 
 
-//mat autocomplete components
-$mat-form-field-infix_custom-width: 180px;
+//header components
+$header-search-wrapper-width: 227px;
