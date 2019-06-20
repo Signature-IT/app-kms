@@ -14,23 +14,23 @@ const routes: Routes = [
         children: [
             {
                 path: 'dashboard',
-                loadChildren: '../modules/account/dashboard.module#AccountDashboardModule',
+                loadChildren: () => import('../modules/account/dashboard.module').then(m => m.AccountDashboardModule),
             },
             {
                 path: 'profile-details',
-                loadChildren: '../modules/account/profileDetails.module#ProfileDetailsModule',
+                loadChildren: () => import('../modules/account/profileDetails.module').then(m => m.ProfileDetailsModule),
             },
             {
                 path: 'favorites',
-                loadChildren: '../modules/account/favorites.module#FavoritesModule'
+                loadChildren: () => import('../modules/account/favorites.module').then(m => m.FavoritesModule)
             },
             {
                 path: 'previous-orders',
-                loadChildren: '../modules/account/previousOrders.module#PreviousOrdersModule'
+                loadChildren: () => import('../modules/account/previousOrders.module').then(m => m.PreviousOrdersModule)
             },
             {
                 path: ':name',
-                loadChildren: '../modules/cms-page.module#CmsPageModule',
+                loadChildren: () => import('../modules/cms-page.module').then(m => m.CmsPageModule),
             }
         ]
     }

@@ -186,13 +186,13 @@ md-slide-toggle {
   font-family: $font-family-regular;
   font-size: 0.9rem;
 }
-md-sidenav-container {
+mat-sidenav-container {
   &[collapsable-wrapper] {
     padding: 0 !important;
     //height: 100vh;
     overflow: visible !important;
-    .md-sidenav-content,
-    md-sidenav {
+    .mat-sidenav-content,
+    mat-sidenav {
       width: 100%;
       overflow: visible !important;
       .btn-collapse {
@@ -209,7 +209,7 @@ md-sidenav-container {
         box-shadow: 2px 2px 5px #797979;
       }
     }
-    .md-sidenav-content{
+    .mat-sidenav-content{
 
     }
   }

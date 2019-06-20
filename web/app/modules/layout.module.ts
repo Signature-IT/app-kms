@@ -8,8 +8,7 @@ import {RouterModule} from '@angular/router';
 import {BreadcrumbsModule,
     ContentloaderModule,
     RequestOptionsProvider,
-    CmsModule,
-    MenuNavigationService} from '@signature-it/ngx-generic';
+    CmsModule} from '@signature-it/ngx-generic';
 import {MatSidenavModule} from '@angular/material';
 import {CommonModule} from '@angular/common';
 import {TranslateModule} from '@ngx-translate/core';
@@ -33,8 +32,7 @@ import {MainHeaderModule} from '../components/layout/main/header/main-header.mod
     declarations: [MainLayoutComponent],
     entryComponents: [MainFooterComponent],
     providers:[
-        RequestOptionsProvider,
-        MenuNavigationService
+        RequestOptionsProvider
     ]
 })
 /**

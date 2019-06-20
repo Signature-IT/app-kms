@@ -17,7 +17,6 @@ import { LocalStorageModule } from "angular-2-local-storage/dist";
 import {AppRoutingModule} from "./app.routes";
 // Components
 import {
-    ShareDataService,
     GoogleAnalyticsService,
     FakeloaderComponentModule,
     NoopInterceptor
@@ -52,7 +51,6 @@ import {AppStoreModule} from "./stores/app/app.store";
     providers: [
         CookieService,
         { provide: HTTP_INTERCEPTORS, useClass: NoopInterceptor, multi: true },
-        ShareDataService,
         GoogleAnalyticsService
     ],
     bootstrap: [AppComponent]

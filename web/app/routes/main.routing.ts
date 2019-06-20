@@ -10,64 +10,64 @@ const routes: Routes = [
         children: [
             {
                 path: '',
-                loadChildren: '../modules/homepage.module#HomepageModule'
+                loadChildren: () => import('../modules/homepage.module').then(m => m.HomepageModule)
             },
             {
                 path: 'login',
-                loadChildren: '../modules/login.module#LoginModule'
+                loadChildren: () => import('../modules/login.module').then(m => m.LoginModule)
             },
             {
                 path: 'registration',
-                loadChildren: '../modules/registration.module#RegistrationModule'
+                loadChildren: () => import('../modules/registration.module').then(m => m.RegistrationModule)
             },
             {
                 path: 'forget-password',
-                loadChildren: '../modules/forget-password.module#ForgetPasswordModule'
+                loadChildren: () => import('../modules/forget-password.module').then(m => m.ForgetPasswordModule)
             },
             {
                 path: 'change-password',
-                loadChildren: '../modules/change-password.module#ChangePasswordModule'
+                loadChildren: () => import('../modules/change-password.module').then(m => m.ChangePasswordModule)
             },
             {
                 path: 'terms',
-                loadChildren: '../modules/terms.module#TermsModule'
+                loadChildren: () => import('../modules/terms.module').then(m => m.TermsModule)
             },
             {
                 path: 'catalogue',
-                loadChildren: '../modules/catalogue/catalogue.module#CatalogueMainLayoutModule'
+                loadChildren: () => import('../modules/catalogue/catalogue.module').then(m => m.CatalogueMainLayoutModule)
             },
             {
                 path: 'account',
                 canActivate: [AuthRoutesGuard],
-                loadChildren: '../modules/account/account.module#AccountModule'
+                loadChildren: () => import('../modules/account/account.module').then(m => m.AccountModule)
             },
             {
                 path: 'business',
-                loadChildren: '../modules/business/business.module#BusinessModule'
+                loadChildren: () => import('../modules/business/business.module').then(m => m.BusinessModule)
             },
             {
                 path: 'cart',
-                loadChildren: '../modules/cart/layout.module#CartLayoutModule'
+                loadChildren: () => import('../modules/cart/layout.module').then(m => m.CartLayoutModule)
             },
             {
                 path: 'product-page/:id',
-                loadChildren: '../modules/product-page.module#productPageModule'
+                loadChildren: () => import('../modules/product-page.module').then(m => m.productPageModule)
             },
             {
                 path: 'content/page/:name',
-                loadChildren: '../modules/cms-page.module#CmsPageModule'
+                loadChildren: () => import('../modules/cms-page.module').then(m => m.CmsPageModule)
             },
             {
                 path: '401',
-                loadChildren: '../modules/error/unauthorized-user.module#ErrorUnauthorizedUserModule'
+                loadChildren: () => import('../modules/error/unauthorized-user.module').then(m => m.ErrorUnauthorizedUserModule)
             },
             {
                 path: '403',
-                loadChildren: '../modules/error/forbidden-page.module#ErrorForbiddenPageModule'
+                loadChildren: () => import('../modules/error/forbidden-page.module').then(m => m.ErrorForbiddenPageModule)
             },
             {
                 path: '404',
-                loadChildren: '../modules/error/not-found-page.module#NotFoundErrorPageModule'
+                loadChildren: () => import('../modules/error/not-found-page.module').then(m => m.NotFoundErrorPageModule)
             }
         ]
     }

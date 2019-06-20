@@ -7,5 +7,5 @@ import { MainHeaderNavbarMobileTopComponent } from './top/navbar-mobile-top';
     templateUrl: './navbar-mobile.component.html'
 })
 export class MainHeaderNavbarMobileComponent extends  MainHeaderNavbarMobileComponentGeneric {
-    @ViewChild(MainHeaderNavbarMobileTopComponent)  nbTop: MainHeaderNavbarMobileTopComponent;
+    @ViewChild(MainHeaderNavbarMobileTopComponent, {static: true})  nbTop: MainHeaderNavbarMobileTopComponent;
 }

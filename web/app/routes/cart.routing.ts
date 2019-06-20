@@ -4,15 +4,15 @@ import { NgModule } from '@angular/core';
 const routes: Routes = [
     {
         path: '',
-        loadChildren: '../modules/cart/cart.module#CartModule'
+        loadChildren: () => import('../modules/cart/cart.module').then(m => m.CartModule)
     },
     {
         path: 'checkout',
-        loadChildren: '../modules/cart/cart-checkout.module#CartCheckoutModule'
+        loadChildren: () => import('../modules/cart/cart-checkout.module').then(m => m.CartCheckoutModule)
     },
     {
         path: 'confirmation',
-        loadChildren: '../modules/cart/cart-confirmation.module#CartConfirmationModule'
+        loadChildren: () => import('../modules/cart/cart-confirmation.module').then(m => m.CartConfirmationModule)
     }
 ];
 
