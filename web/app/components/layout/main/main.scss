@@ -1,5 +1,5 @@
-$main-header-height-desktop: 154px;
-$main-header-height-mobile: 58px;
+@import "web/styles/inc/variables";
+
 
 // Sticky footer
 
@@ -25,7 +25,7 @@ $main-header-height-mobile: 58px;
 .main-layout-wrap.app-header-fixed{
   .content-minus-footer{
     .page-content{
-      padding-top: $main-header-height-desktop;
+      padding-top: $app-header-desktop-height;
     }
     main-header{
       display: block;
@@ -38,7 +38,7 @@ $main-header-height-mobile: 58px;
   &.mobile-mode{
     .content-minus-footer {
       .page-content {
-        padding-top: $main-header-height-mobile;
+        padding-top: $app-header-mobile-height;
       }
     }
   }
