@@ -1,0 +1,84 @@
+<!-- sidebar -->
+<mat-sidenav-container>
+    <mat-sidenav #sidenav mode="side">
+        <div class="left-sidebar left-sidebar-1" id="navbar-side">
+            <div class="sidebar-content-wrapper">
+            <div class="content-minus-footer">
+                <div class="menu-title-wrap">
+                    <button class="btn-collapse bg-transparent border-0"
+                            (click)="sidebarToggle()">
+                        <i class="sli-close close-icon"></i>
+                    </button>
+                    <span translate>Menu</span>
+                </div>
+                    <div class="list-unstyled">
+                        <div *ngFor="let item of data"
+                             class="list-item"
+                             [ngSwitch]="item.type">
+                            <div *ngIf="item.is_active">
+                                <!-- components -->
+                                <div *ngSwitchCase="'component'">
+                                    <div *ngIf="item.link === 'user-login'"
+                                         class="btn-default btn-sidebar btn-sidebar-1 p-0">
+                                        <user-login></user-login>
+                                    </div>
+                                    <div *ngIf="item.link === 'langs-sidebar'">
+                                        <div class="btn-default btn-flat btn-sidebar btn-sidebar-1 has-children lang-wrap"
+                                             data-target="#langs-sidebar"
+                                             data-toggle="collapse">
+                                            <i [ngClass]="item.icon"></i>
+                                            <span class="title">{{item.title}}</span>
+                                        </div>
+                                        <div class="list-unstyled collapse" id="langs-sidebar">
+                                            <langs-sidebar></langs-sidebar>
+                                        </div>
+                                    </div>
+                                    <div *ngIf="item.link === 'catalogue-sidebar'">
+                                        <tree-view [standAlone]="true" (loadGroup)="sidebarToggle()"></tree-view>
+                                    </div>
+                                </div>
+                                <!-- /components -->
+                                <!-- links -->
+                                <div *ngSwitchCase="'link'">
+                                    <a class="btn-default btn-sidebar btn-sidebar-1"
+                                       routerLink="{{item.link}}"
+                                       (click)="sidebarToggle()">
+                                        <i [ngClass]="item.icon"></i>
+                                        <span class="title">{{item.title}}</span>
+                                    </a>
+                                </div>
+                                <!-- /links -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-wrapper">
+                    <div class="side-bar_footer">
+                        <div class="follow clearfix p-20">
+                            <span class="float-right">
+                                <span class="text-bold" translate>Follow Us</span>
+                                <i class="fa fa-facebook-square f-s-19 ml-1 mr-1"></i>
+                                <i class="fa fa-instagram f-s-19 ml-1 mr-1"></i>
+                                <i class="fa fa-youtube-play f-s-19 ml-1 mr-1"></i>
+                            </span>
+                            <span class="text-bold f-s-15 ml-1 mr-1 float-left">*3639</span>
+                        </div>
+                    </div>
+                    <div class="footer-links-list py-2 px-sm-2 text-center">
+                        <ul class="text-center">
+                            <li class="py-2 px-sm-2"><a href="https://prod.sigit-parks.net/accessibility/" translate>Accessibility</a></li> |
+                            <li class="py-2 px-sm-2"><a href="https://prod.sigit-parks.net/about/" translate>About</a></li> |
+                            <li class="py-2 px-sm-2"><a href="https://prod.sigit-parks.net/" translate>Contact Us</a></li>
+                        </ul>
+                        <!--<ul class="text-center">-->
+                            <!--<li class="py-2 px-sm-2"><a routerLink="/" translate>Tenders</a></li> |-->
+                            <!--<li class="py-2 px-sm-2"><a routerLink="/" translate>Jobs</a></li> |-->
+                            <!--<li class="py-2 px-sm-2"><a routerLink="/" translate>Agents</a></li>-->
+                        <!--</ul>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </mat-sidenav>
+</mat-sidenav-container>
+<!-- /sidebar -->

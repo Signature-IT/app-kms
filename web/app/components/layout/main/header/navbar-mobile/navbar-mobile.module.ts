@@ -4,14 +4,14 @@ import { RouterModule } from '@angular/router';
 import { OrderPipe } from 'ngx-order-pipe';
 import { MainHeaderNavbarMobileComponent } from "./navbar-mobile.component";
 import { MainHeaderNavbarMobileTopModule } from "./top/navbar-mobile-top.module";
-import { MainHeaderNavbarMobileSideModuleGeneric } from "@signature-it/ngx-generic";
+import { MainHeaderNavbarMobileSideModule } from './side/navbar-mobile-side.module';
 
 @NgModule({
     imports: [
         CommonModule,
         RouterModule,
         MainHeaderNavbarMobileTopModule,
-        MainHeaderNavbarMobileSideModuleGeneric
+        MainHeaderNavbarMobileSideModule
     ],
     declarations: [MainHeaderNavbarMobileComponent],
     exports: [MainHeaderNavbarMobileComponent],
