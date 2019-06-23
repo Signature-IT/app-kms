@@ -10,6 +10,7 @@ import { MainHeaderNavbarMobileSideComponentGeneric } from '@signature-it/ngx-ge
     inputs: [
         'data',
         'is-sidebar-open'
-    ]
+    ],
+    outputs: ['toggle']
 })
 export class MainHeaderNavbarMobileSideComponent extends MainHeaderNavbarMobileSideComponentGeneric {}

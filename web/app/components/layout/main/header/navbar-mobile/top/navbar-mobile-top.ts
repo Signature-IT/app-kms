@@ -11,6 +11,7 @@ declare let _: any;
     inputs: [
         'data',
         'is-sidebar-open'
-    ]
+    ],
+    outputs: ['toggle']
 })
 export class MainHeaderNavbarMobileTopComponent extends MainHeaderNavbarMobileTopComponentGeneric {}
