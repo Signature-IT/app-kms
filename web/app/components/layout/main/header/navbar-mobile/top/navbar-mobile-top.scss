@@ -16,7 +16,7 @@ ul.nav{
   main-header-cart a,
   main-header-media-cart a{
     &, *{
-      color: inherit;
+      color: inherit !important;
     }
     i{
       font-size: 26px;

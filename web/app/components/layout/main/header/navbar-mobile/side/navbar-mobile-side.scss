@@ -1,16 +1,18 @@
 @import "web/styles/inc/colors";
-body.mat-sidenav-show:before{
-  content: "";
-  display: block;
-  position: fixed;
-  background: #000;
-  opacity: 0.5;
-  z-index: 50;
-  height: 100vh;
-  width: 100vw;
-}
+
 body.mat-sidenav-show {
   main-header-navbar-mobile-side {
+    &:after {
+      content: '';
+      position: fixed;
+      right: 0;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0 ,0.5);
+      display: block;
+      z-index: 50;
+    }
     mat-sidenav-container {
       .sidebar-content-wrapper{
         display: -webkit-box;
@@ -34,42 +36,11 @@ body.mat-sidenav-show {
         min-height: 100vh;
         width: 280px;
         z-index: 10000;
-        body[dir="rtl"] &{
-          right: auto;
-          left: 0;
-        }
       }
       > mat-sidenav {
         transform: translate3d(0px, 0px, 0px) !important;
         visibility: visible !important;
         width: 100%;
-        > .left-sidebar {
-          .list-unstyled {
-            > .list-item {
-              //border-bottom: 1px solid map-get($colors, 'grey-400');
-              cursor: pointer;
-            }
-            .btn-sidebar-1 {
-              background-color: white;
-              color: #5d5d5d;
-              font-weight: normal;
-              padding: 0 16px;
-              i {
-                width: auto;
-                margin: 0;
-                font-size: 24px;
-                width: 36px;
-              }
-              .title{
-                padding: 0 12px;
-              }
-            }
-            .lang-wrap{
-              background: hsl(0, 0%, 87%);
-              border-radius: 0;
-            }
-          }
-        }
         user-login {
           background-color: #5d5d5d;
           width: 100%;
@@ -128,11 +99,38 @@ body.mat-sidenav-show {
   }
 }
 
+.left-sidebar.left-sidebar-1{
+  .btn-sidebar-1, a.btn-sidebar-1 {
+    background-color: white;
+    color: #5d5d5d;
+    font-weight: normal;
+    padding: 0 16px;
+    i {
+      width: auto;
+      margin: 0;
+      font-size: 24px;
+      width: 36px;
+    }
+    .title{
+      padding: 0 12px;
+    }
+  }
+}
+.lang-wrap{
+  background: hsl(0, 0%, 87%);
+  border-radius: 0;
+}
+
+
 /**
  * RTL
  */
 body[dir="rtl"] main-header-navbar-mobile-side {
   mat-sidenav-container {
+    &.mat-drawer-container{
+      right: auto;
+      left: 0;
+    }
     .btn-sidebar.has-children::before {
       left: 20px;
       right: auto !important;
