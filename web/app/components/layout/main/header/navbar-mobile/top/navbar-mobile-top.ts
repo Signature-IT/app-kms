@@ -20,8 +20,9 @@ export class MainHeaderNavbarMobileTopComponent extends MainHeaderNavbarMobileTo
         super();
     }
 
-    init() {
-        this.shareDataSvc.clickedFilter.next({fields: {}});
+    init(event) {
+        event.stopPropagation();
+        this.shareDataSvc.clickedFilter.next(null);
         this.shareDataSvc.isFilterOpen = false;
     }
 }
