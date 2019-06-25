@@ -1,12 +1,12 @@
 <!-- navbar-top-collapsed -->
 <!--<ul *ngIf="!isOpen"-->
   <ul class="nav nav-fill p-0">
-    <li *ngIf="!isOpen" class="nav-item d-flex align-items-center justify-content-center">
+    <li *ngIf="!isOpen" class="nav-item d-flex align-items-center justify-content-center" (click)="init()">
         <a routerLink="/{{logo?.link}}">
             <img [src]="logo?.collapsed?.icon" alt="{{logo?.title|translate}}">
         </a>
     </li>
-    <li *ngIf="isOpen" class="nav-item d-flex align-items-center justify-content-center">
+    <li *ngIf="isOpen" class="nav-item d-flex align-items-center justify-content-center" (click)="init()">
         <img [src]="logo?.expanded?.icon" alt="{{logo?.title|translate}}">
     </li>
     <li *ngFor="let item of top"

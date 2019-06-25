@@ -1,5 +1,6 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import { MainHeaderNavbarMobileTopComponentGeneric } from '@signature-it/ngx-generic';
+import { SharedDataService } from '@signature-it/ngx-catalogue';
 
 declare let _: any;
 
@@ -14,4 +15,8 @@ declare let _: any;
     ],
     outputs: ['toggle']
 })
-export class MainHeaderNavbarMobileTopComponent extends MainHeaderNavbarMobileTopComponentGeneric {}
+export class MainHeaderNavbarMobileTopComponent extends MainHeaderNavbarMobileTopComponentGeneric {
+    constructor(protected shareDataSvc: SharedDataService) {
+        super();
+    }
+}
