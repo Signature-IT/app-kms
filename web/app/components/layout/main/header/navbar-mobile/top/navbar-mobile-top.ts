@@ -19,4 +19,9 @@ export class MainHeaderNavbarMobileTopComponent extends MainHeaderNavbarMobileTo
     constructor(protected shareDataSvc: SharedDataService) {
         super();
     }
+
+    init() {
+        this.shareDataSvc.clickedFilter.next({fields: {}});
+        this.shareDataSvc.isFilterOpen = false;
+    }
 }
