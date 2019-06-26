@@ -8,27 +8,26 @@ ul.nav{
   margin-left: -1px;
   padding: 11px 0 8px;
   color: gray;
-  //color: contrast-color(#212121);
-  .btn-collapse,
-  user-login-button,
-  main-header-user-details,
-  .search-wrap,
-  main-header-cart a,
-  main-header-media-cart a{
-    &, *{
-      color: inherit !important;
-    }
-    i{
-      font-size: 26px;
-    }
-    .icon-text{
-      margin-top: 4px;
-      font-size: 12px;
+  ::ng-deep{
+    .btn-collapse,
+    user-login-button,
+    main-header-user-details,
+    .search-wrap,
+    main-header-cart a,
+    main-header-media-cart a{
+      &, *{
+        color: inherit !important;
+      }
+      i{
+        font-size: 26px;
+      }
+      .icon-text{
+        margin-top: 4px;
+        font-size: 12px;
+      }
     }
   }
-  .login-button-wrap{
 
-  }
   button.btn-collapse{
     font-size: 31px;
   }

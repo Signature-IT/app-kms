@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component } from '@angular/core';
 import { MainHeaderNavbarMobileTopComponentGeneric } from '@signature-it/ngx-generic';
 import { SharedDataService } from '@signature-it/ngx-catalogue';
 
@@ -8,7 +8,6 @@ declare let _: any;
     selector: 'main-header-navbar-mobile-top',
     templateUrl: './navbar-mobile-top.html',
     styleUrls: ['./navbar-mobile-top.scss'],
-    encapsulation: ViewEncapsulation.None,
     inputs: [
         'data',
         'is-sidebar-open'
