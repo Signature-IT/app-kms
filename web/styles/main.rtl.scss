@@ -132,6 +132,12 @@ body[dir="rtl"] {
       left: auto;
     }
   }
+  .inwards-menu .dropdown{
+    .dropdown-menu{
+      left: 0;
+      right: auto;
+    }
+  }
   .dropdown-menu {
     &, .dropdown-item{
       text-align: right;
