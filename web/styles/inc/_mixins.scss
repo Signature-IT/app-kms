@@ -1,9 +1,9 @@
 @import "colors";
 
-@mixin bg-ratag-green-secondary{
-  background-color: $ratag-green-secondary !important;
-  color: $ratag-green !important;
-}
+//@mixin bg-ratag-green-secondary{
+//  background-color: $ratag-green-secondary !important;
+//  color: $ratag-green !important;
+//}
 
 @mixin full-vw {
   width: 100vw !important;
@@ -13,10 +13,10 @@
   margin-left: -50vw !important;
   margin-right: -50vw !important;
 }
-@mixin bg-ratag-green {
-  background-color: $ratag-green;
-  color: white;
-}
+//@mixin bg-ratag-green {
+//  background-color: $ratag-green;
+//  color: white;
+//}
 
 @mixin footer-margins($footer-margin-top: 0) {
   main-footer, shared-footer{

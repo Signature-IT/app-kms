@@ -1,241 +1,264 @@
 @import "~delta-angular/src/styles/colors";
 
+$active: #007cb9;
+
+//angular material colors
+
+$mat-activeblue: (
+        50 : #e0eff7,
+        100 : #b3d8ea,
+        200 : #80bedc,
+        300 : #4da3ce,
+        400 : #2690c4,
+        500 : #007cb9,
+        600 : #0074b2,
+        700 : #0069aa,
+        800 : #005fa2,
+        900 : #004c93,
+        A100 : #bedbff,
+        A200 : #8bbfff,
+        A400 : #58a3ff,
+        A700 : #3f95ff,
+        contrast: (
+                50 : #000000,
+                100 : #000000,
+                200 : #000000,
+                300 : #000000,
+                400 : #ffffff,
+                500 : #ffffff,
+                600 : #ffffff,
+                700 : #ffffff,
+                800 : #ffffff,
+                900 : #ffffff,
+                A100 : #000000,
+                A200 : #000000,
+                A400 : #000000,
+                A700 : #000000,
+        )
+);
+
+
+@import '~@angular/material/theming';
+
+@include mat-core();
+
+$generic-app-primary: mat-palette($mat-activeblue);
+$generic-app-accent:  mat-palette($mat-activeblue, A200, A100, A400);
+$generic-app-warn:    mat-palette($mat-red);
+$generic-app-theme: mat-light-theme($generic-app-primary, $generic-app-accent, $generic-app-warn);
+
+@include angular-material-theme($generic-app-theme);
+
+
+// ex- generic mixin
 $app-primary-color: #b71c1c;
+$app-secondary-color: #e6c091;
 $app-header-1-bg: #333;
+$app-header-1-color: #ffecd4;
 $app-header-2-bg: #eee;
+$app-header-2-color: #212121;
+$header-dropdown-bg: lighten($app-header-2-bg, 4%);
+$cart-icon-color: $app-primary-color;
+$cart-count-bg: $app-secondary-color;
+$cart-count-color: $app-primary-color;
+$cart-count-border-color: #fff;
+$header-cart-icon-color: $app-header-1-bg;
+$header-cart-count-bg: $app-primary-color;
+$header-cart-count-color: #fff;
+$header-cart-count-border-color: $app-header-2-bg;
+$user-login-color: $app-header-1-color;
 
 
-@mixin cat-colors(
-  $app-main-color: #000,
-  //$active: map-get($colors, 'light-blue-a700'),
-  $active: #007cb9,
-  $page-title: #000,
-  $card-back: none,
-  $card-border: #e6e6e6,
-  $card-title-color: #007cb9,
-  $compare-btn-back: $active,
-  $compare-btn-color: #fff,
-  $add-to-card-color: #fff,
-  $add-to-card-back: #e83650,
-  $add-to-card-border: #c61831,
-  $add-to-card-color-m: #fff,
-  $add-to-card-back-m: #fc4e52,
-  $add-to-card-border-m: transparent,
-  $view-all-color: #fff,
-  $view-all-back: #27262b,
-  $view-all-color-m: #fff,
-  $view-all-back-m: #006600,
-  $pagination-back-active: transparent,
-  $pagination-color-active: #007cb9,
-  $pagination-back-hover: #f1f1f1,
-  $pagination-color: #9e9e9e) {
 
-  // general classes
+// * custom color classes * /
+
+// primary color
+.app-primary-color{
+  color: $app-primary-color;
+}
+.bg-primary-color{
+  background-color: $app-primary-color;
+}
+.border-primary-color,
+.form-control:focus{
+  border-color: $app-primary-color !important;
+}
+
+//secondary color
+.app-secondary-color{
+  color: $app-secondary-color;
+}
+.bg-secondary-color{
+  background-color: $app-secondary-color;
+}
+.border-secondary-color{
+  border-color: $app-secondary-color;
+}
+
+// header
+.app-header-1-color{
+  color: $app-header-1-color;
+}
+.app-header-1-bg{
+  background-color: $app-header-1-bg;
+}
+.app-header-2-color{
+  color: $app-header-2-color;
+}
+.app-header-2-bg{
+  background-color: $app-header-2-bg;
+}
+
+// in components
+
+.cart-icon {
+  color: $cart-icon-color;
+}
+
+.cart-counter{
+  background-color: $cart-count-bg;
+  color: $cart-count-color;
+  border-color: $cart-count-border-color;
+}
+
+.header-cart-icon {
+  color: $header-cart-icon-color;
+}
+
+.header-cart-counter{
+  background-color: $header-cart-count-bg;
+  color: $header-cart-count-color;
+  border-color: $header-cart-count-border-color;
+}
+
+user-login .user-wrapper{
+  color: $user-login-color;
+}
 
 
-  .catalogue-style, favorites, product-page{
-    [data-background="light"] & a,
-    .cat-active,
-    .link-appearance,
-    .clear-btn,
-    .paginate_items_per_page_btn.selected{
-      color: $active !important;
-    }
+// * none custom classes & elements * /
 
-    h1{
-      color: $page-title;
-    }
+main-top-navigation li.level-1:hover,
+main-top-navigation li.level-1.show{
+  background: $header-dropdown-bg;
+}
 
-    // Cards & Buttons
 
-    .card-item.card {
-      background: $card-back !important;
-      border-color: $card-border !important;
-      @media (min-width: 576px){
-        & + .card{
-          border-color: $card-border !important;
-        }
+
+
+
+// ex- cat mixin
+
+$app-main-color: #000;
+//$active: #007cb9;
+$page-title: #000;
+$card-back: none;
+$card-border: #e6e6e6;
+$card-title-color: #007cb9;
+$compare-btn-back: $active;
+$compare-btn-color: #fff;
+$add-to-card-color: #fff;
+$add-to-card-back: #e83650;
+$add-to-card-border: #c61831;
+$add-to-card-color-m: #fff;
+$add-to-card-back-m: #fc4e52;
+$add-to-card-border-m: transparent;
+$view-all-color: #fff;
+$view-all-back: #27262b;
+$view-all-color-m: #fff;
+$view-all-back-m: #006600;
+$pagination-back-active: transparent;
+$pagination-color-active: #007cb9;
+$pagination-back-hover: #f1f1f1;
+$pagination-color: #9e9e9e;
+
+
+
+// general classes
+
+.catalogue-style, favorites, product-page{
+  [data-background="light"] & a,
+  .cat-active,
+  .link-appearance,
+  .clear-btn,
+  .paginate_items_per_page_btn.selected{
+    color: $active !important;
+  }
+
+  h1{
+    color: $page-title;
+  }
+
+  // Cards & Buttons
+
+  .card-item.card {
+    background: $card-back !important;
+    border-color: $card-border !important;
+    @media (min-width: 576px){
+      & + .card{
+        border-color: $card-border !important;
       }
-      .card-block{
-        .card-title, .card-text{
-          color: $card-title-color;
-        }
+    }
+    .card-block{
+      .card-title, .card-text{
+        color: $card-title-color;
       }
     }
-    .leaf-btn{
-      &.add-to-cart{
-        color: $add-to-card-color;
-        background: $add-to-card-back;
-        border-color: $add-to-card-border;
-        @media (max-width: 992px){
-          color: $add-to-card-color-m;
-          background: $add-to-card-back-m;
-          border-color: $add-to-card-border-m;
-        }
-      }
-      &.view-all{
-        color: $view-all-color;
-        background: $view-all-back;
-        @media (max-width: 992px){
-          color: $view-all-color-m;
-          background: $view-all-back-m;
-        }
+  }
+  .leaf-btn{
+    &.add-to-cart{
+      color: $add-to-card-color;
+      background: $add-to-card-back;
+      border-color: $add-to-card-border;
+      @media (max-width: 992px){
+        color: $add-to-card-color-m;
+        background: $add-to-card-back-m;
+        border-color: $add-to-card-border-m;
       }
     }
-    .compare-btn, .btn.compare-btn{
-      background: $compare-btn-back;
-      color: $compare-btn-color;
-    }
-
-
-
-    // matirial input design overrides
-
-    .search-color,
-    label.mat-input-placeholder,
-    .mat-focused label.mat-input-placeholder {
-      color: $app-main-color;
-    }
-
-    div.mat-input-underline,
-    .mat-form-field-ripple,
-    .mat-focused .mat-form-field-ripple{
-      background-color: $app-main-color;
-    }
-
-    // pagination overrides
-
-    [data-background="light"] & .pagination .page-item{
-      a{
-        color: $pagination-color !important;
-      }
-      &:hover a{
-        background-color: $pagination-back-hover;
-      }
-      &.active a{
-        background-color: $pagination-back-active;
-        color: $pagination-color-active !important;
+    &.view-all{
+      color: $view-all-color;
+      background: $view-all-back;
+      @media (max-width: 992px){
+        color: $view-all-color-m;
+        background: $view-all-back-m;
       }
     }
+  }
+  .compare-btn, .btn.compare-btn{
+    background: $compare-btn-back;
+    color: $compare-btn-color;
+  }
 
+
+
+  // matirial input design overrides
+
+  .search-color,
+  label.mat-input-placeholder,
+  .mat-focused label.mat-input-placeholder {
+    color: $app-main-color;
+  }
+
+  div.mat-input-underline,
+  .mat-form-field-ripple,
+  .mat-focused .mat-form-field-ripple{
+    background-color: $app-main-color;
+  }
+
+  // pagination overrides
+
+  [data-background="light"] & .pagination .page-item{
+    a{
+      color: $pagination-color !important;
+    }
+    &:hover a{
+      background-color: $pagination-back-hover;
+    }
+    &.active a{
+      background-color: $pagination-back-active;
+      color: $pagination-color-active !important;
+    }
   }
 
 }
-
-@include cat-colors(
-        $add-to-card-back: $app-primary-color,
-        $add-to-card-border: $app-primary-color,
-        $view-all-back: $app-header-1-bg
-);
-
-
-$ratag-green: #004D41 !default;
-$ratag-green-secondary: #BADA55 !default;
-$warning: #f57c00 !default;
-$danger: #b71c1c !default;
-
-
-@mixin gen-colors(
-  $app-primary-color: #b71c1c,
-  $app-secondary-color: #e6c091,
-  $app-header-1-bg: #333,
-  $app-header-1-color: #ffecd4,
-  $app-header-2-bg: #eee,
-  $app-header-2-color: #212121,
-  $header-dropdown-bg: lighten($app-header-2-bg, 4%),
-  $cart-icon-color: $app-primary-color,
-  $cart-count-bg: $app-secondary-color,
-  $cart-count-color: $app-primary-color,
-  $cart-count-border-color: #fff,
-  $header-cart-icon-color: $app-header-1-color,
-  $header-cart-count-bg: $app-secondary-color,
-  $header-cart-count-color: $app-header-1-bg,
-  $header-cart-count-border-color: $app-header-1-bg,
-  $user-login-color: $app-header-1-color
-  //$empty-cart-icon-color: $app-primary-color,
-  //$empty-header-cart-count-icon-color
-){
-
-  // * custom color classes * /
-
-  // primary color
-  .app-primary-color{
-    color: $app-primary-color;
-  }
-  .bg-primary-color{
-    background-color: $app-primary-color;
-  }
-  .border-primary-color,
-  .form-control:focus{
-    border-color: $app-primary-color !important;
-  }
-
-  //secondary color
-  .app-secondary-color{
-    color: $app-secondary-color;
-  }
-  .bg-secondary-color{
-    background-color: $app-secondary-color;
-  }
-  .border-secondary-color{
-    border-color: $app-secondary-color;
-  }
-
-  // header 1
-  .app-header-1-color{
-    color: $app-header-1-color;
-  }
-  .app-header-1-bg{
-    background-color: $app-header-1-bg;
-  }
-
-  // header 2
-  .app-header-2-color{
-    color: $app-header-2-color;
-  }
-  .app-header-2-bg{
-    background-color: $app-header-2-bg;
-  }
-
-  // in components
-
-  .cart-icon {
-    color: $cart-icon-color;
-  }
-
-  .cart-counter{
-    background-color: $cart-count-bg;
-    color: $cart-count-color;
-    border-color: $cart-count-border-color;
-  }
-
-  .header-cart-icon {
-    color: $header-cart-icon-color;
-  }
-
-  .header-cart-counter{
-    background-color: $header-cart-count-bg;
-    color: $header-cart-count-color;
-    border-color: $header-cart-count-border-color;
-  }
-
-  user-login .user-wrapper{
-    color: $user-login-color;
-  }
-
-
-  // * none custom classes & elements * /
-
-  main-top-navigation li.level-1:hover,
-  main-top-navigation li.level-1.show{
-    background: $header-dropdown-bg;
-  }
-
-}
-
-@include gen-colors(
-        $header-cart-icon-color: $app-header-1-bg,
-        $header-cart-count-bg: $app-primary-color,
-        $header-cart-count-color: #fff,
-        $header-cart-count-border-color: $app-header-2-bg
-);

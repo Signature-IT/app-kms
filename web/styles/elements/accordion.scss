@@ -1,11 +1,11 @@
 @import "../inc/mixins";
 @import "card";
 
-@mixin accordion-card-title-green {
-  @include card-title;
-  @include bg-ratag-green;
-  border-bottom-color: $ratag-green-secondary !important;
-}
+//@mixin accordion-card-title-green {
+//  @include card-title;
+//  //@include bg-ratag-green;
+//  border-bottom-color: $ratag-green-secondary !important;
+//}
 accordion{
   .panel.panel-open{
     margin-bottom: 20px;
@@ -13,9 +13,9 @@ accordion{
   }
 }
 
-@mixin accordion-card-title-green {
-  @include card-title;
-}
+//@mixin accordion-card-title-green {
+//  @include card-title;
+//}
 
 accordion {
   .card.panel-default {

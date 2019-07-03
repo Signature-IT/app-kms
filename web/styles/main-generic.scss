@@ -7,7 +7,7 @@
 @import "elements/ngu-carousel";
 
 
-@include gen-colors();
+//@include gen-colors();
 @include footer-margins();
 
 //$colors: map-merge($colors, $sig-colors);
@@ -55,18 +55,18 @@ main.main {
 .w-100p { width: 100% !important; }
 .border-top-1 { border-top: 1px solid #eaeaea; }
 .border-bottom-1 { border-bottom: 1px solid #eaeaea; }
-.bg-ratag-green{
-  @include bg-ratag-green;
-}
-.color-ratag-green{
-  color: $ratag-green;
-}
-.color-ratag-green-secondary{
-  color: $ratag-green-secondary;
-}
-.bg-ratag-green-secondary{
-  @include bg-ratag-green-secondary;
-}
+//.bg-ratag-green{
+//  @include bg-ratag-green;
+//}
+//.color-ratag-green{
+//  color: $ratag-green;
+//}
+//.color-ratag-green-secondary{
+//  color: $ratag-green-secondary;
+//}
+//.bg-ratag-green-secondary{
+//  @include bg-ratag-green-secondary;
+//}
 
 .custom-control.custom-checkbox {
   .custom-control-input ~ .custom-control-indicator{
