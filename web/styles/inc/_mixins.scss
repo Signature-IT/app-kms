@@ -39,6 +39,15 @@
   }
 }
 
+@mixin autocomplete-position{
+  body[dir="ltr"] &{
+    right: 0;
+  }
+  body[dir="rtl"] &{
+    left: 0;
+  }
+}
+
 
 
 
