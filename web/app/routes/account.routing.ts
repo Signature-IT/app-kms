@@ -31,6 +31,10 @@ const routes: Routes = [
             {
                 path: ':name',
                 loadChildren: () => import('../modules/cms-page.module').then(m => m.CmsPageModule),
+            },
+            {
+                path: 'reflection/:tableName',
+                loadChildren: () => import('../modules/account/reflections.module').then(m => m.ReflectionsModule)
             }
         ]
     }
