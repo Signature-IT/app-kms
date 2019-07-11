@@ -1,4 +1,4 @@
-import {Component, ViewContainerRef} from '@angular/core';
+import {Component, ViewContainerRef, OnInit, AfterViewInit} from '@angular/core';
 import {
     AppComponent as AppComponent_Generic, AuthService, GoogleAnalyticsService, LanguageService, NgxGenericService
 } from '@signature-it/ngx-generic';
@@ -14,6 +14,14 @@ export class AppComponent extends AppComponent_Generic {
                 protected analyticsSvc: GoogleAnalyticsService,
                 protected langSvc: LanguageService,
                 viewRef: ViewContainerRef) {
-        super(router, auth, analyticsSvc, langSvc, viewRef)
+        super(router, auth, analyticsSvc, langSvc, viewRef);
+    }
+
+    ngOnInit(): void {
+        super.ngOnInit();
+    }
+
+    ngAfterViewInit(): void {
+        super.ngAfterViewInit();
     }
 }
