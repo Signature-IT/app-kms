@@ -163,6 +163,9 @@ $list-item-padding-x: 20px;
     //    margin-left: 40px;
     //  }
     //}
+    .card-content-wrapper{
+      @extend .flex-row;
+    }
     .card-text{
       font-size: 16px;
     }
