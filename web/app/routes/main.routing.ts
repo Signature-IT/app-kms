@@ -29,6 +29,10 @@ const routes: Routes = [
                 loadChildren: () => import('../modules/change-password.module').then(m => m.ChangePasswordModule)
             },
             {
+                path: 'activate-account',
+                loadChildren: () => import('../modules/activate-account.module').then(m => m.ActivateAccountModule)
+            },
+            {
                 path: 'terms',
                 loadChildren: () => import('../modules/terms.module').then(m => m.TermsModule)
             },
