@@ -44,10 +44,10 @@ body{
   }
   .list-group {
     .list-group-item.active {
-      //background-color: $ratag-green-secondary;
-      //border-color: $ratag-green-secondary;
+      background-color: $app-secondary-color;
+      border-color: $app-secondary-color;
       a {
-        //color: $ratag-green;
+        color: $app-primary-color;
       }
     }
   }
