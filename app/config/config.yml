@@ -30,3 +30,6 @@ pelecard:
   pelecard-param-x: 'test payment'
   pelecard-good-url: 'http://fe-generic.oritp.d.il1-d7.signature-it.com/cart/confirmation'
   pelecard-bad-url: 'http://fe-generic.oritp.d.il1-d7.signature-it.com/cart/confirmation'
+# Generic Catalogue Configuration
+product-images-source: pcode # pcode or media_assets
+product-images-path: images/Fittings/zoko/Upload_Pictures
