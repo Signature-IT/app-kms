@@ -1,4 +1,8 @@
 <?php
 
-$appRoutesConfiguration = array(
+$appRoutesCache = array(
+);
+
+
+$appRoutesRPM = array(
 );
