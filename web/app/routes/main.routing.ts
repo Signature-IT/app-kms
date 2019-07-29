@@ -62,6 +62,10 @@ const routes: Routes = [
                 loadChildren: () => import('../modules/cms-page.module').then(m => m.CmsPageModule)
             },
             {
+                path: 'contact-us',
+                loadChildren: () => import('../modules/contact-us.module').then(m => m.ContactUsModule)
+            },
+            {
                 path: '401',
                 loadChildren: () => import('../modules/error/unauthorized-user.module').then(m => m.ErrorUnauthorizedUserModule)
             },
