@@ -1,30 +1,25 @@
 // Core
 import { NgModule } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
-import { HttpClientModule, HttpClient } from "@angular/common/http";
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 // Vendors
-import { TranslateLoader, TranslateModule } from "@ngx-translate/core";
-
-// import { MousetrapService } from 'delta-angular/src/app/services/mousetrap';
-// import { CustomEventsService } from 'delta-angular/src/app/services/custom-events';
-
-import { BrowserModule } from "@angular/platform-browser";
-import { NoopAnimationsModule } from "@angular/platform-browser/animations";
-import { LocalStorageModule } from "angular-2-local-storage/dist";
-
-
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { LocalStorageModule } from 'angular-2-local-storage/dist';
 // Routes
-import {AppRoutingModule} from "./app.routes";
+import {AppRoutingModule} from './app.routes';
 // Components
 import {
     GoogleAnalyticsService,
     FakeloaderComponentModule,
-    NoopInterceptor
-} from "@signature-it/ngx-generic";
+    NoopInterceptor,
+    CheckRestrictedLoginGuard
+} from '@signature-it/ngx-generic';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import {AppComponent} from "./app.component";
+import {AppComponent} from './app.component';
 import {HttpTranslateLoaderFactory} from './loaders/translate-http-loader';
-import {AppStoreModule} from "./stores/app/app.store";
+import {AppStoreModule} from './stores/app/app.store';
 @NgModule({
     imports: [
         BrowserModule,
@@ -51,7 +46,8 @@ import {AppStoreModule} from "./stores/app/app.store";
     providers: [
         CookieService,
         { provide: HTTP_INTERCEPTORS, useClass: NoopInterceptor, multi: true },
-        GoogleAnalyticsService
+        GoogleAnalyticsService,
+        CheckRestrictedLoginGuard
     ],
     bootstrap: [AppComponent]
 })
