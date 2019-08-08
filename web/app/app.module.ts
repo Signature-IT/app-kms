@@ -14,11 +14,12 @@ import {
     GoogleAnalyticsService,
     FakeloaderComponentModule,
     NoopInterceptor,
-    CheckRestrictedLoginGuard
+    CustomTranslateLoader,
+    HttpTranslateLoaderFactory,
+    RestUrlsConfig
 } from '@signature-it/ngx-generic';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import {AppComponent} from './app.component';
-import {HttpTranslateLoaderFactory} from './loaders/translate-http-loader';
 import {AppStoreModule} from './stores/app/app.store';
 @NgModule({
     imports: [
@@ -29,8 +30,9 @@ import {AppStoreModule} from './stores/app/app.store';
         TranslateModule.forRoot({
             loader: {
                 provide: TranslateLoader,
-                useFactory: HttpTranslateLoaderFactory,
-                deps: [HttpClient]
+                useClass: CustomTranslateLoader,
+                useFactory: (HttpTranslateLoaderFactory),
+                deps: [HttpClient, RestUrlsConfig]
             }
         }),
         LocalStorageModule.withConfig({
@@ -46,8 +48,7 @@ import {AppStoreModule} from './stores/app/app.store';
     providers: [
         CookieService,
         { provide: HTTP_INTERCEPTORS, useClass: NoopInterceptor, multi: true },
-        GoogleAnalyticsService,
-        CheckRestrictedLoginGuard
+        GoogleAnalyticsService
     ],
     bootstrap: [AppComponent]
 })

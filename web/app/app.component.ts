@@ -1,6 +1,6 @@
 import {Component, ViewContainerRef, OnInit, AfterViewInit} from '@angular/core';
 import {
-    AppComponent as AppComponent_Generic, AuthService, GoogleAnalyticsService, LanguageService, NgxGenericService
+    AppComponent as AppComponent_Generic, AuthService, GoogleAnalyticsService, LanguageService
 } from '@signature-it/ngx-generic';
 import {Router} from '@angular/router';
 
