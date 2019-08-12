@@ -55,7 +55,7 @@
               "web/styles/inc/_colors.scss",
               "web/styles/inc/_variables.scss",
               "web/styles/vendors.imports.scss",
-              "web/styles/main.overrides.scss",
+              "web/styles/vendors.overrides.scss",
               "web/styles/main.scss",
               "web/styles/main.rtl.scss"
             ],
