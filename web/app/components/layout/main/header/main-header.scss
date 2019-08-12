@@ -1,4 +1,3 @@
-@import "web/styles/inc/colors";
 @import "~delta-angular/src/styles/bootstrap/scss/custom";
 @import "~delta-angular/src/styles/bootstrap/scss/mixins/breakpoints";
 
@@ -17,7 +16,7 @@ main-header {
           width: 80px;
         }
         a {
-          color: map-get($colors, 'grey-900')
+          color: #212121;
         }
       }
     }
