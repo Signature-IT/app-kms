@@ -62,7 +62,6 @@
             "stylePreprocessorOptions": {
               "includePaths": [
                 "./node_modules/delta-angular/src/styles",
-                "./node_modules/@signature-it/ngx-generic/web/styles",
                 "web/styles"
               ]
             },
