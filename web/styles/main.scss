@@ -6,3 +6,21 @@
 @import "elements/form";
 @import "elements/cart";
 @import "elements/buttons";
+
+
+// fonts
+
+.cat-active {
+  font-family: $font-family-bold;
+}
+
+.link-appearance{
+  font-family: $font-family-regular;
+}
+
+
+//app-classes
+
+.max-app-width{
+  max-width: $max-app-width;
+}

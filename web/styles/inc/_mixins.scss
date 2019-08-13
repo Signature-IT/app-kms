@@ -1,9 +1,3 @@
-
-//@mixin bg-ratag-green-secondary{
-//  background-color: $ratag-green-secondary !important;
-//  color: $ratag-green !important;
-//}
-
 @mixin full-vw {
   width: 100vw !important;
   position: relative;
@@ -12,10 +6,6 @@
   margin-left: -50vw !important;
   margin-right: -50vw !important;
 }
-//@mixin bg-ratag-green {
-//  background-color: $ratag-green;
-//  color: white;
-//}
 
 @mixin footer-margins($footer-margin-top: 0) {
   main-footer, shared-footer{
