@@ -1,180 +1,52 @@
-@import "web/styles/inc/variables";
 
-@each $color, $value in $app-colors {
-  .app-#{$color}-text {
-    color: $value;
+//@mixin bg-ratag-green-secondary{
+//  background-color: $ratag-green-secondary !important;
+//  color: $ratag-green !important;
+//}
+
+@mixin full-vw {
+  width: 100vw !important;
+  position: relative;
+  left: 50% !important;
+  right: 50% !important;
+  margin-left: -50vw !important;
+  margin-right: -50vw !important;
+}
+//@mixin bg-ratag-green {
+//  background-color: $ratag-green;
+//  color: white;
+//}
+
+@mixin footer-margins($footer-margin-top: 0) {
+  main-footer, shared-footer{
+    margin-top: $footer-margin-top;
   }
-  .app-#{$color}-bg {
-    background-color: $value;
-  }
-  .app-#{$color}-border {
-    border-color: $value;
-  }
-  .app-pipe-#{$color},
-  .app-pipe-wide-#{$color} {
-    &:before{
-      background: $value;
+}
+
+// animation
+
+@mixin spin-animation{
+  @keyframes spin {
+    0% {
+      -webkit-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+    100% {
+      -webkit-transform: rotate(359deg);
+      transform: rotate(359deg);
     }
   }
-
 }
 
-// app
-
-html:not(.loading) [data-layout][data-background=light]{
-  color: $app-black;
-}
-
-// * custom color classes * /
-
-// primary color
-.app-primary-color{
-  color: $app-primary-color;
-}
-.bg-primary-color{
-  background-color: $app-primary-color;
-}
-.border-primary-color,
-.form-control:focus{
-  border-color: $app-primary-color !important;
-}
-
-//secondary color
-.app-secondary-color{
-  color: $app-secondary-color;
-}
-.bg-secondary-color{
-  background-color: $app-secondary-color;
-}
-.border-secondary-color{
-  border-color: $app-secondary-color;
-}
-
-// header
-.app-header-1-color{
-  color: $app-header-1-color;
-}
-.app-header-1-bg{
-  background-color: $app-header-1-bg;
-}
-
-// in components
-
-.cart-icon {
-  color: $cart-icon-color;
-}
-
-.cart-counter{
-  background-color: $cart-count-bg;
-  color: $cart-count-color;
-  border-color: $cart-count-border-color;
-}
-
-.header-cart-counter{
-  background-color: $app-primary-color;
-  color: #fff;
-  border-color: $app-header-1-bg;
-}
-
-
-
-// * none custom classes & elements * /
-
-main-top-navigation li.level-1:hover,
-main-top-navigation li.level-1.show{
-  background: $header-dropdown-bg;
-}
-
-
-
-
-
-
-// general classes
-
-.catalogue-style, favorites, product-page{
-  [data-background="light"] & a,
-  .cat-active,
-  .link-appearance,
-  .clear-btn,
-  .paginate_items_per_page_btn.selected{
-    color: $active !important;
+@mixin autocomplete-position{
+  body[dir="ltr"] &{
+    right: 0;
   }
-
-  h1{
-    color: $page-title;
+  body[dir="rtl"] &{
+    left: 0;
   }
-
-  // Cards & Buttons
-
-  .card-item.card {
-    background: $card-back !important;
-    border-color: $card-border !important;
-    @media (min-width: 576px){
-      & + .card{
-        border-color: $card-border !important;
-      }
-    }
-    .card-block{
-      .card-title, .card-text{
-        color: $card-title-color;
-      }
-    }
-  }
-  .leaf-btn{
-    &.add-to-cart{
-      color: $add-to-card-color;
-      background: $add-to-card-back;
-      border-color: $add-to-card-border;
-      @media (max-width: 992px){
-        color: $add-to-card-color-m;
-        background: $add-to-card-back-m;
-        border-color: $add-to-card-border-m;
-      }
-    }
-    &.view-all{
-      color: $view-all-color;
-      background: $view-all-back;
-      @media (max-width: 992px){
-        color: $view-all-color-m;
-        background: $view-all-back-m;
-      }
-    }
-  }
-  .compare-btn, .btn.compare-btn{
-    background: $compare-btn-back;
-    color: $compare-btn-color;
-  }
-
-
-
-  // matirial input design overrides
-
-  .search-color,
-  label.mat-input-placeholder,
-  .mat-focused label.mat-input-placeholder {
-    color: $app-main-color;
-  }
-
-  div.mat-input-underline,
-  .mat-form-field-ripple,
-  .mat-focused .mat-form-field-ripple{
-    background-color: $app-main-color;
-  }
-
-  // pagination overrides
-
-  [data-background="light"] & .pagination .page-item{
-    a{
-      color: $pagination-color !important;
-    }
-    &:hover a{
-      background-color: $pagination-back-hover;
-    }
-    &.active a{
-      background-color: $pagination-back-active;
-      color: $pagination-color-active !important;
-    }
-  }
-
 }
+
+
+
+
