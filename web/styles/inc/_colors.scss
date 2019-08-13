@@ -1,74 +1,29 @@
-@import "~delta-angular/src/styles/colors";
+@import "web/styles/inc/variables";
 
-$active: #007cb9;
+@each $color, $value in $app-colors {
+  .app-#{$color}-text {
+    color: $value;
+  }
+  .app-#{$color}-bg {
+    background-color: $value;
+  }
+  .app-#{$color}-border {
+    border-color: $value;
+  }
+  .app-pipe-#{$color},
+  .app-pipe-wide-#{$color} {
+    &:before{
+      background: $value;
+    }
+  }
 
-//angular material colors
+}
 
-$mat-activeblue: (
-        50 : #e0eff7,
-        100 : #b3d8ea,
-        200 : #80bedc,
-        300 : #4da3ce,
-        400 : #2690c4,
-        500 : #007cb9,
-        600 : #0074b2,
-        700 : #0069aa,
-        800 : #005fa2,
-        900 : #004c93,
-        A100 : #bedbff,
-        A200 : #8bbfff,
-        A400 : #58a3ff,
-        A700 : #3f95ff,
-        contrast: (
-                50 : #000000,
-                100 : #000000,
-                200 : #000000,
-                300 : #000000,
-                400 : #ffffff,
-                500 : #ffffff,
-                600 : #ffffff,
-                700 : #ffffff,
-                800 : #ffffff,
-                900 : #ffffff,
-                A100 : #000000,
-                A200 : #000000,
-                A400 : #000000,
-                A700 : #000000,
-        )
-);
+// app
 
-
-@import '~@angular/material/theming';
-
-@include mat-core();
-
-$generic-app-primary: mat-palette($mat-activeblue);
-$generic-app-accent:  mat-palette($mat-activeblue, A200, A100, A400);
-$generic-app-warn:    mat-palette($mat-red);
-$generic-app-theme: mat-light-theme($generic-app-primary, $generic-app-accent, $generic-app-warn);
-
-@include angular-material-theme($generic-app-theme);
-
-
-// ex- generic mixin
-$app-primary-color: #b71c1c;
-$app-secondary-color: #e6c091;
-$app-header-1-bg: #333;
-$app-header-1-color: #ffecd4;
-$app-header-2-bg: #eee;
-$app-header-2-color: #212121;
-$header-dropdown-bg: lighten($app-header-2-bg, 4%);
-$cart-icon-color: $app-primary-color;
-$cart-count-bg: $app-secondary-color;
-$cart-count-color: $app-primary-color;
-$cart-count-border-color: #fff;
-$header-cart-icon-color: $app-header-1-bg;
-$header-cart-count-bg: $app-primary-color;
-$header-cart-count-color: #fff;
-$header-cart-count-border-color: $app-header-2-bg;
-$user-login-color: $app-header-1-color;
-
-
+html:not(.loading) [data-layout][data-background=light]{
+  color: $app-black;
+}
 
 // * custom color classes * /
 
@@ -102,12 +57,6 @@ $user-login-color: $app-header-1-color;
 .app-header-1-bg{
   background-color: $app-header-1-bg;
 }
-.app-header-2-color{
-  color: $app-header-2-color;
-}
-.app-header-2-bg{
-  background-color: $app-header-2-bg;
-}
 
 // in components
 
@@ -121,19 +70,12 @@ $user-login-color: $app-header-1-color;
   border-color: $cart-count-border-color;
 }
 
-.header-cart-icon {
-  color: $header-cart-icon-color;
-}
-
 .header-cart-counter{
-  background-color: $header-cart-count-bg;
-  color: $header-cart-count-color;
-  border-color: $header-cart-count-border-color;
+  background-color: $app-primary-color;
+  color: #fff;
+  border-color: $app-header-1-bg;
 }
 
-user-login .user-wrapper{
-  color: $user-login-color;
-}
 
 
 // * none custom classes & elements * /
@@ -145,32 +87,6 @@ main-top-navigation li.level-1.show{
 
 
 
-
-
-// ex- cat mixin
-
-$app-main-color: #000;
-//$active: #007cb9;
-$page-title: #000;
-$card-back: none;
-$card-border: #e6e6e6;
-$card-title-color: #007cb9;
-$compare-btn-back: transparent;
-$compare-btn-color: $active;
-$add-to-card-color: #fff;
-$add-to-card-back: #e83650;
-$add-to-card-border: #c61831;
-$add-to-card-color-m: #fff;
-$add-to-card-back-m: #fc4e52;
-$add-to-card-border-m: transparent;
-$view-all-color: #fff;
-$view-all-back: #27262b;
-$view-all-color-m: #fff;
-$view-all-back-m: #006600;
-$pagination-back-active: transparent;
-$pagination-color-active: #007cb9;
-$pagination-back-hover: #f1f1f1;
-$pagination-color: #9e9e9e;
 
 
 
