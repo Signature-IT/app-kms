@@ -2,6 +2,8 @@
 @import "~delta-angular/src/styles/colors";
 
 $active: #007cb9;
+
+//
 $app-colors: (
         "black": #343434,
         "white": #FFFFFF,
@@ -15,11 +17,12 @@ $app-white: #FFFFFF;
 $app-blue: #4D4DFF;
 $app-pink: #FF6B6B;
 $app-green: #2BFFAF;
+//
 
-$app-primary-color: $app-blue;
-$app-secondary-color: $app-pink;
-$app-header-1-bg: $app-white;
-$app-header-1-color: $app-black;
+$app-primary-color: #b71c1c;
+$app-secondary-color: #e6c091;
+$app-header-1-bg: #333;
+$app-header-1-color: #ffecd4;
 $app-header-2-bg: #eee;
 $app-header-2-color: #212121;
 $header-dropdown-bg: lighten($app-header-2-bg, 4%);
@@ -27,6 +30,11 @@ $cart-icon-color: $app-primary-color;
 $cart-count-bg: $app-secondary-color;
 $cart-count-color: $app-primary-color;
 $cart-count-border-color: #fff;
+$header-cart-icon-color: $app-header-1-bg;
+$header-cart-count-bg: $app-primary-color;
+$header-cart-count-color: #fff;
+$header-cart-count-border-color: $app-header-2-bg;
+$user-login-color: $app-header-1-color;
 
 
 $app-main-color: #000;

@@ -57,6 +57,12 @@ html:not(.loading) [data-layout][data-background=light]{
 .app-header-1-bg{
   background-color: $app-header-1-bg;
 }
+.app-header-2-color{
+  color: $app-header-2-color;
+}
+.app-header-2-bg{
+  background-color: $app-header-2-bg;
+}
 
 // in components
 
@@ -70,12 +76,19 @@ html:not(.loading) [data-layout][data-background=light]{
   border-color: $cart-count-border-color;
 }
 
+.header-cart-icon {
+  color: $header-cart-icon-color;
+}
+
 .header-cart-counter{
   background-color: $app-primary-color;
   color: #fff;
   border-color: $app-header-1-bg;
 }
 
+user-login .user-wrapper{
+  color: $user-login-color;
+}
 
 
 // * none custom classes & elements * /
