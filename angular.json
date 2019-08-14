@@ -25,16 +25,6 @@
             "assets": [
               {
                 "glob": "**/*",
-                "input": "./node_modules/@signature-it/ngx-catalogue/web/assets/images",
-                "output": "./assets/images/"
-              },
-              {
-                "glob": "**/*",
-                "input": "./node_modules/@signature-it/ngx-generic/web/assets",
-                "output": "./assets/"
-              },
-              {
-                "glob": "**/*",
                 "input": "./node_modules/delta-angular/src/fonts",
                 "output": "./fonts/"
               },
@@ -51,11 +41,10 @@
               "web/.htaccess"
             ],
             "styles": [
-              "web/styles/inc/_fonts.scss",
-              "web/styles/inc/_colors.scss",
-              "web/styles/inc/_variables.scss",
+              "web/styles/inc/_index.scss",
               "web/styles/vendors.imports.scss",
               "web/styles/vendors.overrides.scss",
+              "web/styles/elements/index.scss",
               "web/styles/main.scss",
               "web/styles/main.rtl.scss"
             ],

@@ -1,9 +1,6 @@
 import { NgModule } from "@angular/core";
-import { MainLayoutModuleGeneric } from "@signature-it/ngx-generic";
+import { MainLayoutModuleGeneric, PageTitleModuleGeneric, MainFooterModuleGeneric, MainFooterComponent } from "@signature-it/ngx-generic";
 import { MainRoutingModule } from "../routes/main.routing";
-import {PageTitleModuleGeneric} from '../../../projects/signature-it/ngx-generic/src/lib/components/page-title/page-title.module';
-import {MainFooterModuleGeneric} from '../../../projects/signature-it/ngx-generic/src/lib/components/layouts/main/footer/main-footer.module';
-import {MainFooterComponent} from '../../../projects/signature-it/ngx-generic/src/lib/components/layouts/main/footer/main-footer';
 import {RouterModule} from '@angular/router';
 import {BreadcrumbsModule,
     ContentloaderModule,
@@ -30,7 +27,7 @@ import {MainHeaderModule} from '../components/layout/main/header/main-header.mod
     ],
     exports: [MainLayoutComponent],
     declarations: [MainLayoutComponent],
-    entryComponents: [MainFooterComponent],
+    // entryComponents: [MainFooterComponent],
     providers:[
         RequestOptionsProvider
     ]
