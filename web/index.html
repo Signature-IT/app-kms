@@ -24,6 +24,13 @@
                     ? self // if in worker
                     : {}   // if in node js
             );
+        var rgx = new RegExp(`(?!:\/\/)fe`);
+        var appUrl = location.origin.replace(rgx, 'app');
+        var configScript = document.createElement('script');
+        configScript.src = appUrl + '/app/config/config.generic.js';
+        configScript.type = 'text/javascript';
+        configScript.async = true;
+        document.getElementsByTagName('head')[0].appendChild(configScript);
     </script>
     <!-- icons -->
     <link rel="icon" href="assets/images/favicon.ico" type="image/png" sizes="32x32">
