@@ -1,0 +1,30 @@
+<!--<homepage-banners></homepage-banners>-->
+<products-carousel [item]="" [related]="getRelatedByAlias('top')"></products-carousel>
+
+<ng-template [ngIf]="fixedHeader && !sharedSvc.isMobileMode()">
+    <homepage-banners libAppParallax [ratio]="0.5" id="parallax-element"></homepage-banners>
+    <div class="banner-placeholder"></div>
+</ng-template>
+<homepage-banners *ngIf="!fixedHeader || (fixedHeader && sharedSvc.isMobileMode())"></homepage-banners>
+<div class="homepage-content-wrap">
+    <div *ngIf="cmsHomepageTop"
+         class="cms-homepage-top"
+         [innerHtml]="cmsHomepageTop">
+    </div>
+    <div *ngIf="cmsHomepageLeft"
+         class="homepage-cms-left pull-left"
+         [innerHtml]="cmsHomepageLeft">
+    </div>
+    <homepage-group-links></homepage-group-links>
+    <div *ngIf="cmsHomepageRight"
+         class="homepage-cms-right pull-right"
+         [innerHtml]="cmsHomepageRight">
+    </div>
+    <div *ngIf="cmsHomepageBottom"
+         class="cms-homepage-bottom"
+         [innerHtml]="cmsHomepageBottom">
+    </div>
+</div>
+
+<products-carousel [item]="" [related]="getRelatedByAlias('buttom')"></products-carousel>
+
