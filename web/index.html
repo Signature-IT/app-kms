@@ -24,18 +24,20 @@
                     ? self // if in worker
                     : {}   // if in node js
             );
+        self.GenericConfig = {};
         var rgx = new RegExp(`(?!:\/\/)fe`);
         var appUrl = location.origin.replace(rgx, 'app');
         var configScript = document.createElement('script');
         configScript.src = appUrl + '/app/config/config.generic.js';
         configScript.type = 'text/javascript';
-        configScript.async = true;
+        configScript.async = false;
         document.getElementsByTagName('head')[0].appendChild(configScript);
     </script>
     <!-- icons -->
     <link rel="icon" href="assets/images/favicon.ico" type="image/png" sizes="32x32">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" type="text/css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Assistant:200,300,400,600,700&display=swap&subset=hebrew">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css" type="text/css">
 </head>
 <body data-layout="default-sidebar-1"

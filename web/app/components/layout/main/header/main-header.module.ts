@@ -6,7 +6,8 @@ import {
     UserLoginModuleGeneric,
     MainTopNavigationModuleGeneric,
     DropdownLangsModuleGeneric,
-    MainHeaderSearchFormModuleGeneric
+    MainHeaderSearchFormModuleGeneric,
+    PhoneOrderModule
 } from '@signature-it/ngx-generic';
 
 import { SearchModule_Catalogue, MainHeaderCartModuleGeneric } from '@signature-it/ngx-catalogue';
@@ -26,7 +27,8 @@ import { MainHeaderComponent } from './main-header';
         MainHeaderCartModuleGeneric,
         MainHeaderNavbarMobileTopModule,
         SearchModule_Catalogue,
-        MainHeaderNavbarMobileModule
+        MainHeaderNavbarMobileModule,
+        PhoneOrderModule
     ],
     declarations: [MainHeaderComponent],
     entryComponents: [MainHeaderComponent],
