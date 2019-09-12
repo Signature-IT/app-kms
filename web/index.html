@@ -24,12 +24,13 @@
                     ? self // if in worker
                     : {}   // if in node js
             );
+        self.GenericConfig = {};
         var rgx = new RegExp(`(?!:\/\/)fe`);
         var appUrl = location.origin.replace(rgx, 'app');
         var configScript = document.createElement('script');
         configScript.src = appUrl + '/app/config/config.generic.js';
         configScript.type = 'text/javascript';
-        configScript.async = true;
+        configScript.async = false;
         document.getElementsByTagName('head')[0].appendChild(configScript);
     </script>
     <!-- icons -->
