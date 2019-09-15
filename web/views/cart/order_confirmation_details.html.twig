@@ -52,6 +52,17 @@
                 </tbody>
             </table>
             </div>
+            {# sub_total price details #}
+            <div style="background-color: #f0efed;
+                        padding: 0 10px;
+            ">
+                <table class="font-weight-medium" style="width: 100%;border-bottom: 1px solid #ccc; direction: rtl;">
+                    <tr>
+                        <td style="padding:15px;">{{ tg('Sub Total') }}:</td>
+                        <td style="padding:15px;width: 1px;white-space: nowrap;">{{ currency_symbol ~ sub_total }}</td>
+                    </tr>
+                </table>
+            </div>
             {# delivery details #}
             <div style="background-color: #f0efed;
                         padding: 0 10px;
@@ -63,6 +74,19 @@
                     </tr>
                 </table>
             </div>
+        {% if vat > 0 %}
+            {# vat details #}
+            <div style="background-color: #f0efed;
+                        padding: 0 10px;
+            ">
+                <table class="font-weight-medium" style="width: 100%;border-bottom: 1px solid #ccc; direction: rtl;">
+                    <tr>
+                        <td style="padding:15px;">{{ tg('Vat') }}:</td>
+                        <td style="padding:15px;width: 1px;white-space: nowrap;">{{ currency_symbol ~ vat }}</td>
+                    </tr>
+                </table>
+            </div>
+        {% endif %}
             {# final price #}
             <div style="background-color: #f0efed;
                         padding: 0 10px;
