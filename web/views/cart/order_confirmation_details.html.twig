@@ -31,7 +31,7 @@
                                         {% if item.isSubscription == false %}
                                             <p class="mb-0"><span>Quantity</span>:&nbsp;<span dir="ltr">{{item.ItemQuantity}}</span></p>
                                         {% endif %}
-                                        <p class="mb-0"><span>{{ tg('Price') }}</span>: {{ currency_symbol ~ item.PricePerItem }}</p>
+                                        <p class="mb-0"><span>{{ tg('Price') }}</span>: {{ currency_symbol ~ item.PricePerItem['price'] }}</p>
                                         {% if item.DiscountPercent > 0 %}
                                             <p class="mb-0">
                                                 <span>{{ tg('Discount') }}</span>: {{ item.DiscountPercent ~ '%' }}
