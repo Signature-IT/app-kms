@@ -15,7 +15,7 @@ import { CmsService,
 })
 export class HomepageComponent extends HomepageComponentGeneric {
 
-    // GenericConfig.carusel_HP
+    carusel_HP_config = GenericConfig.carusel_HP || null;
 
     constructor(protected notifySvc: PageNotificationService,
               protected langSvc: LanguageService,
@@ -25,7 +25,10 @@ export class HomepageComponent extends HomepageComponentGeneric {
     }
 
     getRelatedByAlias(alias) {
-        return GenericConfig.carusel_HP.find(obj => obj.alias === alias);
+        if (this.carusel_HP_config) {
+            return this.carusel_HP_config.find(obj => obj.alias === alias);
+        }
+        return null
     }
 
 }

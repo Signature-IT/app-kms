@@ -1,5 +1,5 @@
 <!--<homepage-banners></homepage-banners>-->
-<products-carousel [item]="" [related]="getRelatedByAlias('top')"></products-carousel>
+<products-carousel *ngIf="carusel_HP_config" [item]="" [related]="getRelatedByAlias('top')"></products-carousel>
 
 <ng-template [ngIf]="fixedHeader && !sharedSvc.isMobileMode()">
     <homepage-banners libAppParallax [ratio]="0.5" id="parallax-element"></homepage-banners>
@@ -26,5 +26,5 @@
     </div>
 </div>
 
-<products-carousel [item]="" [related]="getRelatedByAlias('buttom')"></products-carousel>
+<products-carousel *ngIf="carusel_HP_config" [item]="" [related]="getRelatedByAlias('buttom')"></products-carousel>
 
