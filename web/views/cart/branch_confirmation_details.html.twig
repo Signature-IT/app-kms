@@ -1,0 +1,30 @@
+<div class="">
+    <div>
+        <div class=" py-2 font-weight-bold">{{ tg('Branch Address:') }}</div>
+        <div>
+            <span class="comma">{{ branch.address }}</span>
+            <span class="comma">{{ branch.city }}</span>
+            <span class="comma">{{ branch.country }}</span>
+            <span class="comma">{{ branch.province }}</span>
+            <span class="comma">{{ branch.zip_code }}</span>
+        </div>
+    </div>
+    {% if branch.opening_hours %}
+    <div class="">
+        <div class=" py-2 font-weight-bold">{{ tg('Opening Hours:') }}</div>
+        <div translatet>{{branch.opening_hours}}</div>
+    </div>
+    {% endif %}
+    {% if branch.collect_hours %}
+    <div class="">
+        <div class="py-2 font-weight-bold">{{ tg('Collect Hours:') }}</div>
+        <div  translatet>{{branch.collect_hours}}</div>
+    </div>
+    {% endif %}
+    {% if branch.remarks %}
+    <div class="">
+        <div class=" py-2 font-weight-bold">{{ tg('Remarks:') }}</div>
+        <div translatet>{{branch.remarks}}</div>
+    </div>
+    {% endif %}
+</div>
