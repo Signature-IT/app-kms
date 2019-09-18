@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { CmsService,
     LanguageService,
     PageNotificationService,
@@ -13,7 +13,7 @@ import { CmsService,
   styleUrls: ['./homepage.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class HomepageComponent extends HomepageComponentGeneric {
+export class HomepageComponent extends HomepageComponentGeneric implements OnInit{
 
     carusel_HP_config = GenericConfig.carusel_HP || null;
 
@@ -29,6 +29,10 @@ export class HomepageComponent extends HomepageComponentGeneric {
             return this.carusel_HP_config.find(obj => obj.alias === alias);
         }
         return null
+    }
+
+    ngOnInit() {
+        super.ngOnInit()
     }
 
 }
