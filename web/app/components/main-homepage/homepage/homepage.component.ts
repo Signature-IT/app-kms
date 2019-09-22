@@ -5,7 +5,7 @@ import { CmsService,
     ShareDataService,
     GenericConfig,
     HomepageComponent as HomepageComponentGeneric
-} from "@signature-it/ngx-generic";
+} from '@signature-it/ngx-generic';
 
 @Component({
   selector: 'homepage',
@@ -13,7 +13,7 @@ import { CmsService,
   styleUrls: ['./homepage.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class HomepageComponent extends HomepageComponentGeneric implements OnInit{
+export class HomepageComponent extends HomepageComponentGeneric implements OnInit {
 
     carusel_HP_config = GenericConfig.carusel_HP || null;
 
@@ -28,11 +28,11 @@ export class HomepageComponent extends HomepageComponentGeneric implements OnIni
         if (this.carusel_HP_config) {
             return this.carusel_HP_config.find(obj => obj.alias === alias);
         }
-        return null
+        return null;
     }
 
     ngOnInit() {
-        super.ngOnInit()
+        super.ngOnInit();
     }
 
 }
