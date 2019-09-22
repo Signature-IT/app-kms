@@ -7,7 +7,8 @@ import {
     MainTopNavigationModuleGeneric,
     DropdownLangsModuleGeneric,
     MainHeaderSearchFormModuleGeneric,
-    PhoneOrderModule
+    PhoneOrderModule,
+    GroupsMenuModuleGeneric
 } from '@signature-it/ngx-generic';
 
 import { SearchModule_Catalogue, MainHeaderCartModuleGeneric } from '@signature-it/ngx-catalogue';
@@ -28,7 +29,8 @@ import { MainHeaderComponent } from './main-header';
         MainHeaderNavbarMobileTopModule,
         SearchModule_Catalogue,
         MainHeaderNavbarMobileModule,
-        PhoneOrderModule
+        PhoneOrderModule,
+        GroupsMenuModuleGeneric
     ],
     declarations: [MainHeaderComponent],
     entryComponents: [MainHeaderComponent],
