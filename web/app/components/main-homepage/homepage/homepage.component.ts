@@ -15,7 +15,7 @@ import { CmsService,
 })
 export class HomepageComponent extends HomepageComponentGeneric implements OnInit {
 
-    caruselHPconfig = GenericConfig.carusel_HP || null;
+    carouselHPconfig = GenericConfig.caruselHP || null;
     carouselHP = GenericConfig.showCarouselHP;
 
     constructor(protected notifySvc: PageNotificationService,
@@ -26,8 +26,8 @@ export class HomepageComponent extends HomepageComponentGeneric implements OnIni
     }
 
     getRelatedByAlias(alias) {
-        if (this.caruselHPconfig) {
-            return this.caruselHPconfig.find(obj => obj.alias === alias);
+        if (this.carouselHPconfig) {
+            return this.carouselHPconfig.find(obj => obj.alias === alias);
         }
         return null;
     }
