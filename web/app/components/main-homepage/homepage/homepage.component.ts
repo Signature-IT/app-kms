@@ -6,6 +6,7 @@ import { CmsService,
     GenericConfig,
     HomepageComponent as HomepageComponentGeneric
 } from '@signature-it/ngx-generic';
+declare let _: any;
 
 @Component({
   selector: 'homepage',
@@ -16,20 +17,13 @@ import { CmsService,
 export class HomepageComponent extends HomepageComponentGeneric implements OnInit {
 
     carouselHPconfig = GenericConfig.caruselHP || null;
-    carouselHP = GenericConfig.showCarouselHP;
 
     constructor(protected notifySvc: PageNotificationService,
               protected langSvc: LanguageService,
                 protected cmsSvc: CmsService,
               public sharedSvc: ShareDataService) {
         super(notifySvc, langSvc, cmsSvc, sharedSvc);
-    }
-
-    getRelatedByAlias(alias) {
-        if (this.carouselHPconfig) {
-            return this.carouselHPconfig.find(obj => obj.alias === alias);
-        }
-        return null;
+        this.carouselHPconfig =  _.reduce(this.carouselHPconfig, function (o, item) { o[item.alias] = item; return o }, {});
     }
 
     ngOnInit() {
