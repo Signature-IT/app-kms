@@ -16,7 +16,7 @@ declare let _: any;
 })
 export class HomepageComponent extends HomepageComponentGeneric implements OnInit {
 
-    carouselHPconfig = GenericConfig.caruselHP || null;
+    carouselHPconfig = GenericConfig.carouselHP || null;
 
     constructor(protected notifySvc: PageNotificationService,
               protected langSvc: LanguageService,
