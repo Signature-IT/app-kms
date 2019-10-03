@@ -1,12 +1,13 @@
 <!--<homepage-banners></homepage-banners>-->
-<products-carousel *ngIf="carusel_HP_config" [item]="" [related]="getRelatedByAlias('top')"></products-carousel>
-
 <ng-template [ngIf]="fixedHeader && !sharedSvc.isMobileMode()">
     <homepage-banners libAppParallax [ratio]="0.5" id="parallax-element"></homepage-banners>
     <div class="banner-placeholder"></div>
 </ng-template>
 <homepage-banners *ngIf="!fixedHeader || (fixedHeader && sharedSvc.isMobileMode())"></homepage-banners>
 <div class="homepage-content-wrap">
+    <div class="max-app-width mx-auto my-5">
+        <products-carousel *ngIf="carouselHPconfig['top']" [item]="" [related]="carouselHPconfig['top']"  type="promo"></products-carousel>
+    </div>
     <div *ngIf="cmsHomepageTop"
          class="cms-homepage-top"
          [innerHtml]="cmsHomepageTop">
@@ -20,11 +21,11 @@
          class="homepage-cms-right pull-right"
          [innerHtml]="cmsHomepageRight">
     </div>
+    <div class="max-app-width mx-auto my-5">
+        <products-carousel *ngIf="carouselHPconfig['buttom']" [item]="" [related]="carouselHPconfig['buttom']"  type="promo"></products-carousel>
+    </div>
     <div *ngIf="cmsHomepageBottom"
          class="cms-homepage-bottom"
          [innerHtml]="cmsHomepageBottom">
     </div>
 </div>
-
-<products-carousel *ngIf="carusel_HP_config" [item]="" [related]="getRelatedByAlias('buttom')"></products-carousel>
-
