@@ -29,6 +29,10 @@ const routes: Routes = [
                 loadChildren: () => import('../modules/account/previousOrders.module').then(m => m.PreviousOrdersModule)
             },
             {
+                path: 'organization-hierarchy',
+                loadChildren: () => import('../modules/account/organization-hierarchy.module').then(m => m.OrganizationHierarchyModule)
+            },
+            {
                 path: ':name',
                 loadChildren: () => import('../modules/cms-page.module').then(m => m.CmsPageModule),
             },

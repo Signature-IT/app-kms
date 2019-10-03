@@ -78,6 +78,7 @@ Signature\QueryTable\BridgeBundle\Loader::injectInto($app);
 Signature\AccountBundle\Loader::injectInto($app);
 Signature\ProductBundle\Loader::injectInto($app);
 Signature\FeaturesBundle\Loader::injectInto($app);
+Signature\OrganizationBundle\Loader::injectInto($app);
 
 /** Register bundle's overrides */
 //Signature\AppSignatureBundle\Loader::injectInto($app);
