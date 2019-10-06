@@ -66,6 +66,10 @@ const routes: Routes = [
                 loadChildren: () => import('../modules/contact-us.module').then(m => m.ContactUsModule)
             },
             {
+                path: 'quick-pad',
+                loadChildren: () => import('../modules/quick-pad.module').then(m => m.QuickPadModule)
+            },
+            {
                 path: '401',
                 loadChildren: () => import('../modules/error/unauthorized-user.module').then(m => m.ErrorUnauthorizedUserModule)
             },
