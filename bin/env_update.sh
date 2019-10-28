@@ -5,7 +5,12 @@ shopt -s nocasematch
 start_process(){
     echo -e "\n---- STARTING ENV UPDATE PROCESS [${SCRIPT_VERSION}] ----"
 
-    git_pull && \
+    cd projects/signature-it/ngx-generic && \
+    git_pull ngx-generic && \
+    cd ../ngx-catalogue && \
+    git_pull ngx-catalogue && \
+    cd ../../../ && \
+    git_pull main-app && \
     npm_update && \
     composer_update && \
     sys_update && \
@@ -15,7 +20,7 @@ start_process(){
 }
 
 git_pull() {
-    echo -e "\nRunning \"git pull\" ..."
+    echo -e "\nRunning \"git pull\" in $@ ..."
     local _result
     _result=`git pull`
     echo $_result
@@ -68,15 +73,24 @@ git_pull() {
 }
 
 npm_update() {
-    echo -e "\nRunning \"npm update\" ..."
-    npm update && \
+    echo -e "\nRunning \"npm install\" ..."
+    npm install && \
     exit_on_error $?
 }
 
 composer_update() {
-    echo -e "\nRunning \"composer update\" ..."
-    php composer.phar update && \
-    exit_on_error $?
+    local _answer
+
+    echo -e "\n${GREEN}Do you want to update composer ?"
+    read -ep "`echo -e $'[y/n] > '`" _answer
+
+    _answer=`echo "$_answer" | tr '[:lower:]' '[:upper:]'`
+
+    if [ $_answer = "Y" ]; then
+        echo -e "\nRunning \"composer update\" ..."
+        php composer.phar update && \
+        exit_on_error $?
+    fi
 }
 
 sys_update() {
@@ -99,14 +113,18 @@ sys_update() {
 npm_build() {
     local _answer
 
-    echo -e "\n${GREEN}Do you want to build env ? (npm run build-production)${DEFAULT}"
+    echo -e "\n${GREEN}Do you want to build env ? (npm run build:prod)${DEFAULT}"
     read -ep "`echo -e $'[y/n] > '`" _answer
 
     _answer=`echo "$_answer" | tr '[:lower:]' '[:upper:]'`
 
     if [ $_answer = "Y" ]; then
-        echo -e "\nRunning \"npm run build-production\"..."
-        npm run build-production && \
+        echo -e "\nRunning \"npm run build:ngx-generic\"..."
+        npm run build:ngx-generic && \
+        echo -e "\nRunning \"npm run build:ngx-catalogue\"..."
+        npm run build:ngx-catalogue && \
+        echo -e "\nRunning \"npm run build:prod\"..."
+        npm run build:prod && \
         exit_on_error $?
     fi
 }
