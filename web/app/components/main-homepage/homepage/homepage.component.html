@@ -12,14 +12,18 @@
          class="cms-homepage-top"
          [innerHtml]="cmsHomepageTop">
     </div>
-    <div *ngIf="cmsHomepageLeft"
-         class="homepage-cms-left pull-left"
-         [innerHtml]="cmsHomepageLeft">
-    </div>
-    <homepage-group-links></homepage-group-links>
-    <div *ngIf="cmsHomepageRight"
-         class="homepage-cms-right pull-right"
-         [innerHtml]="cmsHomepageRight">
+    <div class="row max-app-width mx-auto my-5">
+        <div *ngIf="cmsHomepageLeft && !sharedSvc.isMobileMode()"
+             class="homepage-cms-left col-auto"
+             [innerHtml]="cmsHomepageLeft">
+        </div>
+        <div class="col">
+            <homepage-group-links></homepage-group-links>
+        </div>
+        <div *ngIf="cmsHomepageRight  && !sharedSvc.isMobileMode()"
+             class="homepage-cms-right col-auto"
+             [innerHtml]="cmsHomepageRight">
+        </div>
     </div>
     <div class="max-app-width mx-auto my-5">
         <products-carousel *ngIf="carouselHPconfig['buttom']" [item]="" [related]="carouselHPconfig['buttom']"  type="promo"></products-carousel>
