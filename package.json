@@ -10,7 +10,7 @@
     "build:ngx-generic": "ng build @signature-it/ngx-generic",
     "build:ngx-catalogue": "ng build @signature-it/ngx-catalogue",
     "build-sass": "cd node_modules/node-sass && node scripts/build -f && cd ../../",
-    "build:prod": "ng build --aot --prod --vendor-chunk=false --build-optimizer",
+    "build:prod": "rm -rf node_modules/.cache && ng build --aot --prod --vendor-chunk=false --build-optimizer",
     "build:prod:no-hash": "npm run build:prod --output-hashing none",
     "build": "ng build",
     "chmod:dist": "chmod -R g+w dist",
