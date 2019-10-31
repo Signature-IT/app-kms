@@ -57,7 +57,7 @@
             "scripts": [
               "./node_modules/delta-angular/bower_components/jquery-1.9.1/index.js",
               "./node_modules/delta-angular/bower_components/tether/dist/js/tether.min.js",
-              "./node_modules/delta-angular/bower_components/bootstrap/dist/js/bootstrap.min.js",
+              "./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
               "./node_modules/delta-angular/bower_components/lodash/dist/lodash.min.js",
               "./node_modules/delta-angular/bower_components/js-storage/js.storage.min.js",
               "./node_modules/delta-angular/bower_components/moment/moment.js",
