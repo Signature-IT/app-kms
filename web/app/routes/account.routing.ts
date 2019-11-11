@@ -33,12 +33,16 @@ const routes: Routes = [
                 loadChildren: () => import('../modules/account/organization-hierarchy.module').then(m => m.OrganizationHierarchyModule)
             },
             {
-                path: ':name',
-                loadChildren: () => import('../modules/cms-page.module').then(m => m.CmsPageModule),
-            },
-            {
                 path: 'reflection/:tableName',
                 loadChildren: () => import('../modules/account/reflections.module').then(m => m.ReflectionsModule)
+            },
+            {
+                path: 'approve-orders',
+                loadChildren: () => import('../modules/account/approve-orders.module').then(m => m.ApproveOrdersModule),
+            },
+            {
+                path: ':name',
+                loadChildren: () => import('../modules/cms-page.module').then(m => m.CmsPageModule),
             }
         ]
     }
