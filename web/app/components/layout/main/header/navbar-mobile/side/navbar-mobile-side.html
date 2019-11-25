@@ -49,6 +49,11 @@
                                 </div>
                                 <!-- /links -->
                             </div>
+                            <div *ngIf="!item.is_active && item.link === 'langs-sidebar'">
+                                <section [hidden]="true">
+                                    <langs-sidebar></langs-sidebar>
+                                </section>
+                            </div>
                         </div>
                     </div>
                 </div>
