@@ -1,5 +1,5 @@
-import { NgModule } from "@angular/core";
-import { CardModule_Catalogue as CardModule_CatalogueGeneric} from "@signature-it/ngx-catalogue";
+import { NgModule } from '@angular/core';
+import { CardModule as CardModule_CatalogueGeneric} from '../../components/card/card.module';
 
 @NgModule({
     imports: [CardModule_CatalogueGeneric]

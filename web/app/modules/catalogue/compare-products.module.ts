@@ -1,5 +1,5 @@
-import { NgModule } from "@angular/core";
-import { CompareProductsModule_Catalogue as CompareProductsModule_Catalogue_Generic} from "@signature-it/ngx-catalogue";
+import { NgModule } from '@angular/core';
+import { CompareProductsModule as CompareProductsModule_Catalogue_Generic} from '../../components/compare-products/compare-products.module';
 
 @NgModule({
     imports: [CompareProductsModule_Catalogue_Generic]

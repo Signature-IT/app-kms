@@ -1,5 +1,5 @@
-import { NgModule } from "@angular/core";
-import { LeafGroupModule_Catalogue as LeafGroupModule_Catalogue_Generic} from "@signature-it/ngx-catalogue";
+import { NgModule } from '@angular/core';
+import { LeafGroupModule as LeafGroupModule_Catalogue_Generic} from '../../components/card/leaf-group/leaf-group.module';
 
 @NgModule({
     imports: [LeafGroupModule_Catalogue_Generic]
