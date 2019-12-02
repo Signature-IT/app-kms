@@ -5,6 +5,7 @@ import { TranslateModule } from "@ngx-translate/core";
 import { TestSearchDirectiveModule } from "@signature-it/ngx-generic";
 import { SearchModule_Catalogue } from "@signature-it/ngx-catalogue";
 import { MainHeaderSearchFormComponent } from './search-form';
+import { CollapseModule } from 'ngx-bootstrap/collapse';
 
 @NgModule({
     imports: [
@@ -12,7 +13,8 @@ import { MainHeaderSearchFormComponent } from './search-form';
         RouterModule,
         SearchModule_Catalogue,
         TestSearchDirectiveModule,
-        TranslateModule
+        TranslateModule,
+        CollapseModule.forRoot(),
     ],
     declarations: [MainHeaderSearchFormComponent],
     exports: [MainHeaderSearchFormComponent]
