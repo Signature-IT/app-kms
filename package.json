@@ -65,6 +65,7 @@
     "ngx-malihu-scrollbar": "^7.0.0",
     "ngx-order-pipe": "^2.0.4",
     "ngx-page-scroll": "^5.0.1",
+    "ngx-scrollbar": "^7.1.0",
     "ngx-sharebuttons": "^4.1.4",
     "ngx-slimscroll": "^7.1.0",
     "ngx-typeahead": "^6.2.0",
