@@ -15,11 +15,9 @@ ul.nav{
     .search-wrap,
     main-header-cart a,
     main-header-media-cart a{
-      &, *{
-        color: inherit !important;
-      }
       i{
         font-size: 26px;
+        color: #888;
       }
       .icon-text{
         margin-top: 4px;
