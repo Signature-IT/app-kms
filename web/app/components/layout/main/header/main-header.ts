@@ -1,4 +1,4 @@
-import {Component, ElementRef, AfterViewInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, AfterViewInit, ViewChild, OnInit} from '@angular/core';
 import {MainHeaderComponentGeneric, ShareDataService, CmsComponent} from "@signature-it/ngx-generic";
 
 declare let $: any;
@@ -8,7 +8,7 @@ declare let $: any;
     templateUrl: './main-header.html',
     styleUrls: ['./main-header.scss']
 })
-export class MainHeaderComponent extends MainHeaderComponentGeneric implements AfterViewInit {
+export class MainHeaderComponent extends MainHeaderComponentGeneric implements AfterViewInit, OnInit {
 
     @ViewChild('cmsComp', {static: false}) cmsComp: CmsComponent;
     @ViewChild('containerRef', {static: false}) containerRef: ElementRef;
@@ -20,5 +20,9 @@ export class MainHeaderComponent extends MainHeaderComponentGeneric implements A
 
     ngAfterViewInit(): void {
         super.ngAfterViewInit();
+    }
+
+    ngOnInit(): void {
+        super.ngOnInit();
     }
 }
