@@ -9,6 +9,7 @@ import { AppCustomPreloader, CheckRestrictedLoginGuard } from '@signature-it/ngx
                 {
                     path: '',
                     canActivate: [CheckRestrictedLoginGuard],
+                    canActivateChild: [CheckRestrictedLoginGuard],
                     loadChildren: () => import('./modules/layout.module').then(m => m.MainLayoutModule_Wrapper)
                 },
                 {

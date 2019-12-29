@@ -3,7 +3,7 @@
     <phone-order></phone-order>
     <!-- /phone-order-mode -->
     <!-- header-cms -->
-    <cms [title]="cmsTitle" #cmsComp></cms>
+    <cms *ngIf="cmsTitle" [title]="cmsTitle" #cmsComp></cms>
     <!-- end header-cms -->
     <!-- components-to-replace -->
     <section #containerRef [hidden]="true">

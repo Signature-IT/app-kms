@@ -3,7 +3,7 @@
 # configs stubs
 .htaccess
 app/config/config.yml
-app/config/config.resturls.ts
+app/config/config.generic.js
 app/config/config.inc.php
 
 # unit testings
