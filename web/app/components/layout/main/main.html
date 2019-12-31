@@ -7,7 +7,7 @@
         <div class="page-content">
             <div class="">
                 <main class="main">
-                    <breadcrumbs class="d-none d-lg-block"></breadcrumbs>
+                    <breadcrumbs [hidden]="isRestrictedLogin" class="d-none d-lg-block"></breadcrumbs>
                     <page-title class="d-none"></page-title>
                     <div class="page">
                         <router-outlet></router-outlet>
@@ -18,6 +18,6 @@
         <!-- end main-content -->
     </div>
     <!-- main-footer -->
-    <main-footer></main-footer>
+    <main-footer *ngIf="!isRestrictedLogin"></main-footer>
     <!-- end main-footer -->
 </div>
