@@ -5,6 +5,7 @@ import {
 import {Router} from '@angular/router';
 import {Store} from '@ngrx/store';
 import {CartStateActionsGeneric} from '@signature-it/ngx-catalogue';
+import {DOCUMENT} from '@angular/common';
 
 @Component({
     selector: 'app-root',
