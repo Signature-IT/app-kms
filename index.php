@@ -35,6 +35,16 @@ $app->before(function(Request $request, BaseApplication $app) {
                         Response::HTTP_UNAUTHORIZED
                     );
                 }
+            } else if (!Service\User::current($app)->isEmployee()) {
+                $path = $request->getPathInfo();
+                // if trying to access to admin REST APIs
+                if ((bool)preg_match('/^\/admin\//', $path) || (bool)preg_match('/^\/$/', $path)) {
+                    // poker face on it.
+                    return new JsonResponse(
+                        SigAuthenticationEntryPoint::MSG_UNAUTHORIZED,
+                        Response::HTTP_UNAUTHORIZED
+                    );
+                }
             }
         }
     } catch (\Exception $e) {

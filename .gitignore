@@ -6,6 +6,9 @@ app/config/config.yml
 app/config/config.generic.js
 app/config/config.inc.php
 
+# projects
+projects/signature-it
+
 # unit testings
 phpunit*.phar
 tests/Coverage

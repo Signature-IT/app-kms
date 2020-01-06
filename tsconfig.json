@@ -35,6 +35,12 @@
       ],
       "@signature-it/ngx-catalogue/*": [
         "dist/signature-it/ngx-catalogue/*"
+      ],
+      "@signature-it/ngx-admin": [
+        "dist/signature-it/ngx-admin"
+      ],
+      "@signature-it/ngx-admin/*": [
+        "dist/signature-it/ngx-admin/*"
       ]
     }
   }
