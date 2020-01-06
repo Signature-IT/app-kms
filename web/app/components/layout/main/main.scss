@@ -44,3 +44,9 @@
   }
 
 }
+// Force angular style
+.main-layout-wrap {
+  breadcrumbs[hidden] {
+    display: none !important;
+  }
+}

@@ -1,10 +1,11 @@
-import {Component, ViewContainerRef, OnInit, AfterViewInit} from '@angular/core';
+import {Component, ViewContainerRef, OnInit, AfterViewInit, Inject} from '@angular/core';
 import {
     AppComponent as AppComponent_Generic, AuthService, GoogleAnalyticsService, LanguageService
 } from '@signature-it/ngx-generic';
 import {Router} from '@angular/router';
 import {Store} from '@ngrx/store';
 import {CartStateActionsGeneric} from '@signature-it/ngx-catalogue';
+import {DOCUMENT} from '@angular/common';
 
 @Component({
     selector: 'app-root',
@@ -17,8 +18,9 @@ export class AppComponent extends AppComponent_Generic {
                 protected langSvc: LanguageService,
                 protected store$: Store<any>,
                 protected cartActs: CartStateActionsGeneric,
-                viewRef: ViewContainerRef) {
-        super(router, auth, analyticsSvc, langSvc, viewRef);
+                viewRef: ViewContainerRef,
+                @Inject(DOCUMENT) doc) {
+        super(router, auth, analyticsSvc, langSvc, viewRef, doc);
     }
 
     ngOnInit(): void {

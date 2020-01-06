@@ -3,10 +3,10 @@ import {ActivatedRoute, Router} from '@angular/router';
 import { RestUrlsConfig } from '@signature-it/ngx-generic';
 import {
     CardComponent as CardGenericComponent,
-    NavigationService,
     SharedDataService,
     SolrService,
-    UtilityService
+    UtilityService,
+    GroupApiService
 } from '@signature-it/ngx-catalogue';
 
 @Component({
@@ -19,12 +19,12 @@ export class CardComponent extends CardGenericComponent implements OnInit, OnDes
     constructor(
         public solrService: SolrService,
         public sharedData: SharedDataService,
-        public navigationService: NavigationService,
+        public groupSvc: GroupApiService,
         public router: Router,
         public route: ActivatedRoute,
         public utilitySvc: UtilityService,
         public restUrlsConfig: RestUrlsConfig) {
-        super(solrService, sharedData, navigationService, router, route, utilitySvc, restUrlsConfig);
+        super(solrService, sharedData, groupSvc, router, route, utilitySvc, restUrlsConfig);
     }
 
     ngOnInit() {

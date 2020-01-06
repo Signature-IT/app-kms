@@ -77,6 +77,7 @@
               "./node_modules/delta-angular/bower_components/nouislider/distribute/nouislider.min.js",
               "./node_modules/delta-angular/bower_components/jquery-treegrid/js/jquery.treegrid.min.js",
               "./node_modules/delta-angular/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js",
+              "./node_modules/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js",
               "node_modules/pace-js/pace.min.js",
               "node_modules/tinymce/tinymce.min.js",
               "node_modules/tinymce/themes/modern/theme.min.js",
