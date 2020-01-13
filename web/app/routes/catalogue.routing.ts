@@ -2,6 +2,7 @@ import {NgModule} from "@angular/core";
 import {RouterModule} from '@angular/router';
 import {CatalogueMainLayoutComponent_Catalogue, GroupResolver} from '@signature-it/ngx-catalogue';
 
+
 @NgModule({
     imports: [
         RouterModule.forChild([
@@ -36,9 +37,6 @@ import {CatalogueMainLayoutComponent_Catalogue, GroupResolver} from '@signature-
                 loadChildren: () => import('../modules/catalogue/compare-products.module').then(m => m.CompareProductsModule_Catalogue)
             }
         ])
-    ],
-    providers: [
-        GroupResolver
     ],
     exports: [RouterModule]
 })

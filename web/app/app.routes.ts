@@ -2,9 +2,13 @@ import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { AppCustomPreloader, CheckRestrictedLoginGuard, CheckIsEmployeeGuard } from '@signature-it/ngx-generic';
+import {DecodeSeoUriPipeModule, EncodeSeoUriPipeModule} from '@signature-it/ngx-catalogue';
+
 
 @NgModule({
     imports: [
+        DecodeSeoUriPipeModule,
+        EncodeSeoUriPipeModule,
         RouterModule.forRoot([
                 {
                     path: '',
