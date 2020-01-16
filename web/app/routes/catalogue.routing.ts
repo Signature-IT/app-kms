@@ -1,6 +1,7 @@
 import {NgModule} from "@angular/core";
 import {RouterModule} from '@angular/router';
 import {CatalogueMainLayoutComponent_Catalogue, GroupResolver} from '@signature-it/ngx-catalogue';
+import { SEOResolver } from '@signature-it/ngx-generic';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import {CatalogueMainLayoutComponent_Catalogue, GroupResolver} from '@signature-
             },
             {
                 path: 'compare-products',
-                loadChildren: () => import('../modules/catalogue/compare-products.module').then(m => m.CompareProductsModule_Catalogue)
+                loadChildren: () => import('../modules/catalogue/compare-products.module').then(m => m.CompareProductsModule_Catalogue),
+                resolve: { seo: SEOResolver }
             }
         ])
     ],

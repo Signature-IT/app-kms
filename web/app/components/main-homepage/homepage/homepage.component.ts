@@ -4,8 +4,7 @@ import { CmsService,
     PageNotificationService,
     ShareDataService,
     GenericConfig,
-    HomepageComponent as HomepageComponentGeneric,
-    SeoService_Generic
+    HomepageComponent as HomepageComponentGeneric
 } from '@signature-it/ngx-generic';
 declare let _: any;
 
@@ -22,9 +21,8 @@ export class HomepageComponent extends HomepageComponentGeneric implements OnIni
     constructor(protected notifySvc: PageNotificationService,
                 protected langSvc: LanguageService,
                 protected cmsSvc: CmsService,
-                public sharedSvc: ShareDataService,
-                public seoSvc: SeoService_Generic) {
-        super(notifySvc, langSvc, cmsSvc, sharedSvc, seoSvc);
+                public sharedSvc: ShareDataService) {
+        super(notifySvc, langSvc, cmsSvc, sharedSvc);
         this.carouselHPconfig =  _.reduce(this.carouselHPconfig, function (o, item) { o[item.alias] = item; return o }, {});
     }
 

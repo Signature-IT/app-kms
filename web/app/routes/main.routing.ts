@@ -1,6 +1,6 @@
 import { RouterModule, Routes } from "@angular/router";
 import { NgModule } from '@angular/core';
-import { AuthRoutesGuard } from "@signature-it/ngx-generic";
+import { AuthRoutesGuard, SEOResolver } from "@signature-it/ngx-generic";
 import { MainLayoutComponent } from "../components/layout/main/main";
 
 const routes: Routes = [
@@ -10,31 +10,38 @@ const routes: Routes = [
         children: [
             {
                 path: '',
-                loadChildren: () => import('../modules/homepage.module').then(m => m.HomepageModule)
+                loadChildren: () => import('../modules/homepage.module').then(m => m.HomepageModule),
+                resolve: { seo: SEOResolver }
             },
             {
                 path: 'login',
-                loadChildren: () => import('../modules/login.module').then(m => m.LoginModule)
+                loadChildren: () => import('../modules/login.module').then(m => m.LoginModule),
+                resolve: { seo: SEOResolver }
             },
             {
                 path: 'registration',
-                loadChildren: () => import('../modules/registration.module').then(m => m.RegistrationModule)
+                loadChildren: () => import('../modules/registration.module').then(m => m.RegistrationModule),
+                resolve: { seo: SEOResolver }
             },
             {
                 path: 'forget-password',
-                loadChildren: () => import('../modules/forget-password.module').then(m => m.ForgetPasswordModule)
+                loadChildren: () => import('../modules/forget-password.module').then(m => m.ForgetPasswordModule),
+                resolve: { seo: SEOResolver }
             },
             {
                 path: 'change-password',
-                loadChildren: () => import('../modules/change-password.module').then(m => m.ChangePasswordModule)
+                loadChildren: () => import('../modules/change-password.module').then(m => m.ChangePasswordModule),
+                resolve: { seo: SEOResolver }
             },
             {
                 path: 'activate-account',
-                loadChildren: () => import('../modules/activate-account.module').then(m => m.ActivateAccountModule)
+                loadChildren: () => import('../modules/activate-account.module').then(m => m.ActivateAccountModule),
+                resolve: { seo: SEOResolver }
             },
             {
                 path: 'terms',
-                loadChildren: () => import('../modules/terms.module').then(m => m.TermsModule)
+                loadChildren: () => import('../modules/terms.module').then(m => m.TermsModule),
+                resolve: { seo: SEOResolver }
             },
             {
                 path: 'catalogue',
@@ -51,7 +58,8 @@ const routes: Routes = [
             },
             {
                 path: 'cart',
-                loadChildren: () => import('../modules/cart/layout.module').then(m => m.CartLayoutModule)
+                loadChildren: () => import('../modules/cart/layout.module').then(m => m.CartLayoutModule),
+                resolve: { seo: SEOResolver }
             },
             {
                 path: 'product-page/:id',
@@ -63,23 +71,28 @@ const routes: Routes = [
             },
             {
                 path: 'contact-us',
-                loadChildren: () => import('../modules/contact-us.module').then(m => m.ContactUsModule)
+                loadChildren: () => import('../modules/contact-us.module').then(m => m.ContactUsModule),
+                resolve: { seo: SEOResolver }
             },
             {
                 path: 'quick-pad',
-                loadChildren: () => import('../modules/quick-pad.module').then(m => m.QuickPadModule)
+                loadChildren: () => import('../modules/quick-pad.module').then(m => m.QuickPadModule),
+                resolve: { seo: SEOResolver }
             },
             {
                 path: '401',
-                loadChildren: () => import('../modules/error/unauthorized-user.module').then(m => m.ErrorUnauthorizedUserModule)
+                loadChildren: () => import('../modules/error/unauthorized-user.module').then(m => m.ErrorUnauthorizedUserModule),
+                resolve: { seo: SEOResolver }
             },
             {
                 path: '403',
-                loadChildren: () => import('../modules/error/forbidden-page.module').then(m => m.ErrorForbiddenPageModule)
+                loadChildren: () => import('../modules/error/forbidden-page.module').then(m => m.ErrorForbiddenPageModule),
+                resolve: { seo: SEOResolver }
             },
             {
                 path: '404',
-                loadChildren: () => import('../modules/error/not-found-page.module').then(m => m.NotFoundErrorPageModule)
+                loadChildren: () => import('../modules/error/not-found-page.module').then(m => m.NotFoundErrorPageModule),
+                resolve: { seo: SEOResolver }
             }
         ]
     }
