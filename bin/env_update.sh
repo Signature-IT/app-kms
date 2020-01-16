@@ -9,6 +9,8 @@ start_process(){
     git_pull ngx-generic && \
     cd ../ngx-catalogue && \
     git_pull ngx-catalogue && \
+    cd ../ngx-admin && \
+    git_pull ngx-admin && \
     cd ../../../ && \
     git_pull main-app && \
     npm_update && \
@@ -123,6 +125,8 @@ npm_build() {
         npm run build:ngx-generic && \
         echo -e "\nRunning \"npm run build:ngx-catalogue\"..."
         npm run build:ngx-catalogue && \
+        echo -e "\nRunning \"npm run build:ngx-admin\"..."
+        npm run build:ngx-admin && \
         echo -e "\nRunning \"npm run build:prod\"..."
         npm run build:prod && \
         exit_on_error $?
