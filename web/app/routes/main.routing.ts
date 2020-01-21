@@ -2,6 +2,7 @@ import { RouterModule, Routes } from "@angular/router";
 import { NgModule } from '@angular/core';
 import { AuthRoutesGuard, SEOResolver } from "@signature-it/ngx-generic";
 import { MainLayoutComponent } from "../components/layout/main/main";
+import { ProductPageResolver } from '@signature-it/ngx-catalogue';
 
 const routes: Routes = [
     {
@@ -63,7 +64,13 @@ const routes: Routes = [
             },
             {
                 path: 'product-page/:id',
-                loadChildren: () => import('../modules/product-page.module').then(m => m.productPageModule)
+                loadChildren: () => import('../modules/product-page.module').then(m => m.productPageModule),
+                resolve: { id: ProductPageResolver}
+            },
+            {
+                path: ':leafName/product-page/:id',
+                loadChildren: () => import('../modules/product-page.module').then(m => m.productPageModule),
+                resolve: { id: ProductPageResolver}
             },
             {
                 path: 'content/page/:name',

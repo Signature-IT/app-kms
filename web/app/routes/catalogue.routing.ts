@@ -30,6 +30,21 @@ import { SEOResolver } from '@signature-it/ngx-generic';
                         path: 'group/:groupId/:leafGroup/:familyName',
                         loadChildren: () => import('../modules/catalogue/family.module').then(m => m.FamilyModule_Catalogue),
                         resolve: { groupId: GroupResolver }
+                    },
+                    {
+                        path: ':groupName',
+                        loadChildren: () => import('../modules/catalogue/card.module').then(m => m.CardModule_Catalogue),
+                        resolve: { groupId: GroupResolver }
+                    },
+                    {
+                        path: ':groupName/:leafGroup',
+                        loadChildren: () => import('../modules/catalogue/leaf-group.module').then(m => m.LeafGroupModule_Catalogue),
+                        resolve: { groupId: GroupResolver }
+                    },
+                    {
+                        path: ':groupName/:leafGroup/:familyName',
+                        loadChildren: () => import('../modules/catalogue/family.module').then(m => m.FamilyModule_Catalogue),
+                        resolve: { groupId: GroupResolver }
                     }
                 ]
             },
