@@ -1,5 +1,6 @@
 import { RouterModule, Routes } from "@angular/router";
 import { NgModule } from '@angular/core';
+import { SEOResolver } from '@signature-it/ngx-generic';
 
 const routes: Routes = [
     {
@@ -8,11 +9,13 @@ const routes: Routes = [
     },
     {
         path: 'checkout',
-        loadChildren: () => import('../modules/cart/cart-checkout.module').then(m => m.CartCheckoutModule)
+        loadChildren: () => import('../modules/cart/cart-checkout.module').then(m => m.CartCheckoutModule),
+        resolve: { seo: SEOResolver }
     },
     {
         path: 'confirmation',
-        loadChildren: () => import('../modules/cart/cart-confirmation.module').then(m => m.CartConfirmationModule)
+        loadChildren: () => import('../modules/cart/cart-confirmation.module').then(m => m.CartConfirmationModule),
+        resolve: { seo: SEOResolver }
     }
 ];
 
