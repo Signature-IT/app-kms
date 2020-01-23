@@ -8,6 +8,11 @@ import { SEOResolver } from '@signature-it/ngx-generic';
     imports: [
         RouterModule.forChild([
             {
+                path: 'compare-products',
+                loadChildren: () => import('../modules/catalogue/compare-products.module').then(m => m.CompareProductsModule_Catalogue),
+                resolve: { seo: SEOResolver }
+            },
+            {
                 path: '',
                 component: CatalogueMainLayoutComponent_Catalogue,
                 children: [
@@ -47,11 +52,6 @@ import { SEOResolver } from '@signature-it/ngx-generic';
                         resolve: { groupId: GroupResolver }
                     }
                 ]
-            },
-            {
-                path: 'compare-products',
-                loadChildren: () => import('../modules/catalogue/compare-products.module').then(m => m.CompareProductsModule_Catalogue),
-                resolve: { seo: SEOResolver }
             }
         ])
     ],

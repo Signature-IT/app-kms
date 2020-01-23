@@ -5,7 +5,7 @@ import {TranslateModule} from '@ngx-translate/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MatSlideToggleModule } from '@angular/material';
 import {ProductCardComponent} from './product-card.component';
-import {AddToCartModule, ProductSolrImageDirectiveModule, PriceModule_Catalogue} from '@signature-it/ngx-catalogue';
+import {AddToCartModule, ProductSolrImageDirectiveModule, PriceModule_Catalogue, SortModule_Catalogue} from '@signature-it/ngx-catalogue';
 
 @NgModule({
     declarations: [
@@ -19,7 +19,8 @@ import {AddToCartModule, ProductSolrImageDirectiveModule, PriceModule_Catalogue}
         NgbModule.forRoot(),
         ProductSolrImageDirectiveModule,
         MatSlideToggleModule,
-        PriceModule_Catalogue
+        PriceModule_Catalogue,
+        SortModule_Catalogue
     ],
     exports: [ProductCardComponent]
 })
