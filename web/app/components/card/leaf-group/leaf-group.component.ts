@@ -1,7 +1,7 @@
 import {Component, OnInit, OnDestroy} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import { RestUrlsConfig } from '@signature-it/ngx-generic';
-import { LeafGroupComponent as LeafGroupGenericComponent, SharedDataService, SolrService} from '@signature-it/ngx-catalogue';
+import { GroupApiService, LeafGroupComponent as LeafGroupGenericComponent, SharedDataService, SolrService} from '@signature-it/ngx-catalogue';
 
 @Component({
     selector: 'leaf-group',
@@ -14,8 +14,9 @@ export class LeafGroupComponent extends LeafGroupGenericComponent implements OnI
                 protected solrService: SolrService,
                 protected sharedData: SharedDataService,
                 public restUrlsConfig: RestUrlsConfig,
-                public route: ActivatedRoute) {
-        super(router, solrService, sharedData, restUrlsConfig, route);
+                public route: ActivatedRoute,
+                public groupSvc: GroupApiService) {
+        super(router, solrService, sharedData, restUrlsConfig, route, groupSvc);
     }
 
     ngOnInit() {
