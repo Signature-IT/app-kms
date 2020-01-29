@@ -4,7 +4,6 @@ import { TranslateModule } from '@ngx-translate/core';
 import { AppCustomPreloader, CheckRestrictedLoginGuard, CheckIsEmployeeGuard } from '@signature-it/ngx-generic';
 import {DecodeSeoUriPipeModule, EncodeSeoUriPipeModule} from '@signature-it/ngx-catalogue';
 
-
 @NgModule({
     imports: [
         DecodeSeoUriPipeModule,
@@ -21,6 +20,10 @@ import {DecodeSeoUriPipeModule, EncodeSeoUriPipeModule} from '@signature-it/ngx-
                     canActivate: [CheckIsEmployeeGuard],
                     canActivateChild: [CheckIsEmployeeGuard],
                     loadChildren: () => import('./modules/admin/admin.module').then(m => m.AdminModule)
+                },
+                {
+                    path: 'external',
+                    loadChildren: () => import('./modules/external-layout.module').then(m => m.MainExternalRoutingModule_Wrapper)
                 },
                 {
                     path: '**',
