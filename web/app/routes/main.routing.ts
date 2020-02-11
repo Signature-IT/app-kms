@@ -1,7 +1,7 @@
-import { RouterModule, Routes } from "@angular/router";
+import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
-import { AuthRoutesGuard, SEOResolver } from "@signature-it/ngx-generic";
-import { MainLayoutComponent } from "../components/layout/main/main";
+import {AuthRoutesGuard, RedirectGuard, SEOResolver} from '@signature-it/ngx-generic';
+import { MainLayoutComponent } from '../components/layout/main/main';
 import { ProductPageResolver } from '@signature-it/ngx-catalogue';
 
 const routes: Routes = [
@@ -98,6 +98,8 @@ const routes: Routes = [
             },
             {
                 path: '404',
+                canActivate: [RedirectGuard],
+                canActivateChild: [RedirectGuard],
                 loadChildren: () => import('../modules/error/not-found-page.module').then(m => m.NotFoundErrorPageModule),
                 resolve: { seo: SEOResolver }
             }
