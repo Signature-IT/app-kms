@@ -1,7 +1,7 @@
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
-import { AppCustomPreloader, CheckRestrictedLoginGuard, CheckIsEmployeeGuard } from '@signature-it/ngx-generic';
+import { AppCustomPreloader, CheckRestrictedLoginGuard, CheckIsEmployeeGuard, RouteService } from '@signature-it/ngx-generic';
 import {DecodeSeoUriPipeModule, EncodeSeoUriPipeModule} from '@signature-it/ngx-catalogue';
 
 @NgModule({
@@ -40,6 +40,8 @@ import {DecodeSeoUriPipeModule, EncodeSeoUriPipeModule} from '@signature-it/ngx-
 /**
  * @extends AppRoutingModuleGeneric
  */
-export class AppRoutingModule {}
+export class AppRoutingModule {
+    constructor(protected routeService: RouteService) {}
+}
 
 
