@@ -147,7 +147,6 @@ cp_libraries_node_modules() {
     do
       echo $DIR_PROJ_ROOT/projects/signature-it/$project
         if [ -d $DIR_PROJ_ROOT/projects/signature-it/$project/node_modules ];  then
-          echo orit
             cp -ans $DIR_PROJ_ROOT/projects/signature-it/$project/node_modules/* $DIR_PROJ_ROOT/node_modules/
         fi
     done
