@@ -148,6 +148,15 @@ cp_libraries_node_modules() {
       echo $DIR_PROJ_ROOT/projects/signature-it/$project
         if [ -d $DIR_PROJ_ROOT/projects/signature-it/$project/node_modules ];  then
             cp -ans $DIR_PROJ_ROOT/projects/signature-it/$project/node_modules/* $DIR_PROJ_ROOT/node_modules/
+            for project1 in "${projects[@]}"
+            do
+              if [ -d $DIR_PROJ_ROOT/projects/signature-it/$project1/node_modules ];  then
+                cp -ans $DIR_PROJ_ROOT/projects/signature-it/$project/node_modules/* $DIR_PROJ_ROOT/projects/signature-it/$project1/node_modules/
+              else
+                mkdir $DIR_PROJ_ROOT/projects/signature-it/$project1/node_modules/
+                cp -ans $DIR_PROJ_ROOT/projects/signature-it/$project/node_modules/* $DIR_PROJ_ROOT/projects/signature-it/$project1/node_modules/
+              fi
+          done
         fi
     done
 }
