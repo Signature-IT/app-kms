@@ -1,6 +1,6 @@
-import {Component, ViewContainerRef, OnInit, AfterViewInit, Inject} from '@angular/core';
+import {Component, ViewContainerRef, OnInit, AfterViewInit, Inject, Renderer2} from '@angular/core';
 import {
-    AppComponent as AppComponent_Generic, AuthService, GoogleAnalyticsService, LanguageService
+    AppComponent as AppComponent_Generic, AuthService, GoogleAnalyticsService, LanguageService, FeaturesService
 } from '@signature-it/ngx-generic';
 import {Router} from '@angular/router';
 import {Store} from '@ngrx/store';
@@ -16,11 +16,13 @@ export class AppComponent extends AppComponent_Generic {
                 protected auth: AuthService,
                 protected analyticsSvc: GoogleAnalyticsService,
                 protected langSvc: LanguageService,
+		protected featureSvc: FeaturesService,
                 protected store$: Store<any>,
                 protected cartActs: CartStateActionsGeneric,
                 viewRef: ViewContainerRef,
+		protected renderer2: Renderer2,
                 @Inject(DOCUMENT) doc) {
-        super(router, auth, analyticsSvc, langSvc, viewRef, doc);
+        super(router, auth, analyticsSvc, langSvc, featureSvc, viewRef, renderer2, doc);
     }
 
     ngOnInit(): void {
