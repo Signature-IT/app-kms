@@ -35,7 +35,7 @@
             appUrl = 'app.' + location.hostname;
         }
         var configScript = document.createElement('script');
-        configScript.src = location.protocol + '//' + appUrl + '/app/config/config.generic.js';
+        configScript.src = location.protocol + '//' + appUrl + '/app/config/config.generic.js?ts=' + new Date().getTime();
         configScript.type = 'text/javascript';
         configScript.async = false;
         document.getElementsByTagName('head')[0].appendChild(configScript);
