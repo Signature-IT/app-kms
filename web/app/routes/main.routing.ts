@@ -65,12 +65,16 @@ const routes: Routes = [
             {
                 path: 'product-page/:id',
                 loadChildren: () => import('../modules/product-page.module').then(m => m.productPageModule),
-                resolve: { id: ProductPageResolver}
+                resolve: { product: ProductPageResolver}
+            },
+            {
+                path: 'cng-page/:id',
+                loadChildren: () => import('../modules/cng-product-page.module').then(m => m.cngProductPageModule),
             },
             {
                 path: ':leafName/product-page/:id',
                 loadChildren: () => import('../modules/product-page.module').then(m => m.productPageModule),
-                resolve: { id: ProductPageResolver}
+                resolve: { product: ProductPageResolver}
             },
             {
                 path: 'content/page/:name',
