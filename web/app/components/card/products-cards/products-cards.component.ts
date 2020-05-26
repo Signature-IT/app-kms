@@ -15,7 +15,7 @@ import { ProductCardComponent } from './product-card/product-card.component';
     selector: 'products-cards',
     templateUrl: '../../../../../projects/signature-it/ngx-catalogue/src/lib/components/card/products-cards/products-cards.component.html',
     styleUrls: ['../../../../../projects/signature-it/ngx-catalogue/src/lib/components/card/products-cards/products-cards.component.scss'],
-    inputs: ['items', 'totalItems', 'page', 'itemsPerPage']
+    inputs: ['items', 'totalItems', 'page', 'itemsPerPage', 'showSortOptions']
 })
 export class ProductsCardsComponent extends ProductsCardsGenericComponent implements OnChanges, OnInit {
 

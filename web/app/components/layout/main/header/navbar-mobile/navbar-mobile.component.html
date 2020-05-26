@@ -6,7 +6,7 @@
     </main-header-navbar-mobile-top>
     <!-- /top -->
     <!-- sidebar -->
-    <main-header-navbar-mobile-side [data]="side"
+    <main-header-navbar-mobile-side [data]="side" (click)="onSidebarClick($event)"
                                     (toggle)="onSidebarToggle()">
     </main-header-navbar-mobile-side>
     <!-- /sidebar -->

@@ -3,14 +3,14 @@
     <mat-sidenav #sidenav mode="side">
         <div class="left-sidebar left-sidebar-1" id="navbar-side">
             <div class="sidebar-content-wrapper">
-            <div class="content-minus-footer">
-                <div class="menu-title-wrap">
-                    <button class="btn-collapse bg-transparent border-0"
-                            (click)="sidebarToggle()">
-                        <i class="sli-close close-icon"></i>
-                    </button>
-                    <span translate>Menu</span>
-                </div>
+                <div class="content-minus-footer">
+                    <div class="menu-title-wrap">
+                        <button class="btn-collapse bg-transparent border-0"
+                                (click)="sidebarToggle()">
+                            <i class="sli-close close-icon"></i>
+                        </button>
+                        <span translate>Menu</span>
+                    </div>
                     <div class="list-unstyled">
                         <div *ngFor="let item of data"
                              class="list-item"
@@ -47,8 +47,8 @@
                                         <span class="title">{{item.title}}</span>
                                     </a>
                                     <a *ngIf="isExternalLink(item.link)" class="btn-default btn-sidebar btn-sidebar-1"
-                                           href="{{item.link}}"
-                                           (click)="sidebarToggle()">
+                                       href="{{item.link}}"
+                                       (click)="sidebarToggle()">
                                         <i [ngClass]="item.icon"></i>
                                         <span class="title">{{item.title}}</span>
                                     </a>
@@ -61,6 +61,9 @@
                                 </section>
                             </div>
                         </div>
+                    </div>
+                    <div class="footer-wrapper">
+                        <cms [title]="cmsFooterTitle"></cms>
                     </div>
                 </div>
             </div>

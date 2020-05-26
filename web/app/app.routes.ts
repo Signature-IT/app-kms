@@ -1,9 +1,8 @@
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
-import { AppCustomPreloader, CheckRestrictedLoginGuard, CheckIsEmployeeGuard } from '@signature-it/ngx-generic';
+import { AppCustomPreloader, CheckRestrictedLoginGuard, CheckIsEmployeeGuard, RouteService } from '@signature-it/ngx-generic';
 import {DecodeSeoUriPipeModule, EncodeSeoUriPipeModule} from '@signature-it/ngx-catalogue';
-
 
 @NgModule({
     imports: [
@@ -23,6 +22,10 @@ import {DecodeSeoUriPipeModule, EncodeSeoUriPipeModule} from '@signature-it/ngx-
                     loadChildren: () => import('./modules/admin/admin.module').then(m => m.AdminModule)
                 },
                 {
+                    path: 'external',
+                    loadChildren: () => import('./modules/external-layout.module').then(m => m.MainExternalRoutingModule_Wrapper)
+                },
+                {
                     path: '**',
                     redirectTo: '404'
                 }
@@ -37,6 +40,8 @@ import {DecodeSeoUriPipeModule, EncodeSeoUriPipeModule} from '@signature-it/ngx-
 /**
  * @extends AppRoutingModuleGeneric
  */
-export class AppRoutingModule {}
+export class AppRoutingModule {
+    constructor(protected routeService: RouteService) {}
+}
 
 

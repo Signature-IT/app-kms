@@ -6,6 +6,7 @@
 
     <meta charset="utf-8">
     <meta name="description" content="Generic System">
+    <meta name="robots" content="index, follow">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="theme-color" content="#333333">
     <!-- open graph meta tags -->
@@ -26,10 +27,15 @@
                     : {}   // if in node js
             );
         self.GenericConfig = {};
-        var rgx = new RegExp(`(?!:\/\/)fe`);
-        var appUrl = location.origin.replace(rgx, 'app');
+        var rgx = new RegExp(`(?!:\/\/)^fe|^www`);
+        var appUrl;
+        if (location.hostname.match(rgx)) {
+            appUrl = location.hostname.replace(rgx, 'app');
+        } else {
+            appUrl = 'app.' + location.hostname;
+        }
         var configScript = document.createElement('script');
-        configScript.src = appUrl + '/app/config/config.generic.js';
+        configScript.src = location.protocol + '//' + appUrl + '/app/config/config.generic.js?ts=' + new Date().getTime();
         configScript.type = 'text/javascript';
         configScript.async = false;
         document.getElementsByTagName('head')[0].appendChild(configScript);

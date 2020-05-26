@@ -19,9 +19,9 @@ export class HomepageComponent extends HomepageComponentGeneric implements OnIni
     carouselHPconfig = GenericConfig.carouselHP || null;
 
     constructor(protected notifySvc: PageNotificationService,
-              protected langSvc: LanguageService,
+                protected langSvc: LanguageService,
                 protected cmsSvc: CmsService,
-              public sharedSvc: ShareDataService) {
+                public sharedSvc: ShareDataService) {
         super(notifySvc, langSvc, cmsSvc, sharedSvc);
         this.carouselHPconfig =  _.reduce(this.carouselHPconfig, function (o, item) { o[item.alias] = item; return o }, {});
     }

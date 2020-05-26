@@ -5,7 +5,7 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 // Vendors
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LocalStorageModule } from 'angular-2-local-storage/dist';
 // Routes
 import {AppRoutingModule} from './app.routes';
@@ -21,11 +21,12 @@ import {
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import {AppComponent} from './app.component';
 import {AppStoreModule} from './stores/app/app.store';
+
 @NgModule({
     imports: [
         BrowserModule,
         HttpClientModule,
-        NoopAnimationsModule,
+        BrowserAnimationsModule,
         FakeloaderComponentModule,
         TranslateModule.forRoot({
             loader: {

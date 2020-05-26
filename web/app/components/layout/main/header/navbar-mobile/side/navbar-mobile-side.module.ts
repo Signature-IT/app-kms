@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { MatSidenavModule } from '@angular/material';
 import { TranslateModule } from '@ngx-translate/core';
-import { LangsSidebarModuleGeneric,  UserLoginNavbarModuleGeneric, UserLoginModuleGeneric} from '@signature-it/ngx-generic';
+import { LangsSidebarModuleGeneric,  UserLoginNavbarModuleGeneric, UserLoginModuleGeneric, CmsModule} from '@signature-it/ngx-generic';
 import {TreeViewModule_Catalogue} from "@signature-it/ngx-catalogue";
 import { MainHeaderNavbarMobileSideComponent } from './navbar-mobile-side';
 
@@ -17,7 +17,8 @@ import { MainHeaderNavbarMobileSideComponent } from './navbar-mobile-side';
         UserLoginModuleGeneric,
         UserLoginNavbarModuleGeneric,
         LangsSidebarModuleGeneric,
-        TreeViewModule_Catalogue
+        TreeViewModule_Catalogue,
+        CmsModule
     ],
     declarations: [MainHeaderNavbarMobileSideComponent],
     exports: [MainHeaderNavbarMobileSideComponent]

@@ -29,7 +29,8 @@
         "signature/generic-bundle-account": "dev-master",
         "signature/generic-bundle-product": "dev-master",
         "signature/generic-bundle-features": "dev-master",
-        "signature/generic-bundle-organization": "dev-master"
+        "signature/generic-bundle-organization": "dev-master",
+        "signature/generic-bundle-forms": "dev-master"
     },
     "require-dev": {
         "phpunit/phpunit": "^5.5", 

@@ -9,6 +9,8 @@ start_process(){
     git_pull ngx-generic && \
     cd ../ngx-catalogue && \
     git_pull ngx-catalogue && \
+    cd ../ngx-admin && \
+    git_pull ngx-admin && \
     cd ../../../ && \
     git_pull main-app && \
     npm_update && \
@@ -123,6 +125,9 @@ npm_build() {
         npm run build:ngx-generic && \
         echo -e "\nRunning \"npm run build:ngx-catalogue\"..."
         npm run build:ngx-catalogue && \
+        echo -e "\nRunning \"npm run build:ngx-admin\"..."
+        npm run build:ngx-admin && \
+        cp_libraries_node_modules
         echo -e "\nRunning \"npm run build:prod\"..."
         npm run build:prod && \
         exit_on_error $?
@@ -134,6 +139,26 @@ exit_on_error() {
         echo -e "\n\nExiting..."
         exit $1
     fi
+}
+
+cp_libraries_node_modules() {
+    declare -a projects=("ngx-generic" "ngx-catalogue" "ngx-admin")
+    for project in "${projects[@]}"
+    do
+      echo $DIR_PROJ_ROOT/projects/signature-it/$project
+        if [ -d $DIR_PROJ_ROOT/projects/signature-it/$project/node_modules ];  then
+            cp -ans $DIR_PROJ_ROOT/projects/signature-it/$project/node_modules/* $DIR_PROJ_ROOT/node_modules/
+            for project1 in "${projects[@]}"
+            do
+              if [ -d $DIR_PROJ_ROOT/projects/signature-it/$project1/node_modules ];  then
+                cp -ans $DIR_PROJ_ROOT/projects/signature-it/$project/node_modules/* $DIR_PROJ_ROOT/projects/signature-it/$project1/node_modules/
+              else
+                mkdir $DIR_PROJ_ROOT/projects/signature-it/$project1/node_modules/
+                cp -ans $DIR_PROJ_ROOT/projects/signature-it/$project/node_modules/* $DIR_PROJ_ROOT/projects/signature-it/$project1/node_modules/
+              fi
+          done
+        fi
+    done
 }
 
 if [[ ${BASH_SOURCE} == $0 ]]; then
