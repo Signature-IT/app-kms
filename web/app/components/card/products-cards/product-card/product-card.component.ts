@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {PageNotificationService, RestUrlsConfig} from '@signature-it/ngx-generic';
 import { ProductCardComponent as ProductCardGenericComponent } from '@signature-it/ngx-catalogue';
 import {Router} from '@angular/router';
+import {TranslateService} from "@ngx-translate/core";
 
 
 @Component({
@@ -16,8 +17,9 @@ export class ProductCardComponent extends ProductCardGenericComponent implements
     constructor(
         public restUrlsConfig: RestUrlsConfig,
         protected router: Router,
-        public notifySvc: PageNotificationService) {
-            super(restUrlsConfig, router, notifySvc);
+        public notifySvc: PageNotificationService,
+        protected translateSvc: TranslateService) {
+            super(restUrlsConfig, router, notifySvc, translateSvc);
     }
 
     ngOnInit() {
