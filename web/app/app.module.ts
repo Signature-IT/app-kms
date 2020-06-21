@@ -16,7 +16,8 @@ import {
     NoopInterceptor,
     CustomTranslateLoader,
     HttpTranslateLoaderFactory,
-    RestUrlsConfig
+    RestUrlsConfig,
+    EventBusService
 } from '@signature-it/ngx-generic';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import {AppComponent} from './app.component';
@@ -33,7 +34,7 @@ import {AppStoreModule} from './stores/app/app.store';
                 provide: TranslateLoader,
                 useClass: CustomTranslateLoader,
                 useFactory: (HttpTranslateLoaderFactory),
-                deps: [HttpClient, RestUrlsConfig]
+                deps: [HttpClient, RestUrlsConfig, EventBusService]
             }
         }),
         LocalStorageModule.withConfig({
