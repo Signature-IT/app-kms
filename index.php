@@ -92,6 +92,6 @@ Signature\OrganizationBundle\Loader::injectInto($app);
 Signature\FormsBundle\Loader::injectInto($app);
 
 /** Register bundle's overrides */
-//Signature\AppSignatureBundle\Loader::injectInto($app);
+Signature\AppSignatureBundle\Loader::injectInto($app);
 
 $app->run();
