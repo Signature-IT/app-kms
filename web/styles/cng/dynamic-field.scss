@@ -1,0 +1,12 @@
+//@import '../../../projects/signature-it/ngx-generic/src/styles/elements/index';
+
+dynamic-form {
+  form{
+    mat-form-field {
+      height: auto;
+    }
+    .field{
+      width: 33%;
+    }
+  }
+}
