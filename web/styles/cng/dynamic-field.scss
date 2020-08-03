@@ -4,9 +4,17 @@ dynamic-form {
   form{
     mat-form-field {
       height: auto;
+      .mat-form-field-wrapper {
+        padding-bottom: 0 !important;
+      }
     }
     .field{
-      width: 33%;
+      &.dynamic-field {
+        width: 33%;
+        .dynamic-field-label {
+          max-height: 29px;
+        }
+      }
     }
   }
 }
