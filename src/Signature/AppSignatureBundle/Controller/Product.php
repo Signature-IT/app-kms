@@ -16,11 +16,11 @@ class Product extends \Signature\ProductBundle\Controller\Product {
     protected $wfModule = null;
 
     /**
-     * @return \ModuleWFTasks|\Module
+     * @return \ModuleWorkflowV2|\Module
      */
     public function getWfModule() {
         if( !$this->wfModule ) {
-            $this->wfModule = \Module::createByName('ModuleWFTasks', \SigSystem::current()->getContext());
+            $this->wfModule = \Module::createByName('ModuleWorkflowV2', \SigSystem::current()->getContext());
         }
         return $this->wfModule;
     }

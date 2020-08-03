@@ -25,7 +25,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "deploy": "npm install; php composer.phar install",
-    "env:update": "./projects/signature-it/ngx-generic/bin/env_update.sh -s generic"
+    "env:update": "./projects/signature-it/ngx-generic/bin/env_update.sh -s railways"
   },
   "peerDependencies": {},
   "private": true,

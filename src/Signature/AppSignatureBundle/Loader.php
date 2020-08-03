@@ -19,17 +19,17 @@ class Loader extends BundleLoader {
 
     /**
      * @return array List of available routes as YAML configs (must be defined in overriding concrete bundle loader class)
-        Keeping the empty yml for custom APIs.
+    Keeping the empty yml for custom APIs.
      */
     public static function getRoutes() {
-        return [];
+        return ['product.yml'];
     }
 
     /**
      * @return array List of available controllers as YAML configs (must be defined in overriding concrete bundle loader class)
      */
     public static function getControllers() {
-        return [];
+        return ['product.yml'];
     }
 
     /**
