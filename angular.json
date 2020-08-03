@@ -45,6 +45,7 @@
               "web/styles/vendors.imports.scss",
               "web/styles/vendors.overrides.scss",
               "web/styles/elements/index.scss",
+              "web/styles/cng/index.scss",
               "web/styles/main.scss",
               "web/styles/main.rtl.scss",
               "node_modules/typeface-exo/index.css",
