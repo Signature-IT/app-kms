@@ -1,20 +1,33 @@
 //@import '../../../projects/signature-it/ngx-generic/src/styles/elements/index';
 
-dynamic-form {
-  form{
-    mat-form-field {
-      height: auto;
-      .mat-form-field-wrapper {
-        padding-bottom: 0 !important;
+&[data-controller="cng-page"] {
+  breadcrumbs {
+    ol {
+      margin: 0 !important;
+      li:nth-child(2) {
+        display: none;
       }
     }
-    .field{
-      &.dynamic-field {
-        width: 33%;
-        .dynamic-field-label {
-          max-height: 29px;
+  }
+
+  dynamic-form {
+    form{
+      mat-form-field {
+        height: auto;
+        .mat-form-field-wrapper {
+          padding-bottom: 0 !important;
+        }
+      }
+      .field{
+        &.dynamic-field {
+          width: 33%;
+          .dynamic-field-label {
+            max-height: 29px;
+          }
         }
       }
     }
   }
 }
+
+
