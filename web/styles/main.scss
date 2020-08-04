@@ -1,8 +1,14 @@
 @import '../../projects/signature-it/ngx-generic/src/styles/main';
+@import '~bootstrap/scss/mixins/breakpoints';
 
 .blue-bg {
   background-color: $blue;
 }
 #ngx-header .search-wrapper {
   margin: auto;
+}
+@include media-breakpoint-up(lg) {
+  .search-wrapper {
+    width: $header-search-wrapper-width;
+  }
 }
