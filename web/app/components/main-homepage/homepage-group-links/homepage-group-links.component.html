@@ -1,0 +1,72 @@
+<div *ngIf="!homePageGroupsLinkCarousel; else carouselGropLink;" class="container">
+    <h4 *ngIf="homePageGroupLinks" class="mb-3 grouplinks-title" translate>פעולות <b>נפוצות</b></h4>
+    <div class="card-group">
+        <ng-container *ngFor = "let gl of homePageGroupLinks;let i = index" >
+            <template [ngTemplateOutlet]="gropLink" [ngTemplateOutletContext]="{groupLink:gl, index:i}" ></template>
+        </ng-container>
+    </div>
+</div>
+
+<ng-template #carouselGropLink>
+    <div *ngIf="homePageGroupLinks">
+        <div class="carousel-wrapper">
+            <h4 class="mb-3 carousel-title" translate>{{title}}</h4>
+            <ngu-carousel #myCarouselGropLink
+                          [inputs]="carouselBanner"
+                          [dataSource]="homePageGroupLinks"
+                          class="" >
+
+                <ngu-tile *nguCarouselDef="let GroupLinks; ">
+                    <div class="row-carousel" *ngFor="let gl of GroupLinks; let i = index">
+                        <template [ngTemplateOutlet]="gropLink" [ngTemplateOutletContext]="{groupLink:gl, index:i}"></template>
+                    </div>
+                </ngu-tile>
+                <button NguCarouselPrev class='leftRs' dir="ltr" [style.opacity]="myCarouselGropLink.isFirst ? 0:1">
+                    <i class="material-icons color-grey-700">arrow_back_ios</i>
+                </button>
+                <button NguCarouselNext class='rightRs' dir="ltr" [style.opacity]="myCarouselGropLink.isLast ? 0:1">
+                    <i class="material-icons color-grey-700">arrow_forward_ios</i>
+                </button>
+                <ul class="myPoint" NguCarouselPoint>
+                    <li *ngFor="let i of myCarouselGropLink.pointNumbers; let i = index" [class.active]="i==myCarouselGropLink.activePoint" (click)="myCarouselGropLink.moveTo(i)"></li>
+                </ul>
+            </ngu-carousel>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #gropLink let-gl="groupLink" let-index="index">
+    <div class="group-links card g-item-card align-items-center justify-content-between outlined">
+
+        <div class="main" [ngClass]="{'row': homePageGroupsLinkCarousel}">
+            <div class="group_image" [ngClass]="{'col-4': homePageGroupsLinkCarousel}">
+                <a routerLink="{{gl.link}}" >
+                    <img no-image size="Med" alt="image" class="card-img-top"
+                         src="{{beUrl}}{{imagesPath}}/{{systemName}}/Homepage_Group_Images/{{gl.group_id}}.jpg">
+                </a>
+            </div>
+
+            <h6 *ngIf="gl.group_name" class="group_name" [ngClass]="{'col-8': homePageGroupsLinkCarousel}">
+                <a routerLink="{{gl.link}}" [innerHTML]="gl.group_name"></a>
+            </h6>
+        </div>
+        <div class="sub_groups flex-grow-1">
+            <ng-container *ngIf="showChildren && !homePageGroupsLinkCarousel">
+                <div class="children-count-read-more">
+                    <ng-container *ngFor = "let glc of gl.children;let y = index" >
+                        <div class="homepage_subgroups">
+                            <a *ngIf="y < childrenCountReadMore" href="{{glc.link}}"> {{glc.group_name}} </a>
+
+                        </div>
+                    </ng-container>
+
+                </div>
+
+            </ng-container>
+        </div>
+
+        <div class="view_homepage_links">
+            <a *ngIf="showChildren && gl.children.length > childrenCountReadMore" routerLink="{{gl.link}}" translate>View all</a>
+        </div>
+    </div>
+</ng-template>
