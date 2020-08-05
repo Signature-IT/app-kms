@@ -62,7 +62,7 @@ class Product extends \Signature\ProductBundle\Controller\Product {
         return $p;
     }
 
-    public function afterInsertCngProduct($data, $cng) {
+    public function afterInsertCngProduct($data, $cng, $originReq) {
         if($cng->getAttribute('workflow_name') && $data['product_id'] > 0) {
             $this->getWfModule()->insertWorkflow($cng->getAttribute('workflow_name'), $data['product_id']);
         }
