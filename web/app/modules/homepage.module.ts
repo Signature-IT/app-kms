@@ -5,20 +5,19 @@ import { RouterModule } from "@angular/router";
 import { ParallaxDirectiveModuleGeneric,
          NoImageDirectiveModuleGeneric,
          ContentloaderModule,
-         HomepageBannersModuleGeneric,
-         HomepageGroupLinksModuleGeneric } from '@signature-it/ngx-generic';
+         HomepageBannersModuleGeneric } from '@signature-it/ngx-generic';
 
 import { ProductsCarouselModule_Generic } from '@signature-it/ngx-catalogue';
 
 import { HomepageComponent } from '../components/main-homepage/homepage/homepage.component';
-
+import { HomepageGroupLinksModule } from '../components/main-homepage/homepage-group-links/homepage-group-links.module'
 @NgModule({
     declarations: [
         HomepageComponent,
     ],
     imports: [
         CommonModule,
-        HomepageGroupLinksModuleGeneric,
+        HomepageGroupLinksModule,
         TranslateModule,
         HomepageBannersModuleGeneric,
         ContentloaderModule,

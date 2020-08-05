@@ -1,1 +1,9 @@
 @import '../../projects/signature-it/ngx-generic/src/styles/main';
+
+.blue-bg {
+  background-color: $blue;
+}
+#ngx-header .search-wrapper {
+  margin: auto;
+  width: 440px;
+}
