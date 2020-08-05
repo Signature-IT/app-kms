@@ -1,5 +1,5 @@
 <div *ngIf="!homePageGroupsLinkCarousel; else carouselGropLink;" class="container">
-    <h4 *ngIf="homePageGroupLinks" class="mb-3 grouplinks-title" translate>פעולות <b>נפוצות</b></h4>
+    <h4 *ngIf="homePageGroupLinks" class="mb-3 grouplinks-title text-center blue-text" translate>פעולות <b>נפוצות</b></h4>
     <div class="card-group">
         <ng-container *ngFor = "let gl of homePageGroupLinks;let i = index" >
             <template [ngTemplateOutlet]="gropLink" [ngTemplateOutletContext]="{groupLink:gl, index:i}" ></template>

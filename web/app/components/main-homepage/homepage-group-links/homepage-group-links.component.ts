@@ -5,7 +5,6 @@ import { HomepageGroupLinksComponent, PageNotificationService, HomepageService, 
   selector: 'homepage-group-links',
   templateUrl: './homepage-group-links.component.html',
   styleUrls: [
-      '../../../../../projects/signature-it/ngx-generic/src/lib/components/main-homepage/homepage-group-links/homepage-group-links.component.scss',
       './homepage-group-links.component.scss'
   ]
 })

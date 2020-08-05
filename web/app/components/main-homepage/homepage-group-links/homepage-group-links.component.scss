@@ -1,5 +1,8 @@
 @import "web/styles/inc/variables";
 
+.grouplinks-title {
+  font-size: 40px;
+}
 .card-group{
   display: -ms-flexbox;
   display: flex;
@@ -14,11 +17,11 @@
     flex-basis:  calc((100%/3) - (2 * #{$card-margin-desktop})) !important;
     max-width: calc((100%/3) - (2 * #{$card-margin-desktop})) !important;
     text-align: center;
-    border: 1px solid #ddd !important;
+    border: none;
     margin: 0px $card-margin-desktop 10px;
     //font-size: 0.8rem;
     background: none;
-    box-shadow: 1px 2px 1px #f2f2f2;
+    box-shadow: none;
     -webkit-transition: box-shadow 0.5s; /* Safari */
     transition: box-shadow 0.5s;
     padding: 15px 15px 15px;
@@ -47,7 +50,7 @@
     .children-count-read-more {
       text-align: start;
       width:100%;
-      padding-bottom: 65px;
+      padding-bottom: 40px;
       a {
         display: block;
         color: #4d4d4d;
@@ -69,6 +72,7 @@
         min-height: 50px;
         text-align: start;
         font-size: 24px;
+        margin-top: 10px;
       }
     }
     .sub_groups{
