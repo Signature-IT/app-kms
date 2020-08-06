@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import {
     CmsModule,
-    UserLoginModuleGeneric,
     MainTopNavigationModuleGeneric,
     DropdownLangsModuleGeneric,
     MainHeaderSearchFormModuleGeneric,
@@ -15,6 +14,7 @@ import { SearchModule_Catalogue, MainHeaderCartModuleGeneric } from '@signature-
 import { MainHeaderNavbarMobileModule } from './navbar-mobile/navbar-mobile.module';
 import { MainHeaderNavbarMobileTopModule } from './navbar-mobile/top/navbar-mobile-top.module';
 import { MainHeaderComponent } from './main-header';
+import { UserLoginModule } from './user-login/user-login.module';
 
 @NgModule({
     imports: [
@@ -23,7 +23,7 @@ import { MainHeaderComponent } from './main-header';
         CmsModule,
         MainTopNavigationModuleGeneric,
         DropdownLangsModuleGeneric,
-        UserLoginModuleGeneric,
+        UserLoginModule,
         MainHeaderSearchFormModuleGeneric,
         MainHeaderCartModuleGeneric,
         MainHeaderNavbarMobileTopModule,

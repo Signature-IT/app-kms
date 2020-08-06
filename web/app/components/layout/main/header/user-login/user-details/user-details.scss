@@ -1,0 +1,24 @@
+main-header-user-details {
+  .users-icons {
+    margin: 0 10px;
+    line-height: 35px;
+    .user_icon {
+      background: url('web/assets/images/user_icon.svg') no-repeat;
+      width: 35px;
+      height: 35px;
+      display: block;
+    }
+  }
+  .icon-text {
+    line-height: 35px;
+    font-size: 18px;
+  }
+}
+
+/**
+ * RTL
+ */
+body[dir="rtl"] main-header-user-details {
+
+}
+

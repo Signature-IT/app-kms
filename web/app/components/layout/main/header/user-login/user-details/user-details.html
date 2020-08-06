@@ -1,0 +1,23 @@
+<div *ngIf="!shareDataService.isMobileMode() else mobileUserDetails" class="user-details-wrap cursor-pointer d-flex flex-lg-row flex-column">
+    <div class="users-icons">
+        <i class="user_icon"></i>
+    </div>
+    <span class="icon-text">{{user.full_name}}</span>
+    <div class="users-icons">
+        <i class="fa fa-angle-down"></i>
+    </div>
+</div>
+
+<ng-template #mobileUserDetails>
+    <div class="user-details-wrap cursor-pointer d-flex flex-lg-row flex-column">
+        <div class="mobile-user-details d-flex">
+            <div class="users-icons">
+                <i class="user_icon"></i>
+            </div>
+            <span class="icon-text">{{user.full_name}}</span>
+            <div class="users-icons">
+                <i class="fa fa-angle-down"></i>
+            </div>
+        </div>
+    </div>
+</ng-template>

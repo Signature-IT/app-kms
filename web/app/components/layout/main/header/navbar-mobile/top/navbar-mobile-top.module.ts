@@ -2,10 +2,11 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { TranslateModule } from "@ngx-translate/core";
-import { UserLoginModuleGeneric, Collapsible2DirectiveModule} from '@signature-it/ngx-generic';
+import { Collapsible2DirectiveModule} from '@signature-it/ngx-generic';
 import { MainHeaderCartModuleGeneric } from '@signature-it/ngx-catalogue';
 import { MainHeaderSearchFormModule } from '../../search-form/search-form.module';
 import { MainHeaderNavbarMobileTopComponent } from './navbar-mobile-top';
+import { UserLoginModule } from '../../user-login/user-login.module';
 
 @NgModule({
     imports: [
@@ -14,7 +15,7 @@ import { MainHeaderNavbarMobileTopComponent } from './navbar-mobile-top';
         TranslateModule,
         MainHeaderSearchFormModule,
         MainHeaderCartModuleGeneric,
-        UserLoginModuleGeneric,
+        UserLoginModule,
         Collapsible2DirectiveModule
     ],
     declarations: [MainHeaderNavbarMobileTopComponent],
