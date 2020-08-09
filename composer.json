@@ -39,7 +39,7 @@
     "repositories": [
         {
             "type": "path", 
-            "url": "../generic",
+            "url": "../railways",
             "options": {
                 "symlink": true
             }
