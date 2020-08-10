@@ -29,6 +29,10 @@
           }
           .dynamic-field-label {
             max-height: 29px;
+            margin: 0;
+            .btn {
+              display: initial !important;
+            }
           }
         }
       }
