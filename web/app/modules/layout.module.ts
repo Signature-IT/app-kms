@@ -2,7 +2,8 @@ import { NgModule } from "@angular/core";
 import { MainLayoutModuleGeneric, PageTitleModuleGeneric, MainFooterModuleGeneric, MainFooterComponent } from "@signature-it/ngx-generic";
 import { MainRoutingModule } from "../routes/main.routing";
 import {RouterModule} from '@angular/router';
-import {ContentloaderModule,
+import {BreadcrumbsModule,
+    ContentloaderModule,
     RequestOptionsProvider,
     CmsModule} from '@signature-it/ngx-generic';
 import {MatSidenavModule} from '@angular/material';
@@ -10,7 +11,6 @@ import {CommonModule} from '@angular/common';
 import {TranslateModule} from '@ngx-translate/core';
 import {MainLayoutComponent} from '../components/layout/main/main';
 import {MainHeaderModule} from '../components/layout/main/header/main-header.module';
-import { BreadcrumbsModule } from '../components/breadcrumbs/breadcrumbs.module';
 
 @NgModule({
     imports: [
