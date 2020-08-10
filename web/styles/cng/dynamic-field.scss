@@ -21,6 +21,12 @@
       .field{
         &.dynamic-field {
           width: 33%;
+          &.FileUpload {
+            //width: 100%;
+            .dynamic-wrap {
+              max-width: 100%;
+            }
+          }
           .dynamic-field-label {
             max-height: 29px;
           }
