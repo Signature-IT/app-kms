@@ -1,0 +1,29 @@
+contentloader{
+  &.cover{
+    position: absolute;
+    z-index: 99;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(7, 7, 7, 0.58);
+    .content-loader-wrap{
+      margin-top: 150px;
+    }
+    .loading-icon-wrapper{
+      padding-top: 140px;
+      background: url("/assets/images/loader.svg") no-repeat center;
+      background-size: contain;
+      i{
+        display: none;
+      }
+    }
+    .loading-text{
+      color: $app-light-blue;
+      font-size: 24px;
+      font-weight: 500;
+      margin: 0 auto;
+      text-shadow: 0 0 50px #000000;
+    }
+  }
+}

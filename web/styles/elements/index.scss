@@ -3,3 +3,6 @@
 // imports list of override local elements (see the structure in ngx-generic)
 // @import './form';
 
+#app-railways{
+  @import "./loaders";
+}
