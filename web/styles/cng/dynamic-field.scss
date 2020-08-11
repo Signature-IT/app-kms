@@ -36,10 +36,14 @@
           }
         }
       }
-      .btns-wrap button {
-        width: 10%;
-        margin: 3px;
-        float: left;
+      .btns-wrap {
+        display: flex;
+        flex-direction: initial;
+        justify-content: flex-end;
+        button {
+          width: 10%;
+          margin: 3px;
+        }
       }
     }
   }
