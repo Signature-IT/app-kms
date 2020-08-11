@@ -64,9 +64,7 @@ class Product extends \Signature\ProductBundle\Controller\Product {
 
     public function afterInsertCngProduct($data, $cng, $originReq) {
         if($data['product_id'] > 0){
-            if($cng->getAttribute('workflow_name')) {
-                $this->getWfModule()->insertWorkflow($cng->getAttribute('workflow_name'), $data['product_id'], $originReq['wf_line']);
-            }
+            $this->getWfModule()->insertWorkflow($cng->getAttribute('workflow_name'), $data['product_id'], $originReq['wf_line']);
 
             $do_solr = \DomainFactory::create()->newDOSolr(\SigSystem::current()->getContext());
             if($progressDetails = $do_solr->_solrInProgress()){
