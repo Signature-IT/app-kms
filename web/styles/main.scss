@@ -10,3 +10,14 @@
   margin: auto;
   width: 440px;
 }
+
+[data-view="product-page"] {
+  breadcrumbs {
+    ol {
+      margin: 0 !important;
+      li:nth-child(2) {
+        display: none;
+      }
+    }
+  }
+}

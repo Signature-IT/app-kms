@@ -1,0 +1,166 @@
+<div class="container-fluid max-app-width mx-auto my-5" *ngIf="item" >
+    <ng-container *ngIf="!sharedSvc.isMobileMode(); else MobileTemplate">
+        <div class="row" *ngIf="item; else contentLoader">
+            <!-- images-carousel -->
+            <!--<div class="col-12 col-sm-6 col-md-3">-->
+                <!--<product-images-carousel-->
+                        <!--[isDesktop]="isDesktop"-->
+                        <!--[item]="item">-->
+                <!--</product-images-carousel>-->
+            <!--</div>-->
+
+            <!-- product-details -->
+            <div class="col">
+                <h1 translate>{{item.productPageMainTitle}}</h1>
+                <p translate>{{item.productPageSecondaryTitle}}</p>
+
+                <hr/>
+
+                <!-- product-constant-fields -->
+                <ul class="list-group list-unstyled flex-row">
+                    <ng-container *ngFor="let field of fieldList">
+                        <li class="mx-2" *ngIf="item[field.solr_field]">
+                            <b class="field-name">{{field.title|translate}}</b>&nbsp;
+                            <span class="field-value">{{item[field.solr_field]}}</span>
+                        </li>
+                    </ng-container>
+                </ul>
+
+                <hr/>
+
+                <div *ngIf="productCountInFamily > 1">
+                    <p class="cursor-pointer family-link" (click)="goToFamily()" [translateParams]="{X: productCountInFamily}" translate>See All X in this Product Family</p>
+                </div>
+
+                <div class="row justify-content-between">
+                    <div class="col-12 col-md-3">
+                        <!-- price-area -->
+                        <div class="net-price-area" *ngIf="!unCommerceApp">
+                            <h4 class="price-label d-flex">
+                                {{'Price'|translate}}:&nbsp;
+                                <span class="price_wrap">
+                                <price [pid]="item.product_id_i"></price>
+                            </span>
+                            </h4>
+                            <span class="price-per">
+                            {{'per'|translate}} {{item.PricePer_s}} / {{'pkg. of'|translate}} {{item.PackSize_s}}
+                        </span>
+                        </div>
+
+                        <!-- quantity-selector -->
+                        <div class="quantity-selector-wrap mt-3 mb-3">
+                            <add-to-cart [product]="item"></add-to-cart>
+                        </div>
+                    </div>
+
+                    <!-- link-actions -->
+                    <!--<div class="col-12 col-md-3">-->
+                        <!--<product-link-actions [product]="item"></product-link-actions>-->
+                    <!--</div>-->
+                    <!--<img no-image class="col-12 col-md-3" *ngIf="item.product_drw_s"  alt="{{item.productPageMainTitle + ' Tech'}}"-->
+                         <!--[src]="imagesBaseUrl + '/Tech_Pic/' + item.product_drw_s + '.jpg' " />-->
+                </div>
+            </div>
+        </div>
+    </ng-container>
+
+    <ng-template #MobileTemplate>
+        <div class="row fashion-view-page" *ngIf="item; else contentLoader">
+            <!-- images-carousel -->
+            <div class="col-12 col-md-6">
+                <product-images-carousel
+                        [isDesktop]="isDesktop"
+                        [item]="item">
+                </product-images-carousel>
+            </div>
+
+            <!-- product-details -->
+            <div class="product-info col">
+                <h1 translate>{{item.productPageMainTitle}}</h1>
+                <p translate>{{item.productPageSecondaryTitle}}</p>
+                <div class="mb-3">
+                    <!-- price-area -->
+                    <div class="net-price-area" *ngIf="!unCommerceApp">
+                        <h4 class="price-label d-md-inline-block">
+                            <span class="price_wrap ">
+                                <price [pid]="item.product_id_i"></price>
+                            </span>
+                        </h4>&nbsp;
+                        <span class="price-per text-muted">
+                            {{'per'|translate}} {{item.PricePer_s}} / {{'pkg. of'|translate}} {{item.PackSize_s}}
+                        </span>
+                    </div>
+
+                    <!-- quantity-selector -->
+                    <div class="quantity-selector-wrap mt-3 mb-4" *ngIf="!unCommerceApp">
+                        <strong class="d-block mb-1">{{'Quantity'|translate}}</strong>
+                        <add-to-cart [product]="item"></add-to-cart>
+                    </div>
+                    <!-- link-actions -->
+                    <div class="">
+                        <product-link-actions [product]="item"></product-link-actions>
+                    </div>
+                </div>
+                <hr/>
+
+                <!-- product-constant-fields -->
+                <ul class="list-group list-unstyled">
+                    <ng-container *ngFor="let field of fieldList">
+                        <li class="my-2" *ngIf="item[field.solr_field]">
+                            <b class="field-name">{{field.title|translate}}</b>&nbsp;
+                            <span class="field-value">{{item[field.solr_field]}}</span>
+                        </li>
+                    </ng-container>
+                </ul>
+
+                <hr/>
+
+                <div *ngIf="productCountInFamily > 1">
+                    <p class="family-link" (click)="goToFamily()" [translateParams]="{X: productCountInFamily}" translate>See All X in this Product Family</p>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+
+    <!-- context-tabs -->
+    <div class="row">
+        <div class="col-12">
+            <product-context-tabs
+                    *ngIf="productTabContextLayout === 'tabs'"
+                    [isDesktop]="isDesktop"
+                    [item]="item"
+                    [quicklinks]="quicklinks"
+                    [kitProducts]="kitProducts">
+            </product-context-tabs>
+            <product-context-sections
+                    *ngIf="productTabContextLayout !== 'tabs' && productTabContextLayout !== 'side_by_side'"
+                    [isDesktop]="isDesktop"
+                    [item]="item"
+                    [quicklinks]="quicklinks"
+                    [kitProducts]="kitProducts">
+            </product-context-sections>
+            <product-side-by-side
+                    *ngIf="productTabContextLayout === 'side_by_side'"
+                    [isDesktop]="isDesktop"
+                    [item]="item"
+                    [quicklinks]="quicklinks"
+                    [kitProducts]="kitProducts">
+            </product-side-by-side>
+        </div>
+    </div>
+
+    <!-- contentloader -->
+    <ng-template #contentLoader>
+        <contentloader></contentloader>
+    </ng-template>
+</div>
+
+<!-- related items -->
+<div  *ngIf="item">
+    <ng-container *ngFor="let related of relatedItems; let index = index">
+        <div class="max-app-width mx-auto my-5" [ngClass]="{'mobile-mode': sharedSvc.isMobileMode()}">
+            <products-carousel [item]="item" [related]="related" type="relatedItems"></products-carousel>
+        </div>
+    </ng-container>
+</div>
+
