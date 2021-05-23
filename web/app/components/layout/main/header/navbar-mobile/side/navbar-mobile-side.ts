@@ -7,8 +7,7 @@ import {
     ViewChild,
     OnInit
 } from '@angular/core';
-import { MobileLinksDTO, MainHeaderNavbarMobileSideComponentGeneric, LanguageService } from '@signature-it/ngx-generic';
-
+import { MobileLinksDTO, MainHeaderNavbarMobileSideComponentGeneric, LanguageService, EventBusService } from '@signature-it/ngx-generic';
 @Component({
     selector: 'main-header-navbar-mobile-side',
     templateUrl: './navbar-mobile-side.html',
@@ -21,8 +20,9 @@ export class MainHeaderNavbarMobileSideComponent extends MainHeaderNavbarMobileS
     @Input() data: MobileLinksDTO[];
     @Output() toggle = new EventEmitter();
 
-    constructor(langSvc: LanguageService) {
-        super(langSvc);
+	constructor(langSvc: LanguageService,
+				protected eventBusService: EventBusService) {
+		super(langSvc, eventBusService);
     }
 
 

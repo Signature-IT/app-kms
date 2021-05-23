@@ -333,7 +333,41 @@
           }
         }
       }
-    }
+    },
+    "@signature-it/ngx-entity": {
+      "projectType": "library",
+      "root": "projects/signature-it/ngx-entity",
+      "sourceRoot": "projects/signature-it/ngx-entity/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/signature-it/ngx-entity/tsconfig.lib.json",
+            "project": "projects/signature-it/ngx-entity/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/signature-it/ngx-entity/src/test.ts",
+            "tsConfig": "projects/signature-it/ngx-entity/tsconfig.spec.json",
+            "karmaConfig": "projects/signature-it/ngx-entity/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/signature-it/ngx-entity/tsconfig.lib.json",
+              "projects/signature-it/ngx-entity/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
   },
   "defaultProject": "app-generic-new"
 }

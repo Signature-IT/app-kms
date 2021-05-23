@@ -42,6 +42,12 @@
       ],
       "@signature-it/ngx-admin/*": [
         "dist/signature-it/ngx-admin/*"
+      ],
+      "@signature-it/ngx-entity": [
+        "dist/signature-it/ngx-entity"
+      ],
+      "@signature-it/ngx-entity/*": [
+        "dist/signature-it/ngx-entity/*"
       ]
     }
   }

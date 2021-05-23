@@ -37,10 +37,10 @@ import {AppStoreModule} from './stores/app/app.store';
                 deps: [HttpClient, RestUrlsConfig, EventBusService]
             }
         }),
-        LocalStorageModule.withConfig({
-            prefix: 'app',
-            storageType: 'localStorage'
-        }),
+        // LocalStorageModule.withConfig({
+        //     prefix: 'app',
+        //     storageType: 'localStorage'
+        // }),
         AppRoutingModule,
         AppStoreModule
     ],
