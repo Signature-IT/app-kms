@@ -3,7 +3,7 @@ import {CommonModule} from '@angular/common';
 import {RouterModule} from '@angular/router';
 import {TranslateModule} from '@ngx-translate/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { MatSlideToggleModule } from '@angular/material';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import {ProductCardComponent} from './product-card.component';
 import {AddToCartModule, ProductSolrImageDirectiveModule, PriceModule_Catalogue} from '@signature-it/ngx-catalogue';
 

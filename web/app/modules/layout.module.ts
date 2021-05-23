@@ -6,7 +6,7 @@ import {BreadcrumbsModule,
     ContentloaderModule,
     RequestOptionsProvider,
     CmsModule} from '@signature-it/ngx-generic';
-import {MatSidenavModule} from '@angular/material';
+import { MatSidenavModule } from "@angular/material/sidenav";
 import {CommonModule} from '@angular/common';
 import {TranslateModule} from '@ngx-translate/core';
 import {MainLayoutComponent} from '../components/layout/main/main';

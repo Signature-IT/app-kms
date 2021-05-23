@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { MatSidenavModule } from '@angular/material';
+import { MatSidenavModule } from "@angular/material/sidenav";
 import { TranslateModule } from '@ngx-translate/core';
 import { LangsSidebarModuleGeneric, CmsModule} from '@signature-it/ngx-generic';
 import {TreeViewModule_Catalogue} from "@signature-it/ngx-catalogue";

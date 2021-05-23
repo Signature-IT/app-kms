@@ -28,7 +28,7 @@
                     <i class="material-icons color-grey-700">arrow_forward_ios</i>
                 </button>
                 <ul class="myPoint" NguCarouselPoint>
-                    <li *ngFor="let i of myCarouselGropLink.pointNumbers; let i = index" [class.active]="i==myCarouselGropLink.activePoint" (click)="myCarouselGropLink.moveTo(i)"></li>
+                    <li *ngFor="let i of myCarouselGropLink.pointNumbers; let j = index" [class.active]="j==myCarouselGropLink.activePoint" (click)="myCarouselGropLink.moveTo(j)"></li>
                 </ul>
             </ngu-carousel>
         </div>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HomepageGroupLinksComponent, PageNotificationService, HomepageService, RestUrlsConfig, LanguageService } from '@signature-it/ngx-generic';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'homepage-group-links',
@@ -13,8 +14,9 @@ export class HomepageGroupLinksComponentRailways extends HomepageGroupLinksCompo
   constructor(protected notifySvc: PageNotificationService,
               protected HomepageSvc: HomepageService,
               protected restUrlsConf: RestUrlsConfig,
-              protected langSvc: LanguageService) {
-    super(notifySvc, HomepageSvc, restUrlsConf, langSvc);
+              protected langSvc: LanguageService,
+			  protected router: Router) {
+    super(notifySvc, HomepageSvc, restUrlsConf, langSvc, router);
   }
 
   ngOnInit() {
