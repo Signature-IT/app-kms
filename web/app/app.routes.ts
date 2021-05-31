@@ -10,16 +10,16 @@ import {DecodeSeoUriPipeModule, EncodeSeoUriPipeModule} from '@signature-it/ngx-
         EncodeSeoUriPipeModule,
         RouterModule.forRoot([
                 {
-                    path: '',
-                    canActivate: [CheckRestrictedLoginGuard],
-                    canActivateChild: [CheckRestrictedLoginGuard],
-                    loadChildren: () => import('./modules/layout.module').then(m => m.MainLayoutModule_Wrapper)
-                },
-                {
                     path: 'admin',
                     canActivate: [CheckIsEmployeeGuard],
                     canActivateChild: [CheckIsEmployeeGuard],
                     loadChildren: () => import('./modules/admin/admin.module').then(m => m.AdminModule)
+                },
+                {
+                    path: '',
+                    canActivate: [CheckRestrictedLoginGuard],
+                    canActivateChild: [CheckRestrictedLoginGuard],
+                    loadChildren: () => import('./modules/layout.module').then(m => m.MainLayoutModule_Wrapper)
                 },
                 {
                     path: 'external',

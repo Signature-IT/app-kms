@@ -90,6 +90,7 @@ Signature\ProductBundle\Loader::injectInto($app);
 Signature\FeaturesBundle\Loader::injectInto($app);
 Signature\OrganizationBundle\Loader::injectInto($app);
 Signature\FormsBundle\Loader::injectInto($app);
+Signature\EntityBundle\Loader::injectInto($app);
 
 /** Register bundle's overrides */
 Signature\AppSignatureBundle\Loader::injectInto($app);

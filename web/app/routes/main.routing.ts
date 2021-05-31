@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import {AuthRoutesGuard, RedirectGuard, SEOResolver} from '@signature-it/ngx-generic';
 import { MainLayoutComponent } from '../components/layout/main/main';
 import { ProductPageResolver } from '@signature-it/ngx-catalogue';
+import { entityRoutes } from './entity.routing';
 
 const routes: Routes = [
     {
@@ -90,6 +91,7 @@ const routes: Routes = [
                 loadChildren: () => import('../modules/quick-pad.module').then(m => m.QuickPadModule),
                 resolve: { seo: SEOResolver }
             },
+            ...entityRoutes,
             {
                 path: '401',
                 loadChildren: () => import('../modules/error/unauthorized-user.module').then(m => m.ErrorUnauthorizedUserModule),
