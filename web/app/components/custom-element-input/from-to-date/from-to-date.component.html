@@ -1,0 +1,25 @@
+<mat-radio-group aria-label="Select an option" [(ngModel)]="op" (change)="fieldChange($event)">
+    <mat-radio-button  [value]="1" translate>from Today - until {{inAyearFormated}}</mat-radio-button>
+    <mat-radio-button  [value]="2" translate>from next month - until {{inAyearPlusMonthFormated}}</mat-radio-button>
+    <mat-radio-button class="custom-from-to-date" (blur)="showError=true" [id]="id + '-custom-btn'" [value]="3" translate>
+        <mat-form-field>
+            <input matInput
+                   floatLabel="never"
+                   [disabled]="op!=3"
+                   id="customDateValue"
+                   [matDatepicker]="pickerFrom"
+                   (focus)="pickerFrom.open()"
+                   [min]="today"
+                   [formControl]="customValue"
+                   placeholder="{{'Manual Date'| translate}}"
+                   (dateChange)="onDateChange($event)">
+            <mat-datepicker-toggle matSuffix [for]="pickerFrom"></mat-datepicker-toggle>
+            <mat-datepicker #pickerFrom></mat-datepicker>
+        </mat-form-field>
+        <div class="error-msg" *ngIf="!isValid&&showError" role="alert">
+            <i class="fas fa-exclamation-triangle"></i>
+            <span translate>required field</span>
+        </div>
+    </mat-radio-button>
+</mat-radio-group>
+

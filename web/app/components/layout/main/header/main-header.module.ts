@@ -15,6 +15,8 @@ import { MainHeaderNavbarMobileModule } from './navbar-mobile/navbar-mobile.modu
 import { MainHeaderNavbarMobileTopModule } from './navbar-mobile/top/navbar-mobile-top.module';
 import { MainHeaderComponent } from './main-header';
 import { UserLoginModule } from './user-login/user-login.module';
+import {SolrFilterFieldsModule} from "../../../custom-element-input/solr-filter-fields/solr-filter-fields.module";
+import {FromToDateComponentModule} from "../../../custom-element-input/from-to-date/from-to-date.module";
 
 @NgModule({
     imports: [
@@ -30,7 +32,9 @@ import { UserLoginModule } from './user-login/user-login.module';
         SearchModule_Catalogue,
         MainHeaderNavbarMobileModule,
         PhoneOrderModule,
-        GroupsMenuModuleGeneric
+        GroupsMenuModuleGeneric,
+		SolrFilterFieldsModule,
+		FromToDateComponentModule
     ],
     declarations: [MainHeaderComponent],
     entryComponents: [MainHeaderComponent],

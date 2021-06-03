@@ -1,0 +1,36 @@
+@import "web/styles/inc/variables";
+@import '../../../../../node_modules/bootstrap/scss/mixins/breakpoints';
+::ng-deep mat-radio-button {
+  border: none !important;
+}
+.mat-radio-container {
+  display: none;
+}
+
+::ng-deep mat-radio-button {
+  background-color: white;
+  border-radius: $border-radius;
+
+  &.custom-from-to-date .mat-radio-label {
+    align-items: baseline;
+  }
+
+  .mat-radio-outer-circle {
+    border-radius: 6px;
+    border-color: $app-input-border-color;
+    border-width: 1px;
+  }
+
+}
+
+mat-radio-button.mat-accent.mat-radio-checked::ng-deep {
+  .mat-radio-outer-circle {
+    border-radius: 6px;
+    border-color: $app-focus-input-border-color;
+  }
+
+  .mat-radio-inner-circle {
+    border-radius: 3px;
+    background-color: $app-focus-input-border-color;
+  }
+}
