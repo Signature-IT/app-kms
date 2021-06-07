@@ -45,14 +45,14 @@ export class SolrFilterFieldsComponent extends SolrFilterFieldsComponentGeneric 
 		val['moto_year_manufacture'] = this.myForm.controls.year_is.value;
 		val['moto_model'] = this.myForm.controls.model_ss.value;
 		val['moto_cc'] = this.myForm.controls.NEFA_ss.value;
-		if(this.responseDocs) {
-			val['ABS'] = this.responseDocs[0]['ABS_i'];
-			val['EBA'] = this.responseDocs[0]['EBA_i'];
-			val['ASC'] = this.responseDocs[0]['ASC__i'];
-			val['TCS'] = this.responseDocs[0]['TCS_i'];
-			val['CBS'] = this.responseDocs[0]['CBS_i'];
-		}
 		this.isValid = !val['moto_manufacturer'] || !val['moto_year_manufacture'] || !val['moto_model'] || !val['moto_cc']? false: true;
+		if(this.responseDocs && this.isValid) {
+			val['ABS'] = this.responseDocs[0]['ABS_s'];
+			val['EBA'] = this.responseDocs[0]['EBA_s'];
+			val['ASC'] = this.responseDocs[0]['ASC__s'];
+			val['TCS'] = this.responseDocs[0]['TCS_s'];
+			val['CBS'] = this.responseDocs[0]['CBS_s'];
+		}
 		this.updateValues(val);
 	}
 
