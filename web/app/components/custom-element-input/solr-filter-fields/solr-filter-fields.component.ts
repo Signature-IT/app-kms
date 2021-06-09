@@ -52,6 +52,7 @@ export class SolrFilterFieldsComponent extends SolrFilterFieldsComponentGeneric 
 			val['ASC'] = this.responseDocs[0]['ASC__s'];
 			val['TCS'] = this.responseDocs[0]['TCS_s'];
 			val['CBS'] = this.responseDocs[0]['CBS_s'];
+			val['tricycle'] = this.responseDocs[0]['tricycle_s'];
 		}
 		this.updateValues(val);
 	}
