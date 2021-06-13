@@ -11,6 +11,7 @@ import {
 } from '@signature-it/ngx-generic';
 
 import { SearchModule_Catalogue, MainHeaderCartModuleGeneric } from '@signature-it/ngx-catalogue';
+import { ModalLinkModuleGeneric} from "@signature-it/ngx-entity";
 import { MainHeaderNavbarMobileModule } from './navbar-mobile/navbar-mobile.module';
 import { MainHeaderNavbarMobileTopModule } from './navbar-mobile/top/navbar-mobile-top.module';
 import { MainHeaderComponent } from './main-header';
@@ -33,8 +34,9 @@ import {FromToDateComponentModule} from "../../../custom-element-input/from-to-d
         MainHeaderNavbarMobileModule,
         PhoneOrderModule,
         GroupsMenuModuleGeneric,
-		SolrFilterFieldsModule,
-		FromToDateComponentModule
+	SolrFilterFieldsModule,
+	FromToDateComponentModule,
+	ModalLinkModuleGeneric
     ],
     declarations: [MainHeaderComponent],
     entryComponents: [MainHeaderComponent],
