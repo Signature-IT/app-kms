@@ -39,6 +39,20 @@ export class SolrFilterFieldsComponent extends SolrFilterFieldsComponentGeneric 
 		this._updateValues();
 	}
 
+	initDefaultValues() {
+		this.initField('name_ss', 'moto_manufacturer');
+		this.initField('year_is', 'moto_year_manufacture');
+		this.initField('model_ss', 'moto_model');
+		this.initField('NEFA_ss', 'moto_cc');
+	}
+
+	initField(fieldName, fieldAnsKey) {
+		let fieldIndex = this.fields.find((f) => f.field == fieldName)?.index;
+		if (fieldIndex && this.ans[fieldAnsKey]) {
+			this.fields[fieldIndex - 1]['value'] = this.ans[fieldAnsKey];
+		}
+	}
+
 	_updateValues() {
 		let val = {};
 		val['moto_manufacturer'] = this.myForm.controls.name_ss.value;
@@ -47,12 +61,12 @@ export class SolrFilterFieldsComponent extends SolrFilterFieldsComponentGeneric 
 		val['moto_cc'] = this.myForm.controls.NEFA_ss.value;
 		this.isValid = !val['moto_manufacturer'] || !val['moto_year_manufacture'] || !val['moto_model'] || !val['moto_cc']? false: true;
 		if(this.responseDocs && this.isValid) {
-			val['ABS'] = this.responseDocs[0]['ABS_s'];
-			val['EBA'] = this.responseDocs[0]['EBA_s'];
-			val['ASC'] = this.responseDocs[0]['ASC__s'];
-			val['TCS'] = this.responseDocs[0]['TCS_s'];
-			val['CBS'] = this.responseDocs[0]['CBS_s'];
-			val['tricycle'] = this.responseDocs[0]['tricycle_s'];
+			val['ABS'] = this.responseDocs[0]['ABS_s'] || '0';
+			val['EBA'] = this.responseDocs[0]['EBA_s'] || '0';
+			val['ASC'] = this.responseDocs[0]['ASC__s'] || '0';
+			val['TCS'] = this.responseDocs[0]['TCS_s'] || '0';
+			val['CBS'] = this.responseDocs[0]['CBS_s'] || '0';
+			val['tricycle'] = this.responseDocs[0]['tricycle_s'] || '0';
 		}
 		this.updateValues(val);
 	}

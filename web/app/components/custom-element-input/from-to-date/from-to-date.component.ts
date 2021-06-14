@@ -22,6 +22,7 @@ export class FromToDateComponent extends CustomElementInputComponent implements 
 	inAyearFormated: string;
 	inAyearPlusMonthFormated: string;
 	customValue = new FormControl();
+	formattedValue: any;
 
 	constructor(protected FormSvc: FormService,
 				protected DateAdapter: DateAdapter<any>) {
@@ -38,10 +39,20 @@ export class FromToDateComponent extends CustomElementInputComponent implements 
 
 	ngOnInit() {
 		super.ngOnInit();
+		this.initDefaultValues();
 	}
 
 	getLangCode() {
 		return 'he';
+	}
+
+	initDefaultValues() {
+		if(this.ans && this.ans[this.id]) {
+			this.op = parseInt(this.ans[this.id]);
+			if(this.op == 3 && this.ans[this.fromField]) {
+				this.customValue.setValue(new Date(this.ans[this.fromField] * 1000));
+			}
+		}
 	}
 
 	fieldChange(field) {
@@ -88,6 +99,7 @@ export class FromToDateComponent extends CustomElementInputComponent implements 
 		let val = {};
 		val[this.fromField] = from;
 		val[this.toField] = to;
+		val[this.id] = this.op;
 		this.updateValues(val);
 	}
 
