@@ -85,10 +85,10 @@ export class FromToDateComponent extends CustomElementInputComponent implements 
 
 	getToDate(fromDate) {
 		const inAyear = new Date(fromDate);
-		if(fromDate.getDate() < 27) {
-			inAyear.setMonth(fromDate.getMonth() + 11);
-		} else {
+		if(fromDate.getDate() <= 27) {
 			inAyear.setMonth(fromDate.getMonth() + 12);
+		} else {
+			inAyear.setMonth(fromDate.getMonth() + 13);
 		}
 		inAyear.setDate(0);
 		return inAyear;
