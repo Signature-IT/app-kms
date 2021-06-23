@@ -57,6 +57,9 @@ export class SolrFilterFieldsMotorcyclesComponent extends SolrFilterFieldsCompon
 	_updateValues() {
 		let val = {};
 		val['moto_manufacturer'] = this.myForm.controls.name_ss.value;
+		if(this.ans && this.ans['moto_year_manufacture'] && this.ans['moto_year_manufacture'] != this.myForm.controls.year_is.value) {
+			val['old_new'] = '0';
+		}
 		val['moto_year_manufacture'] = this.myForm.controls.year_is.value;
 		val['moto_model'] = this.myForm.controls.model_ss.value;
 		val['moto_cc'] = this.myForm.controls.NEFA_ss.value;
