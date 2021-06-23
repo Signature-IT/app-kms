@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {DateAdapter} from "@angular/material/core";
 import {FormControl } from '@angular/forms';
-import {CustomElementInputComponent, FormService, CngDataDTO} from '@signature-it/ngx-generic';
+import {CustomElementInputComponent, FormService, CngDataDTO, SolrService, SolrRequestOptionsDTO} from '@signature-it/ngx-generic';
 
 @Component({
 	selector: 'from-to-date',
@@ -23,9 +23,11 @@ export class FromToDateComponent extends CustomElementInputComponent implements 
 	inAyearPlusMonthFormated: string;
 	customValue = new FormControl();
 	formattedValue: any;
+	maxDate = new Date();
 
 	constructor(protected FormSvc: FormService,
-				protected DateAdapter: DateAdapter<any>) {
+				protected DateAdapter: DateAdapter<any>,
+				protected solrService: SolrService) {
 		super(FormSvc);
 		this.DateAdapter.setLocale(this.getLangCode());
 		this.inAyear = this.getToDate(this.today);
@@ -39,11 +41,32 @@ export class FromToDateComponent extends CustomElementInputComponent implements 
 
 	ngOnInit() {
 		super.ngOnInit();
+		this.setMaxDate();
 		this.initDefaultValues();
 	}
 
 	getLangCode() {
 		return 'he';
+	}
+
+	setMaxDate() {
+		const solrOptions = new SolrRequestOptionsDTO({
+			pageNumber: 1,
+			itemsPerPage: 1,
+			type_i: 100,
+			sort: 'upload_date_s desc',
+			isGroupBy: false
+		});
+		this.solrService.buildSolrUrl([], solrOptions, 0, 0).subscribe(r => {
+			if(r['response'] && r['response']['docs'] && r['response']['docs'][0] && r['response']['docs'][0]['upload_date_s']) {
+				const mY = r['response']['docs'][0]['upload_date_s'].split('/');
+				let maxDate = new Date();
+				maxDate.setMonth(mY[1]);
+				maxDate.setYear(mY[0]);
+				maxDate.setDate(0);
+				this.maxDate = maxDate;
+			}
+		});
 	}
 
 	initDefaultValues() {

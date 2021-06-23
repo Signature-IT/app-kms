@@ -10,6 +10,7 @@
                    [matDatepicker]="pickerFrom"
                    (focus)="pickerFrom.open()"
                    [min]="today"
+                   [max]="maxDate"
                    [formControl]="customValue"
                    placeholder="{{'Manual Date'| translate}}"
                    (dateChange)="onDateChange($event)">
