@@ -64,7 +64,8 @@ export class SolrFilterFieldsMotorcyclesComponent extends SolrFilterFieldsCompon
 		if(this.responseDocs && this.isValid) {
 			this.sortLowerCost();
 			this.selectedMoto = this.responseDocs[0];
-			val['moto_data'] = this.selectedMoto;
+			// val['moto_data'] = this.selectedMoto;
+			this.FormSvc['motorcycle'] = this.selectedMoto;
 			val['ABS'] = this.selectedMoto['ABS_s'] || '0';
 			val['EBA'] = this.selectedMoto['EBA_s'] || '0';
 			val['ASC'] = this.selectedMoto['ASC__s'] || '0';
@@ -88,13 +89,14 @@ export class SolrFilterFieldsMotorcyclesComponent extends SolrFilterFieldsCompon
 			if(this.selectedMoto && this.cngData.ans['old_new']) {
 				let selectedMoto;
 				if(this.cngData.ans['old_new'].value == 'Yes') {
-					selectedMoto = this.responseDocs.filter(r => r['newold_s'] == '2');
+					selectedMoto = this.responseDocs.filter(r => r['newold_s'] == '2')[0];
 				} else {
 					selectedMoto = this.responseDocs[0];
 				}
 				if(this.selectedMoto['id_s'] != selectedMoto['id_s']) {
 					this.selectedMoto = selectedMoto;
-					this.updateValues({moto_data: this.selectedMoto});
+					this.FormSvc['motorcycle'] = this.selectedMoto;
+					// this.updateValues({moto_data: this.selectedMoto});
 				}
 			}
 		});
