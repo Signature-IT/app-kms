@@ -62,7 +62,7 @@ export class FromToDateComponent extends CustomElementInputComponent implements 
 				const mY = r['response']['docs'][0]['upload_date_s'].split('/');
 				let maxDate = new Date();
 				maxDate.setMonth(mY[1]);
-				maxDate.setYear(mY[0]);
+				maxDate.setFullYear(mY[0]);
 				maxDate.setDate(0);
 				this.maxDate = maxDate;
 			}

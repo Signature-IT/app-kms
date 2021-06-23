@@ -4,11 +4,11 @@ import {Router} from '@angular/router';
 import {CookieService} from 'ngx-cookie-service';
 import {GenericConfig, SolrFilterFieldsComponentGeneric ,FormService, SolrService, SolrRequestOptionsDTO} from '@signature-it/ngx-generic';
 @Component({
-    selector: 'solr-filter-fields',
+    selector: 'solr-filter-fields-motorcycles',
     templateUrl: '../../../../../projects/signature-it/ngx-generic/src/lib/components/forms/custom-element-input/solr-filter-fields/solr-filter-fields.component.html',
     styleUrls: ['../../../../../projects/signature-it/ngx-generic/src/lib/components/forms/custom-element-input/solr-filter-fields/solr-filter-fields.component.scss']
 })
-export class SolrFilterFieldsComponent extends SolrFilterFieldsComponentGeneric implements OnInit {
+export class SolrFilterFieldsMotorcyclesComponent extends SolrFilterFieldsComponentGeneric implements OnInit {
 	@Input() isCngInput: boolean;
 	@Input() key;
 	solrOptions: any;
@@ -23,6 +23,7 @@ export class SolrFilterFieldsComponent extends SolrFilterFieldsComponentGeneric 
 	solrType: number;
 	solrSearchMode: string;
 	solrSearchField: string;
+	selectedMoto: object;
 
 	constructor(protected FormSvc: FormService,
 				protected solrService: SolrService) {
@@ -61,14 +62,41 @@ export class SolrFilterFieldsComponent extends SolrFilterFieldsComponentGeneric 
 		val['moto_cc'] = this.myForm.controls.NEFA_ss.value;
 		this.isValid = !val['moto_manufacturer'] || !val['moto_year_manufacture'] || !val['moto_model'] || !val['moto_cc']? false: true;
 		if(this.responseDocs && this.isValid) {
-			val['ABS'] = this.responseDocs[0]['ABS_s'] || '0';
-			val['EBA'] = this.responseDocs[0]['EBA_s'] || '0';
-			val['ASC'] = this.responseDocs[0]['ASC__s'] || '0';
-			val['TCS'] = this.responseDocs[0]['TCS_s'] || '0';
-			val['CBS'] = this.responseDocs[0]['CBS_s'] || '0';
-			val['tricycle'] = this.responseDocs[0]['tricycle_s'] || '0';
+			this.sortLowerCost();
+			this.selectedMoto = this.responseDocs[0];
+			val['moto_data'] = this.selectedMoto;
+			val['ABS'] = this.selectedMoto['ABS_s'] || '0';
+			val['EBA'] = this.selectedMoto['EBA_s'] || '0';
+			val['ASC'] = this.selectedMoto['ASC__s'] || '0';
+			val['TCS'] = this.selectedMoto['TCS_s'] || '0';
+			val['CBS'] = this.selectedMoto['CBS_s'] || '0';
+			val['tricycle'] = this.selectedMoto['tricycle_s'] || '0';
 		}
 		this.updateValues(val);
 	}
 
+	sortLowerCost() {
+		this.responseDocs.sort(function (a, b) {
+			return parseFloat(a.cost_s) - parseFloat(b.cost_s);
+		});
+	}
+
+	sunscribeCng() {
+		this.FormSvc.cngData$.subscribe(cngData => {
+			if(!cngData) return;
+			this.cngData = cngData;
+			if(this.selectedMoto && this.cngData.ans['old_new']) {
+				let selectedMoto;
+				if(this.cngData.ans['old_new'].value == 'Yes') {
+					selectedMoto = this.responseDocs.filter(r => r['newold_s'] == '2');
+				} else {
+					selectedMoto = this.responseDocs[0];
+				}
+				if(this.selectedMoto['id_s'] != selectedMoto['id_s']) {
+					this.selectedMoto = selectedMoto;
+					this.updateValues({moto_data: this.selectedMoto});
+				}
+			}
+		});
+	}
 }
