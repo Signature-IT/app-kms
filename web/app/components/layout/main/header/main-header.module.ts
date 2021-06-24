@@ -11,12 +11,12 @@ import {
 } from '@signature-it/ngx-generic';
 
 import { SearchModule_Catalogue, MainHeaderCartModuleGeneric } from '@signature-it/ngx-catalogue';
-import { ModalLinkModuleGeneric} from "@signature-it/ngx-entity";
+// import { ModalLinkModuleGeneric} from "@signature-it/ngx-entity";
 import { MainHeaderNavbarMobileModule } from './navbar-mobile/navbar-mobile.module';
 import { MainHeaderNavbarMobileTopModule } from './navbar-mobile/top/navbar-mobile-top.module';
 import { MainHeaderComponent } from './main-header';
 import { UserLoginModule } from './user-login/user-login.module';
-import {SolrFilterFieldsModule} from "../../../custom-element-input/solr-filter-fields/solr-filter-fields.module";
+import {SolrFilterFieldsMotorcyclesModule} from "../../../custom-element-input/solr-filter-fields-motorcycles/solr-filter-fields-motorcycles.module";
 import {FromToDateComponentModule} from "../../../custom-element-input/from-to-date/from-to-date.module";
 
 @NgModule({
@@ -34,9 +34,9 @@ import {FromToDateComponentModule} from "../../../custom-element-input/from-to-d
         MainHeaderNavbarMobileModule,
         PhoneOrderModule,
         GroupsMenuModuleGeneric,
-	SolrFilterFieldsModule,
+		SolrFilterFieldsMotorcyclesModule,
 	FromToDateComponentModule,
-	ModalLinkModuleGeneric
+	// ModalLinkModuleGeneric
     ],
     declarations: [MainHeaderComponent],
     entryComponents: [MainHeaderComponent],
