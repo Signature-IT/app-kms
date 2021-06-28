@@ -119,7 +119,7 @@ export class SolrFilterFieldsMotorcyclesComponent extends SolrFilterFieldsCompon
 		let val = {};
 		val['vehicle_cost'] = parseFloat(this.selectedMoto['cost_s']);
 		val['vehicle_cost_actual'] = parseFloat(this.selectedMoto['cost_s']);
-		val['generator'] = parseInt(this.selectedMoto['generator_s']);
+		val['vehicle_generator'] = parseInt(this.selectedMoto['generator_s']);
 		return val;
 	}
 }
