@@ -37,7 +37,9 @@ export class SolrFilterFieldsMotorcyclesComponent extends SolrFilterFieldsCompon
 
 	valuesChanged(field) {
 		super.valuesChanged(field);
-		this._updateValues();
+		if(this.isValid) {
+			this._updateValues();
+		}
 	}
 
 	initDefaultValues() {
@@ -54,6 +56,17 @@ export class SolrFilterFieldsMotorcyclesComponent extends SolrFilterFieldsCompon
 		}
 	}
 
+	setReponseDoc(responses) {
+		this.responseDocs = responses['response']['docs'];
+		if(this.isValid) {
+			this._updateValues();
+		}
+	}
+
+	public get isValid() {
+		return !this.myForm.controls.name_ss.value || !this.myForm.controls.year_is.value || !this.myForm.controls.model_ss.value || !this.myForm.controls.NEFA_ss.value? false: true;
+	}
+
 	_updateValues() {
 		let val = {};
 		val['moto_manufacturer'] = this.myForm.controls.name_ss.value;
@@ -63,12 +76,10 @@ export class SolrFilterFieldsMotorcyclesComponent extends SolrFilterFieldsCompon
 		val['moto_year_manufacture'] = this.myForm.controls.year_is.value;
 		val['moto_model'] = this.myForm.controls.model_ss.value;
 		val['moto_cc'] = this.myForm.controls.NEFA_ss.value;
-		this.isValid = !val['moto_manufacturer'] || !val['moto_year_manufacture'] || !val['moto_model'] || !val['moto_cc']? false: true;
-		if(this.responseDocs && this.isValid) {
+		if(this.responseDocs) {
 			this.sortLowerCost();
 			this.selectedMoto = this.responseDocs[0];
-			// val['moto_data'] = this.selectedMoto;
-			this.FormSvc['motorcycle'] = this.selectedMoto;
+			val = {...val, ...this.getVehicleData()};
 			val['ABS'] = this.selectedMoto['ABS_s'] || '0';
 			val['EBA'] = this.selectedMoto['EBA_s'] || '0';
 			val['ASC'] = this.selectedMoto['ASC__s'] || '0';
@@ -98,10 +109,17 @@ export class SolrFilterFieldsMotorcyclesComponent extends SolrFilterFieldsCompon
 				}
 				if(this.selectedMoto['id_s'] != selectedMoto['id_s']) {
 					this.selectedMoto = selectedMoto;
-					this.FormSvc['motorcycle'] = this.selectedMoto;
-					// this.updateValues({moto_data: this.selectedMoto});
+					this.updateValues({...this.getVehicleData()});
 				}
 			}
 		});
+	}
+
+	getVehicleData() {
+		let val = {};
+		val['vehicle_cost'] = parseFloat(this.selectedMoto['cost_s']);
+		val['vehicle_cost_actual'] = parseFloat(this.selectedMoto['cost_s']);
+		val['generator'] = parseInt(this.selectedMoto['generator_s']);
+		return val;
 	}
 }
