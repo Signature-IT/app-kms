@@ -16,7 +16,7 @@ import {AddToCartModule, ProductSolrImageDirectiveModule, PriceModule_Catalogue}
         TranslateModule,
         RouterModule,
         AddToCartModule,
-        NgbModule.forRoot(),
+        NgbModule,
         ProductSolrImageDirectiveModule,
         MatSlideToggleModule,
         PriceModule_Catalogue

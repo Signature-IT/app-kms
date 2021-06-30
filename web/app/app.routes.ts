@@ -30,7 +30,7 @@ import {DecodeSeoUriPipeModule, EncodeSeoUriPipeModule} from '@signature-it/ngx-
                     redirectTo: '404'
                 }
             ],
-            {preloadingStrategy: AppCustomPreloader}
+            { preloadingStrategy: AppCustomPreloader, relativeLinkResolution: 'legacy' }
         ),
         TranslateModule
     ],

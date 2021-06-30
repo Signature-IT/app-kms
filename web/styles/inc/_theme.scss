@@ -1,3 +1,4 @@
+@use '~@angular/material' as mat;
 $app-primary-palette: (
         50 : #fce7ea,
         100 : #f8c3cb,
@@ -64,19 +65,18 @@ $app-secondary-palette: (
         )
 );
 
-@import '~@angular/material/theming';
-@include mat-core();
+@include mat.core();
 
 
-$my-theme-primary: mat-palette($app-primary-palette);
-$my-theme-accent: mat-palette($app-secondary-palette, 500, 900, A100);
-$my-theme-warn: mat-palette($mat-deep-orange, A200);
+$my-theme-primary: mat.define-palette($app-primary-palette);
+$my-theme-accent: mat.define-palette($app-secondary-palette, 500, 900, A100);
+$my-theme-warn: mat.define-palette(mat.$deep-orange-palette, A200);
 
-$my-app-theme: mat-light-theme(
+$my-app-theme: mat.define-light-theme(
                 $my-theme-primary,
                 $my-theme-accent,
                 $my-theme-warn
 );
 
 
-@include angular-material-theme($my-app-theme);
+@include mat.all-component-themes($my-app-theme);

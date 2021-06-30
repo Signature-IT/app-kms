@@ -18,7 +18,7 @@ import {ProductsCards} from '../products-cards/products-cards.module';
         AddToCartModule,
         ProductsCards,
         PaginationModule.forRoot(),
-        NgbModule.forRoot(),
+        NgbModule,
         RouterModule.forChild([{
             path: '',
             component: LeafGroupComponent

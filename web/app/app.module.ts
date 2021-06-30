@@ -6,7 +6,7 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { LocalStorageModule } from 'angular-2-local-storage/dist';
+import { LocalStorageModule } from 'angular-2-local-storage';
 // Routes
 import {AppRoutingModule} from './app.routes';
 // Components
