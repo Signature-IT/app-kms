@@ -23,7 +23,7 @@ import {ProductCardModule} from './product-card/product-card.module';
         RouterModule,
         PaginationModule,
         CmsModule,
-        NgbModule.forRoot(),
+        NgbModule,
         SortModule_Catalogue
     ],
     exports: [ProductsCardsComponent]
