@@ -1,0 +1,65 @@
+<form *ngIf="form" (ngSubmit)="onSubmit()" [formGroup]="form">
+    <div *ngFor="let field of fields; let i=index;">
+        <div class="dynamic-field-wrapper">
+            <div  class="dynamic-field-label">
+                <div class="label-wrapper">
+                    <label class="d-inline">
+                        <span [innerHTML]="field.label|translate"></span>
+                    </label>
+                </div>
+            </div>
+            <div class="d-flex dynamic-wrap">
+                <div [ngClass]="{'flat-select': !(field['withHoverImages'] || field['withImages']),
+                   'flat-select-hover-img': field['withHoverImages'],
+                     'flat-select-img-text-only': field['imgAndTextOnly'],
+                     'flat-select-image-on-click': field['imageOnClick'],
+                    'flat-select-with-img': field['withImages']}" >
+                    <mat-radio-group [id]="field.key"
+                                     (change)="fieldChange($event, field)"
+                                     [formControlName]="field.key"
+                                     [ngClass]="{'d-flex justify-content-between':field['withHoverImages']}">
+                        <div [ngClass]="{'flat-select-wrap': !(field['withHoverImages'] || field['withImages']),
+                                        'd-inline-block': field['imgAndTextOnly'] || field['imageOnClick'],
+                                        'hover-img-wrap col-6': field['withHoverImages']}"
+                             *ngFor="let opt of field['options']">
+                            <mat-radio-button
+                                    (mouseover)="opt['over'] = field['withHoverImages']"
+                                    (mouseout)="opt['over'] = false"
+                                    [value]="opt.key" >
+                                <!--<img no-image *ngIf="field['withImages']" [src]="this.getOptPic(opt, !field['imgAndTextOnly'], null)" alt="{{opt.alt |translate}}"/>-->
+                                {{opt.value|translate}}
+                                <span>{{opt['price']|currency:'ILS'}}</span>
+                            </mat-radio-button>
+                        </div>
+                    </mat-radio-group>
+                </div>
+            </div>
+        </div>
+        <ng-container *ngIf="allowManualPrice">
+            <label class="d-inline">
+                <span>{{'Vehicle Cost'|translate}}</span>
+            </label>
+            <mat-form-field>
+                <input matInput
+                       id="manualCost"
+                       [formControl]="manualCost"
+                       placeholder="{{'Manual Price'| translate}}"
+                       (change)="manualCostChange($event)">
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput
+                       id="manualPrice"
+                       [formControl]="manualPrice"
+                       placeholder="{{'Manual Price'| translate}}"
+                       (change)="manualPriceChange($event)">
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput
+                       id="manualDiscount"
+                       [formControl]="manualDiscount"
+                       placeholder="{{'Manual Discount'| translate}}"
+                       (change)="manualDiscountChange($event)">
+            </mat-form-field>
+        </ng-container>
+    </div>
+</form>
