@@ -1,9 +1,11 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {DateAdapter} from "@angular/material/core";
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {CustomElementInputComponent, FormService, CngDataDTO,
+import {
+	CustomElementInputComponent, FormService, CngDataDTO,
 	FormField, SelectField, LanguageService, ILanguage, OptionDTO,
-	FormSettingsDTO, ComponentDTO, IUser, AuthService} from '@signature-it/ngx-generic';
+	FormSettingsDTO, ComponentDTO, IUser, AuthService, CngPriceService
+} from '@signature-it/ngx-generic';
 import {Observable} from "rxjs/index";
 import {PriceSelectComponent} from "../price-select/price-select.component";
 
@@ -21,8 +23,9 @@ export class PropertyInsurancePricesComponent extends PriceSelectComponent imple
 
 	constructor(protected FormSvc: FormService,
 				protected langSvc: LanguageService,
+				protected cngPriceSvc: CngPriceService,
 				protected authSvc: AuthService) {
-		super(FormSvc, langSvc);
+		super(FormSvc, langSvc, cngPriceSvc);
 	}
 
 	ngOnInit() {

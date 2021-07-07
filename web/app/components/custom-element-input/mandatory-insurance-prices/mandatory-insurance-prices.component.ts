@@ -4,7 +4,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {
 	CustomElementInputComponent, FormService, CngDataDTO,
 	FormField, SelectField, LanguageService, ILanguage, OptionDTO,
-	FormSettingsDTO, ComponentDTO, IUser, AuthService
+	FormSettingsDTO, ComponentDTO, IUser, AuthService, CngPriceService
 } from '@signature-it/ngx-generic';
 import {Observable} from "rxjs/index";
 import {PriceSelectComponent} from "../price-select/price-select.component";
@@ -21,8 +21,9 @@ export class MandatoryInsurancePricesComponent extends PriceSelectComponent impl
 
 	constructor(protected FormSvc: FormService,
 				protected langSvc: LanguageService,
+				protected cngPriceSvc: CngPriceService,
 				protected authSvc: AuthService) {
-		super(FormSvc, langSvc);
+		super(FormSvc, langSvc, cngPriceSvc);
 	}
 
 	ngOnInit() {

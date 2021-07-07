@@ -2,8 +2,8 @@ import {Component, Input, OnInit} from '@angular/core';
 import {DateAdapter} from "@angular/material/core";
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {CustomElementInputComponent, FormService, CngDataDTO,
-	FormField, SelectField, LanguageService, ILanguage, OptionDTO,
-	FormSettingsDTO, ComponentDTO, IUser} from '@signature-it/ngx-generic';
+	FormField, SelectField, LanguageService, ILanguage, OptionDTO, Template,
+	FormSettingsDTO, ComponentDTO, IUser, CngPriceService, ComponentFullDTO} from '@signature-it/ngx-generic';
 import {Observable} from "rxjs/index";
 
 declare let _: any;
@@ -27,9 +27,11 @@ export class PriceSelectComponent extends CustomElementInputComponent implements
 	manualCost = new FormControl();
 	selectedPrice: SelectField;
 	user: IUser;
+	options: ComponentFullDTO;
 
 	constructor(protected FormSvc: FormService,
-				protected langSvc: LanguageService) {
+				protected langSvc: LanguageService,
+				protected cngPriceSvc: CngPriceService) {
 		super(FormSvc);
 		this.currLang = this.langSvc.getCurrentLanguage$();
 	}
@@ -42,9 +44,12 @@ export class PriceSelectComponent extends CustomElementInputComponent implements
 			this.fields = this.getFields();
 			this.fields.forEach((field: SelectField) => {
 				if(this.componentGroupId) {
-					this.FormSvc.getComponentsFromSolr(this.lang, field.componentGroupId, '', FormSettingsDTO.create({})).subscribe((components: ComponentDTO[]) => {
-						let options = OptionDTO.createFromComponents(components);
-						field.options = this.calcPrice(options);
+					const s = FormSettingsDTO.create({});
+					s.hasFcc = true;
+					s.fccFL = ['comp_price_template_var_s'];
+					this.FormSvc.getComponentsFromSolr(this.lang, field.componentGroupId, '', s).subscribe((components: ComponentDTO[]) => {
+						this.options = OptionDTO.createFromComponents(components, true);
+						field.options = this.calcPrice(this.options);
 					});
 					this.form.addControl(field.key, new FormControl(field.getValue(), [Validators.required]));
 				}
@@ -101,10 +106,28 @@ export class PriceSelectComponent extends CustomElementInputComponent implements
 	}
 
 	calcPrice(options) {
-		options.forEach(op => {
-			op['price'] = 3756;
-		});
+		if(!this.ans) return options;
+		const templateVars = options.map(o => o['comp_price_template_var_s']).filter(t => t);
+		if(templateVars.length) {
+			this.cngPriceSvc.calcPrice(templateVars, this.ans).subscribe(templates => {
+				const pricingTemplates: Template[] = templates;
+				_.forEach(options, (o) => {
+					o['pricingTemplate'] = pricingTemplates.filter((pt:Template) => pt.templateVar == o['comp_price_template_var_s'])[0];
+				});
+				return options;
+			});
+		}
 		return options;
+	}
+
+	subscribeAns() {
+		this.FormSvc.values$.subscribe(({values, skipUpdateDynamicField}) => {
+			this.ans = values;
+			if(this.options) {
+				const options = this.calcPrice(this.options);
+			}
+
+		});
 	}
 
 }
