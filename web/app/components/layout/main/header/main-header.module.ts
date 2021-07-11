@@ -7,7 +7,8 @@ import {
     DropdownLangsModuleGeneric,
     MainHeaderSearchFormModuleGeneric,
     PhoneOrderModule,
-    GroupsMenuModuleGeneric
+    GroupsMenuModuleGeneric,
+	AdditionalPaidServiceModule
 } from '@signature-it/ngx-generic';
 
 import { SearchModule_Catalogue, MainHeaderCartModuleGeneric } from '@signature-it/ngx-catalogue';
@@ -40,7 +41,8 @@ import {PropertyInsurancePricesComponentModule} from "../../../custom-element-in
 	    FromToDateComponentModule,
 		MandatoryInsurancePricesComponentModule,
 		PropertyInsurancePricesComponentModule,
-        ModalLinkModuleGeneric
+        ModalLinkModuleGeneric,
+		AdditionalPaidServiceModule
     ],
     declarations: [MainHeaderComponent],
     entryComponents: [MainHeaderComponent],
