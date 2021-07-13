@@ -8,16 +8,18 @@ import {
 } from '@signature-it/ngx-generic';
 import {Observable} from "rxjs/index";
 import {PriceSelectComponent} from "../price-select/price-select.component";
+import {ProtectionsInsurancePricesComponentModule} from "./protections-insurance-prices.module";
 
 
 @Component({
-	selector: 'mandatory-insurance-prices',
+	selector: 'protections-insurance-prices',
 	templateUrl: '../price-select/price-select.component.html',
 	styleUrls: ['../price-select/price-select.component.scss']
 })
-export class MandatoryInsurancePricesComponent extends PriceSelectComponent implements OnInit {
+export class ProtectionsInsurancePricesComponent extends PriceSelectComponent implements OnInit {
 	@Input() componentGroupId;
 	@Input() id = '';
+	priceAsToken = true;
 
 	constructor(protected FormSvc: FormService,
 				protected langSvc: LanguageService,
@@ -32,16 +34,16 @@ export class MandatoryInsurancePricesComponent extends PriceSelectComponent impl
 
 	getValues(value) {
 		let val = super.getValues(value);
-		val['mandatory_insurance_price'] = this.getSelectedPrice();
+		val['additional_protections_price'] = this.getSelectedPrice();
 		return val;
 	}
 
-	getField() {
+	getFields() {
 		return SelectField.create({
-			key: "mandatory_insurance_prices",
+			key: "additional_protections",
 			type: "Select",
 			controlType: "FlatSelect",
-			label: "Mandatory Insurance Prices",
+			label: "Protections Insurance Prices",
 			isMultiple: false,
 			dynamicOptions: true,
 			componentGroupId: this.componentGroupId

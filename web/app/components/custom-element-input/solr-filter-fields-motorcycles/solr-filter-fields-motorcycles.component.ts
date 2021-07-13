@@ -37,9 +37,7 @@ export class SolrFilterFieldsMotorcyclesComponent extends SolrFilterFieldsCompon
 
 	valuesChanged(field) {
 		super.valuesChanged(field);
-		if(this.isValid) {
-			this._updateValues();
-		}
+		this._updateValues();
 	}
 
 	initDefaultValues() {
@@ -58,9 +56,7 @@ export class SolrFilterFieldsMotorcyclesComponent extends SolrFilterFieldsCompon
 
 	setReponseDoc(responses) {
 		this.responseDocs = responses['response']['docs'];
-		if(this.isValid) {
-			this._updateValues();
-		}
+		this._updateValues();
 	}
 
 	public get isValid() {

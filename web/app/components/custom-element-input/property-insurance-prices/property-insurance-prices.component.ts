@@ -36,18 +36,21 @@ export class PropertyInsurancePricesComponent extends PriceSelectComponent imple
 		});
 	}
 
-	getFields() {
-		return [
-			SelectField.create({
+	getField(): SelectField {
+		return SelectField.create({
 				key: "property_insurance_prices",
 				type: "Select",
 				controlType: "FlatSelect",
 				label: "Property Insurance Prices",
 				isMultiple: false,
-				dynamicOptions: true,
-				componentGroupId: this.componentGroupId
-			})
-		];
+				dynamicOptions: true
+			});
+	}
+
+	getValues(value) {
+		let val = super.getValues(value);
+		val['property_insurance_price'] = this.getSelectedPrice();
+		return val;
 	}
 
 	onSubmit() {

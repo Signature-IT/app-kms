@@ -16,7 +16,7 @@ declare let _: any;
 export class PriceSelectComponent extends CustomElementInputComponent implements OnInit {
 	@Input() componentGroupId;
 	@Input() id = '';
-	fields: SelectField[];
+	field: SelectField;
 	payLoad = '';
 	form: FormGroup;
 	protected currLang: Observable<ILanguage>;
@@ -28,6 +28,7 @@ export class PriceSelectComponent extends CustomElementInputComponent implements
 	selectedPrice: SelectField;
 	user: IUser;
 	options: ComponentFullDTO;
+	priceAsToken = false;
 
 	constructor(protected FormSvc: FormService,
 				protected langSvc: LanguageService,
@@ -37,69 +38,75 @@ export class PriceSelectComponent extends CustomElementInputComponent implements
 	}
 
 	ngOnInit() {
-		super.ngOnInit();
 		this.currLang.subscribe(lang => {
 			this.lang = lang;
 			this.form = new FormGroup({});
-			this.fields = this.getFields();
-			this.fields.forEach((field: SelectField) => {
-				if(this.componentGroupId) {
-					const s = FormSettingsDTO.create({});
-					s.hasFcc = true;
-					s.fccFL = ['comp_price_template_var_s'];
-					this.FormSvc.getComponentsFromSolr(this.lang, field.componentGroupId, '', s).subscribe((components: ComponentDTO[]) => {
-						this.options = OptionDTO.createFromComponents(components, true);
-						field.options = this.calcPrice(this.options);
-					});
-					this.form.addControl(field.key, new FormControl(field.getValue(), [Validators.required]));
-				}
-			});
+			this.field = this.getField();
+			if(this.field && this.componentGroupId) {
+				const s = FormSettingsDTO.create({});
+				s.hasFcc = true;
+				s.fccFL = ['comp_price_template_var_s'];
+				this.FormSvc.getComponentsFromSolr(this.lang, this.componentGroupId, '', s).subscribe((components: ComponentDTO[]) => {
+					this.options = OptionDTO.createFromComponents(components, true);
+					this.field.options = this.calcPrice(this.options);
+				});
+				this.form.addControl(this.field.key, new FormControl(this.field.getValue(), [Validators.required]));
+				this.subscribeAns();
+				this.sunscribeCng();
+			}
 		});
 
 	}
 
-	getFields() {
-		return [];
+	getField(): SelectField {
+		return SelectField.create({});
 	}
 
 	fieldChange(e, field) {
-		if(this.allowManualPrice) {
-			this.manualPrice.enable();
-			this.manualDiscount.enable();
-		}
+		// if(this.allowManualPrice) {
+		// 	this.manualPrice.enable();
+		// 	this.manualDiscount.enable();
+		// }
 		this.selectedPrice = field;
+		const val = this.getValues(e.value);
+		this.updateValues(val);
+	}
+
+	getValues(value) {
+		let val = {};
+		val[this.id] = value;
+		return val;
 	}
 
 	getSelectedPrice() {
-		let options = _.filter(this.fields, {key: this.selectedPrice.key})[0]['options'];
-		return _.filter(options, { key: this.form.value[this.selectedPrice.key] })[0]['price'];
+		return _.filter(this.field.options, { key: this.form.value[this.selectedPrice.key] })[0]['price'];
 	}
 
-	manualPriceChange(field) {
-		const val = {
-			'manual_price': this.manualPrice.value,
-			'manual_user': this.user.user_id,
-			'manual_discount_modification': Math.round(new Date().getTime()/1000)
-		};
-		this.updateValues(val);
-	}
-
-	manualDiscountChange(field) {
-		const val = {
-			'manual_price': this.getSelectedPrice() * (1 - this.manualDiscount.value/100),
-			'manual_user': this.user.user_id,
-			'manual_discount_modification': Math.round(new Date().getTime()/1000)
-		};
-		this.updateValues(val);
-	}
-
-	manualCostChange(field) {
-		const val = {
-			'vehicle_cost_actual': parseFloat(this.manualCost.value),
-			'manual_user': this.user.user_id
-		};
-		this.updateValues(val);
-	}
+	// manualPriceChange(field) {
+	// 	const val = {
+	// 		'manual_price': this.manualPrice.value,
+	// 		'manual_user': this.user.user_id,
+	// 		'manual_discount_modification': Math.round(new Date().getTime()/1000)
+	// 	};
+	// 	this.updateValues(val);
+	// }
+	//
+	// manualDiscountChange(field) {
+	// 	const val = {
+	// 		'manual_price': this.getSelectedPrice() * (1 - this.manualDiscount.value/100),
+	// 		'manual_user': this.user.user_id,
+	// 		'manual_discount_modification': Math.round(new Date().getTime()/1000)
+	// 	};
+	// 	this.updateValues(val);
+	// }
+	//
+	// manualCostChange(field) {
+	// 	const val = {
+	// 		'vehicle_cost_actual': parseFloat(this.manualCost.value),
+	// 		'manual_user': this.user.user_id
+	// 	};
+	// 	this.updateValues(val);
+	// }
 
 	onSubmit() {
 		this.payLoad = JSON.stringify(this.form.value);
@@ -126,8 +133,25 @@ export class PriceSelectComponent extends CustomElementInputComponent implements
 			if(this.options) {
 				const options = this.calcPrice(this.options);
 			}
-
+			this.initDefaultValues();
+			this.subscribeFieldChanges();
 		});
 	}
 
+	subscribeFieldChanges() {
+		this.FormSvc.onFieldValuesChanged$.subscribe(({key, values, removeValues}) => {
+			if (key != this.id) return;
+			if (values) {
+				this.field['options'] = this.field['options'].filter(v => values.includes(parseInt(v['key'])));
+				return;
+			}
+		});
+	}
+
+	initDefaultValues() {
+		if(this.ans && this.ans[this.id]) {
+			this.field.value = this.ans[this.id];
+			this.form.controls[this.id].setValue(this.field.value);
+		}
+	}
 }

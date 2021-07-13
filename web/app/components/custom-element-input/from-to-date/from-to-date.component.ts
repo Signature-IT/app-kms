@@ -76,9 +76,13 @@ export class FromToDateComponent extends CustomElementInputComponent implements 
 				this.customValue.setValue(new Date(this.ans[this.fromField] * 1000));
 			}
 		}
+		if(!this.op) {
+			this.op = 2;
+			this.fieldChange();
+		}
 	}
 
-	fieldChange(field) {
+	fieldChange(field = null) {
 		switch (this.op) {
 			case 1:
 				this.customValue.setValue('');

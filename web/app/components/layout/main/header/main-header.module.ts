@@ -21,6 +21,7 @@ import {SolrFilterFieldsMotorcyclesModule} from "../../../custom-element-input/s
 import {FromToDateComponentModule} from "../../../custom-element-input/from-to-date/from-to-date.module";
 import {MandatoryInsurancePricesComponentModule} from "../../../custom-element-input/mandatory-insurance-prices/mandatory-insurance-prices.module";
 import {PropertyInsurancePricesComponentModule} from "../../../custom-element-input/property-insurance-prices/property-insurance-prices.module";
+import {ProtectionsInsurancePricesComponentModule} from "../../../custom-element-input/protections-insurance-prices/protections-insurance-prices.module";
 
 @NgModule({
     imports: [
@@ -42,7 +43,8 @@ import {PropertyInsurancePricesComponentModule} from "../../../custom-element-in
 		MandatoryInsurancePricesComponentModule,
 		PropertyInsurancePricesComponentModule,
         ModalLinkModuleGeneric,
-		AdditionalPaidServiceModule
+		AdditionalPaidServiceModule,
+		ProtectionsInsurancePricesComponentModule
     ],
     declarations: [MainHeaderComponent],
     entryComponents: [MainHeaderComponent],

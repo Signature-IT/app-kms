@@ -8,7 +8,7 @@ import {createCustomElement} from "@angular/elements";
 import { MatInputModule } from '@angular/material/input';
 import { MatOptionModule, MatNativeDateModule } from '@angular/material/core';
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
-import { SafePipeModule } from '@signature-it/ngx-generic';
+import { SafePipeModule, ReplaceTokensPipeModule } from '@signature-it/ngx-generic';
 import {PropertyInsurancePricesComponent} from "./property-insurance-prices.component";
 
 @NgModule({
@@ -23,7 +23,8 @@ import {PropertyInsurancePricesComponent} from "./property-insurance-prices.comp
 		MatRadioModule,
 		TranslateModule,
 		MatNativeDateModule,
-		SafePipeModule
+		SafePipeModule,
+		ReplaceTokensPipeModule
 	],
 	declarations: [PropertyInsurancePricesComponent],
 	exports: [PropertyInsurancePricesComponent],

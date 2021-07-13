@@ -8,8 +8,9 @@ import {createCustomElement} from "@angular/elements";
 import { MatInputModule } from '@angular/material/input';
 import { MatOptionModule, MatNativeDateModule } from '@angular/material/core';
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
-import {PriceSelectComponent} from "./price-select.component";
 import { SafePipeModule, ReplaceTokensPipeModule } from '@signature-it/ngx-generic';
+import {ProtectionsInsurancePricesComponent} from "./protections-insurance-prices.component";
+
 @NgModule({
 	imports: [
 		CommonModule,
@@ -22,11 +23,15 @@ import { SafePipeModule, ReplaceTokensPipeModule } from '@signature-it/ngx-gener
 		MatRadioModule,
 		TranslateModule,
 		MatNativeDateModule,
-		SafePipeModule,
-		ReplaceTokensPipeModule
+		SafePipeModule
 	],
-	declarations: [PriceSelectComponent],
-	exports: [PriceSelectComponent],
-	entryComponents: [PriceSelectComponent]
+	declarations: [ProtectionsInsurancePricesComponent],
+	exports: [ProtectionsInsurancePricesComponent],
+	entryComponents: [ProtectionsInsurancePricesComponent]
 })
-export class PriceSelectComponentModule {}
+export class ProtectionsInsurancePricesComponentModule {
+	constructor(private injector: Injector) {
+		const PriceSelect = createCustomElement(ProtectionsInsurancePricesComponent, {injector});
+		!customElements.get('ngx-cng-protections-insurance-prices') && customElements.define('ngx-cng-protections-insurance-prices', PriceSelect);
+	}
+}
