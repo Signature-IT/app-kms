@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Component, Input, OnInit} from '@angular/core';
+import { Component, Input, OnInit} from '@angular/core';
 import {DateAdapter} from "@angular/material/core";
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {CustomElementInputComponent, FormService, CngDataDTO,
@@ -31,8 +31,7 @@ export class PriceSelectComponent extends CustomElementInputComponent implements
 
 	constructor(protected FormSvc: FormService,
 				protected langSvc: LanguageService,
-				protected cngPriceSvc: CngPriceService,
-				protected cd: ChangeDetectorRef) {
+				protected cngPriceSvc: CngPriceService,) {
 		super(FormSvc);
 		this.currLang = this.langSvc.getCurrentLanguage$();
 	}
@@ -88,8 +87,8 @@ export class PriceSelectComponent extends CustomElementInputComponent implements
 		if(!this.ans) return options;
 		const templateVars = options.map(o => o['comp_price_template_var_s']).filter(t => t);
 		if(templateVars.length) {
-			this.cngPriceSvc.getAndCalcPrice(templateVars, this.ans).subscribe(pricingTemplates => {
-				this.pricingTemplates = pricingTemplates;
+			this.cngPriceSvc.getPrice(templateVars).subscribe(pricingTemplates => {
+				this.pricingTemplates = Template.createFromArray(pricingTemplates);
 				return this.calcPrice(options);
 			});
 		}
@@ -98,10 +97,12 @@ export class PriceSelectComponent extends CustomElementInputComponent implements
 
 	calcPrice(options) {
 		if(!this.pricingTemplates) return options;
-		 this.cngPriceSvc.calcPrice(this.pricingTemplates, this.ans);
+		const pricingTemplates = this.cngPriceSvc.calcPrice(this.pricingTemplates, this.ans);
+		console.log(this.id, options);
 		_.forEach(options, (o) => {
-			o['pricingTemplate'] = this.pricingTemplates.filter((pt:Template) => pt.templateVar == o['comp_price_template_var_s'])[0];
+			o['pricingTemplate'] = pricingTemplates.filter((pt:Template) => pt.templateVar == o['comp_price_template_var_s'])[0];
 		});
+		console.log(this.id, options);
 		return options;
 	}
 
@@ -113,8 +114,7 @@ export class PriceSelectComponent extends CustomElementInputComponent implements
 					this.flag = true;
 					this.field.options = this.getPriceAndCalc(this.options);
 				} else {
-					this.field.options = this.calcPrice(this.field.options);
-					this.cd.detectChanges();
+					this.field.options = this.calcPrice(this.options);
 				}
 			}
 			if(this.form.controls[this.id] && !this.form.controls[this.id].value) {
@@ -128,7 +128,6 @@ export class PriceSelectComponent extends CustomElementInputComponent implements
 			if (key != this.id || !this.field['options'].length) return;
 			if (values) {
 				this.field['options'] = this.options.filter(v => values.includes(parseInt(v['key'])));
-				this.cd.detectChanges();
 				return;
 			}
 		});

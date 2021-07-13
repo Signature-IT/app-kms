@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Component, Input, OnInit} from '@angular/core';
+import { Component, Input, OnInit} from '@angular/core';
 import {DateAdapter} from "@angular/material/core";
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {
@@ -22,9 +22,8 @@ export class MandatoryInsurancePricesComponent extends PriceSelectComponent impl
 	constructor(protected FormSvc: FormService,
 				protected langSvc: LanguageService,
 				protected cngPriceSvc: CngPriceService,
-				protected cd: ChangeDetectorRef,
 				protected authSvc: AuthService) {
-		super(FormSvc, langSvc, cngPriceSvc, cd);
+		super(FormSvc, langSvc, cngPriceSvc);
 	}
 
 	ngOnInit() {
