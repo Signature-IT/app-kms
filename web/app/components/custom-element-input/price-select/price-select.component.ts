@@ -50,6 +50,7 @@ export class PriceSelectComponent extends CustomElementInputComponent implements
 				this.form.addControl(this.field.key, new FormControl(this.field.getValue(), [Validators.required]));
 				this.subscribeAns();
 				this.sunscribeCng();
+				this.subscribeFieldChanges();
 			}
 		});
 
@@ -108,13 +109,12 @@ export class PriceSelectComponent extends CustomElementInputComponent implements
 			if(this.form.controls[this.id] && !this.form.controls[this.id].value) {
 				this.initDefaultValues();
 			}
-			this.subscribeFieldChanges();
 		});
 	}
 
 	subscribeFieldChanges() {
 		this.FormSvc.onFieldValuesChanged$.subscribe(({key, values, removeValues}) => {
-			if (key != this.id) return;
+			if (key != this.id || !this.field['options'].length) return;
 			if (values) {
 				this.field['options'] = this.field['options'].filter(v => values.includes(parseInt(v['key'])));
 				return;
