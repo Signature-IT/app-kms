@@ -13,10 +13,7 @@
                                         'd-inline-block': field['imgAndTextOnly'] || field['imageOnClick'],
                                         'hover-img-wrap col-6': field['withHoverImages']}"
                      *ngFor="let opt of field['options']">
-                    <mat-radio-button
-                            (mouseover)="opt['over'] = field['withHoverImages']"
-                            (mouseout)="opt['over'] = false"
-                            [value]="opt.key" >
+                    <mat-radio-button [value]="opt.key" >
                         <ng-container *ngIf="priceAsToken">
                             <span *ngIf="priceAsToken&&opt['pricingTemplate']&&!opt['pricingTemplate']['isPoa']"> {{opt.value|translate|replaceTokens: [{key:"[price]", value: opt['pricingTemplate']['price']|currency:'ILS'}]}}</span>
                             <span *ngIf="priceAsToken&&!opt['pricingTemplate']">{{opt.value|translate}}</span>

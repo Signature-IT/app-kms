@@ -98,7 +98,7 @@ export class PriceSelectComponent extends CustomElementInputComponent implements
 
 	calcPrice(options) {
 		if(!this.pricingTemplates) return options;
-		this.pricingTemplates = this.cngPriceSvc.calcPrice(this.pricingTemplates, this.ans);
+		 this.cngPriceSvc.calcPrice(this.pricingTemplates, this.ans);
 		_.forEach(options, (o) => {
 			o['pricingTemplate'] = this.pricingTemplates.filter((pt:Template) => pt.templateVar == o['comp_price_template_var_s'])[0];
 		});
