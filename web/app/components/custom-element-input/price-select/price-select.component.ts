@@ -89,7 +89,7 @@ export class PriceSelectComponent extends CustomElementInputComponent implements
 		if(templateVars.length) {
 			this.cngPriceSvc.calcPrice(templateVars, this.ans).subscribe(templates => {
 				this.pricingTemplates = templates;
-				return this.calcPrice();
+				return this.calcPrice(options);
 			});
 		}
 		return options;
