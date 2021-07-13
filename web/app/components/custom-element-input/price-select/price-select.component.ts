@@ -21,14 +21,11 @@ export class PriceSelectComponent extends CustomElementInputComponent implements
 	form: FormGroup;
 	protected currLang: Observable<ILanguage>;
 	lang: ILanguage;
-	allowManualPrice = false;
-	manualPrice = new FormControl({value: '', disabled: true});
-	manualDiscount = new FormControl({value: '', disabled: true});
-	manualCost = new FormControl();
 	selectedPrice: SelectField;
 	user: IUser;
-	options: ComponentFullDTO;
+	options: OptionDTO[];
 	priceAsToken = false;
+	pricingTemplates: Template[];
 
 	constructor(protected FormSvc: FormService,
 				protected langSvc: LanguageService,
@@ -48,7 +45,7 @@ export class PriceSelectComponent extends CustomElementInputComponent implements
 				s.fccFL = ['comp_price_template_var_s'];
 				this.FormSvc.getComponentsFromSolr(this.lang, this.componentGroupId, '', s).subscribe((components: ComponentDTO[]) => {
 					this.options = OptionDTO.createFromComponents(components, true);
-					this.field.options = this.calcPrice(this.options);
+					this.field.options = this.getPriceAndCalc();
 				});
 				this.form.addControl(this.field.key, new FormControl(this.field.getValue(), [Validators.required]));
 				this.subscribeAns();
@@ -63,10 +60,6 @@ export class PriceSelectComponent extends CustomElementInputComponent implements
 	}
 
 	fieldChange(e, field) {
-		// if(this.allowManualPrice) {
-		// 	this.manualPrice.enable();
-		// 	this.manualDiscount.enable();
-		// }
 		this.selectedPrice = field;
 		const val = this.getValues(e.value);
 		this.updateValues(val);
@@ -82,56 +75,35 @@ export class PriceSelectComponent extends CustomElementInputComponent implements
 		return _.filter(this.field.options, { key: this.form.value[this.selectedPrice.key] })[0]['price'];
 	}
 
-	// manualPriceChange(field) {
-	// 	const val = {
-	// 		'manual_price': this.manualPrice.value,
-	// 		'manual_user': this.user.user_id,
-	// 		'manual_discount_modification': Math.round(new Date().getTime()/1000)
-	// 	};
-	// 	this.updateValues(val);
-	// }
-	//
-	// manualDiscountChange(field) {
-	// 	const val = {
-	// 		'manual_price': this.getSelectedPrice() * (1 - this.manualDiscount.value/100),
-	// 		'manual_user': this.user.user_id,
-	// 		'manual_discount_modification': Math.round(new Date().getTime()/1000)
-	// 	};
-	// 	this.updateValues(val);
-	// }
-	//
-	// manualCostChange(field) {
-	// 	const val = {
-	// 		'vehicle_cost_actual': parseFloat(this.manualCost.value),
-	// 		'manual_user': this.user.user_id
-	// 	};
-	// 	this.updateValues(val);
-	// }
-
 	onSubmit() {
 		this.payLoad = JSON.stringify(this.form.value);
 	}
 
-	calcPrice(options) {
-		if(!this.ans) return options;
-		const templateVars = options.map(o => o['comp_price_template_var_s']).filter(t => t);
+	getPriceAndCalc() {
+		if(!this.ans) return this.options;
+		const templateVars = this.options.map(o => o['comp_price_template_var_s']).filter(t => t);
 		if(templateVars.length) {
 			this.cngPriceSvc.calcPrice(templateVars, this.ans).subscribe(templates => {
-				const pricingTemplates: Template[] = templates;
-				_.forEach(options, (o) => {
-					o['pricingTemplate'] = pricingTemplates.filter((pt:Template) => pt.templateVar == o['comp_price_template_var_s'])[0];
-				});
-				return options;
+				this.pricingTemplates = templates;
+				return this.calcPrice();
 			});
 		}
-		return options;
+		return this.options;
+	}
+
+	calcPrice() {
+		if(!this.pricingTemplates) return this.options;
+		_.forEach(this.options, (o) => {
+			o['pricingTemplate'] = this.pricingTemplates.filter((pt:Template) => pt.templateVar == o['comp_price_template_var_s'])[0];
+		});
+		return this.options;
 	}
 
 	subscribeAns() {
 		this.FormSvc.values$.subscribe(({values, skipUpdateDynamicField}) => {
 			this.ans = values;
 			if(this.options) {
-				const options = this.calcPrice(this.options);
+				this.field.options = this.calcPrice();
 			}
 			if(this.form.controls[this.id] && !this.form.controls[this.id].value) {
 				this.initDefaultValues();
