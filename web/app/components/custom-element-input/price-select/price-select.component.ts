@@ -27,6 +27,7 @@ export class PriceSelectComponent extends CustomElementInputComponent implements
 	options: OptionDTO[];
 	priceAsToken = false;
 	pricingTemplates: Template[];
+	flag = false;
 
 	constructor(protected FormSvc: FormService,
 				protected langSvc: LanguageService,
@@ -47,14 +48,13 @@ export class PriceSelectComponent extends CustomElementInputComponent implements
 				s.fccFL = ['comp_price_template_var_s'];
 				this.FormSvc.getComponentsFromSolr(this.lang, this.componentGroupId, '', s).subscribe((components: ComponentDTO[]) => {
 					let options = OptionDTO.createFromComponents(components, true);
-					options = this.getPriceAndCalc(options);
 					this.field.options = options;
 					this.options = options;
+					this.subscribeAns();
+					this.sunscribeCng();
+					this.subscribeFieldChanges();
 				});
 				this.form.addControl(this.field.key, new FormControl(this.field.getValue(), [Validators.required]));
-				this.subscribeAns();
-				this.sunscribeCng();
-				this.subscribeFieldChanges();
 			}
 		});
 
@@ -88,11 +88,10 @@ export class PriceSelectComponent extends CustomElementInputComponent implements
 		if(!this.ans) return options;
 		const templateVars = options.map(o => o['comp_price_template_var_s']).filter(t => t);
 		if(templateVars.length) {
-			this.cngPriceSvc.getPrice(templateVars).pipe(map((data: any) => {
-				const pricingTemplates = Template.createFromArray(data);
-				this.pricingTemplates = this.cngPriceSvc.calcPrice(pricingTemplates, this.ans);
+			this.cngPriceSvc.getAndCalcPrice(templateVars, this.ans).subscribe(pricingTemplates => {
+				this.pricingTemplates = pricingTemplates;
 				return this.calcPrice(options);
-			}), catchError( (error: any) => throwError(error)));
+			});
 		}
 		return options;
 	}
@@ -109,9 +108,14 @@ export class PriceSelectComponent extends CustomElementInputComponent implements
 	subscribeAns() {
 		this.FormSvc.values$.subscribe(({values, skipUpdateDynamicField}) => {
 			this.ans = values;
-			if(this.field.options) {
-				this.field.options = this.calcPrice(this.field.options);
-				this.cd.detectChanges();
+			if(this.options.length) {
+				if(!this.flag) {
+					this.flag = true;
+					this.field.options = this.getPriceAndCalc(this.options);
+				} else {
+					this.field.options = this.calcPrice(this.field.options);
+					this.cd.detectChanges();
+				}
 			}
 			if(this.form.controls[this.id] && !this.form.controls[this.id].value) {
 				this.initDefaultValues();
