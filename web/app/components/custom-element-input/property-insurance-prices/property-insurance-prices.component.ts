@@ -49,7 +49,7 @@ export class PropertyInsurancePricesComponent extends PriceSelectComponent imple
 
 	getValues(value) {
 		let val = super.getValues(value);
-		val['additional_insurance_prices'] = this.getSelectedPrice();
+		val['additional_insurance_price'] = this.getSelectedPrice();
 		return val;
 	}
 
