@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, Input, OnInit} from '@angular/core';
 import {DateAdapter} from "@angular/material/core";
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {CustomElementInputComponent, FormService, CngDataDTO,
@@ -29,7 +29,8 @@ export class PriceSelectComponent extends CustomElementInputComponent implements
 
 	constructor(protected FormSvc: FormService,
 				protected langSvc: LanguageService,
-				protected cngPriceSvc: CngPriceService) {
+				protected cngPriceSvc: CngPriceService,
+				protected cd: ChangeDetectorRef) {
 		super(FormSvc);
 		this.currLang = this.langSvc.getCurrentLanguage$();
 	}
@@ -105,6 +106,7 @@ export class PriceSelectComponent extends CustomElementInputComponent implements
 			this.ans = values;
 			if(this.options) {
 				this.field.options = this.calcPrice();
+				this.cd.detectChanges();
 			}
 			if(this.form.controls[this.id] && !this.form.controls[this.id].value) {
 				this.initDefaultValues();
@@ -117,6 +119,7 @@ export class PriceSelectComponent extends CustomElementInputComponent implements
 			if (key != this.id || !this.field['options'].length) return;
 			if (values) {
 				this.field['options'] = this.field['options'].filter(v => values.includes(parseInt(v['key'])));
+				this.cd.detectChanges();
 				return;
 			}
 		});
