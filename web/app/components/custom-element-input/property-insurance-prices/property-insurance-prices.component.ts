@@ -38,7 +38,7 @@ export class PropertyInsurancePricesComponent extends PriceSelectComponent imple
 
 	getField(): SelectField {
 		return SelectField.create({
-				key: "property_insurance_prices",
+				key: "additional_insurance_prices",
 				type: "Select",
 				controlType: "FlatSelect",
 				label: "Property Insurance Prices",
@@ -49,7 +49,7 @@ export class PropertyInsurancePricesComponent extends PriceSelectComponent imple
 
 	getValues(value) {
 		let val = super.getValues(value);
-		val['property_insurance_price'] = this.getSelectedPrice();
+		val['additional_insurance_prices'] = this.getSelectedPrice();
 		return val;
 	}
 

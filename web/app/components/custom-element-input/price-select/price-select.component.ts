@@ -133,7 +133,9 @@ export class PriceSelectComponent extends CustomElementInputComponent implements
 			if(this.options) {
 				const options = this.calcPrice(this.options);
 			}
-			this.initDefaultValues();
+			if(this.form.controls[this.id] && !this.form.controls[this.id].value) {
+				this.initDefaultValues();
+			}
 			this.subscribeFieldChanges();
 		});
 	}
