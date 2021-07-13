@@ -45,8 +45,10 @@ export class PriceSelectComponent extends CustomElementInputComponent implements
 				s.hasFcc = true;
 				s.fccFL = ['comp_price_template_var_s'];
 				this.FormSvc.getComponentsFromSolr(this.lang, this.componentGroupId, '', s).subscribe((components: ComponentDTO[]) => {
-					this.options = OptionDTO.createFromComponents(components, true);
-					this.field.options = this.getPriceAndCalc();
+					let options = OptionDTO.createFromComponents(components, true);
+					options = this.getPriceAndCalc(options);
+					this.field.options = options;
+					this.options = options;
 				});
 				this.form.addControl(this.field.key, new FormControl(this.field.getValue(), [Validators.required]));
 				this.subscribeAns();
@@ -81,31 +83,31 @@ export class PriceSelectComponent extends CustomElementInputComponent implements
 		this.payLoad = JSON.stringify(this.form.value);
 	}
 
-	getPriceAndCalc() {
-		if(!this.ans) return this.options;
-		const templateVars = this.options.map(o => o['comp_price_template_var_s']).filter(t => t);
+	getPriceAndCalc(options) {
+		if(!this.ans) return options;
+		const templateVars = options.map(o => o['comp_price_template_var_s']).filter(t => t);
 		if(templateVars.length) {
 			this.cngPriceSvc.calcPrice(templateVars, this.ans).subscribe(templates => {
 				this.pricingTemplates = templates;
 				return this.calcPrice();
 			});
 		}
-		return this.options;
+		return options;
 	}
 
-	calcPrice() {
-		if(!this.pricingTemplates) return this.options;
-		_.forEach(this.options, (o) => {
+	calcPrice(options) {
+		if(!this.pricingTemplates) return options;
+		_.forEach(options, (o) => {
 			o['pricingTemplate'] = this.pricingTemplates.filter((pt:Template) => pt.templateVar == o['comp_price_template_var_s'])[0];
 		});
-		return this.options;
+		return options;
 	}
 
 	subscribeAns() {
 		this.FormSvc.values$.subscribe(({values, skipUpdateDynamicField}) => {
 			this.ans = values;
-			if(this.options) {
-				this.field.options = this.calcPrice();
+			if(this.field.options) {
+				this.field.options = this.calcPrice(this.field.options);
 				this.cd.detectChanges();
 			}
 			if(this.form.controls[this.id] && !this.form.controls[this.id].value) {
@@ -118,7 +120,7 @@ export class PriceSelectComponent extends CustomElementInputComponent implements
 		this.FormSvc.onFieldValuesChanged$.subscribe(({key, values, removeValues}) => {
 			if (key != this.id || !this.field['options'].length) return;
 			if (values) {
-				this.field['options'] = this.field['options'].filter(v => values.includes(parseInt(v['key'])));
+				this.field['options'] = this.options.filter(v => values.includes(parseInt(v['key'])));
 				this.cd.detectChanges();
 				return;
 			}
