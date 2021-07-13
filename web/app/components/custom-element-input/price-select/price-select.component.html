@@ -19,7 +19,7 @@
                             [value]="opt.key" >
                         <ng-container *ngIf="priceAsToken">
                             <span *ngIf="priceAsToken&&opt['pricingTemplate']&&!opt['pricingTemplate']['isPoa']"> {{opt.value|translate|replaceTokens: [{key:"[price]", value: opt['pricingTemplate']['price']|currency:'ILS'}]}}</span>
-                            <span *ngIf="priceAsToken&&!opt['pricingTemplate']">{{opt.value|translate}}hhh</span>
+                            <span *ngIf="priceAsToken&&!opt['pricingTemplate']">{{opt.value|translate}}</span>
                         </ng-container>
                         <ng-container *ngIf="!priceAsToken">
                             <span>{{opt.value|translate}}</span>

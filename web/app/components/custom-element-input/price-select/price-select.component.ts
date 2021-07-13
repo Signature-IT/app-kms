@@ -72,7 +72,7 @@ export class PriceSelectComponent extends CustomElementInputComponent implements
 	}
 
 	getSelectedPrice() {
-		return _.filter(this.field.options, { key: this.form.value[this.selectedPrice.key] })[0]['price'];
+		return _.filter(this.field.options, { key: this.form.value[this.selectedPrice.key] })[0]['pricingTemplate']['price'];
 	}
 
 	onSubmit() {
