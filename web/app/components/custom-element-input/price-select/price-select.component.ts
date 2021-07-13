@@ -4,7 +4,8 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {CustomElementInputComponent, FormService, CngDataDTO,
 	FormField, SelectField, LanguageService, ILanguage, OptionDTO, Template,
 	FormSettingsDTO, ComponentDTO, IUser, CngPriceService, ComponentFullDTO} from '@signature-it/ngx-generic';
-import {Observable} from "rxjs/index";
+import {Observable, throwError} from "rxjs/index";
+import {catchError, map} from "rxjs/operators";
 
 declare let _: any;
 
@@ -87,16 +88,18 @@ export class PriceSelectComponent extends CustomElementInputComponent implements
 		if(!this.ans) return options;
 		const templateVars = options.map(o => o['comp_price_template_var_s']).filter(t => t);
 		if(templateVars.length) {
-			this.cngPriceSvc.calcPrice(templateVars, this.ans).subscribe(templates => {
-				this.pricingTemplates = templates;
+			this.cngPriceSvc.getPrice(templateVars).pipe(map((data: any) => {
+				const pricingTemplates = Template.createFromArray(data);
+				this.pricingTemplates = this.cngPriceSvc.calcPrice(pricingTemplates, this.ans);
 				return this.calcPrice(options);
-			});
+			}), catchError( (error: any) => throwError(error)));
 		}
 		return options;
 	}
 
 	calcPrice(options) {
 		if(!this.pricingTemplates) return options;
+		this.pricingTemplates = this.cngPriceSvc.calcPrice(this.pricingTemplates, this.ans);
 		_.forEach(options, (o) => {
 			o['pricingTemplate'] = this.pricingTemplates.filter((pt:Template) => pt.templateVar == o['comp_price_template_var_s'])[0];
 		});
