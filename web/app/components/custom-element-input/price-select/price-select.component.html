@@ -15,7 +15,7 @@
                      *ngFor="let opt of field['options']">
                     <mat-radio-button [value]="opt.key" >
                         <ng-container *ngIf="priceAsToken">
-                            <span *ngIf="priceAsToken&&opt['pricingTemplate']&&!opt['pricingTemplate']['isPoa']"> {{opt.value|translate|replaceTokens: [{key:"[price]", value: opt['pricingTemplate']['price']|currency:'ILS'}]}}</span>
+                            <span *ngIf="priceAsToken&&opt['pricingTemplate']&&!opt['pricingTemplate']['isPoa']" innerHtml="{{opt.value|translate|replaceTokens: [{key:'<price>', value: opt['pricingTemplate']['price']|currency:'ILS'}]}}"></span>
                             <span *ngIf="priceAsToken&&!opt['pricingTemplate']">{{opt.value|translate}}</span>
                         </ng-container>
                         <ng-container *ngIf="!priceAsToken">

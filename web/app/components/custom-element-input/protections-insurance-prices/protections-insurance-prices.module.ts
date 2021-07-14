@@ -23,7 +23,8 @@ import {ProtectionsInsurancePricesComponent} from "./protections-insurance-price
 		MatRadioModule,
 		TranslateModule,
 		MatNativeDateModule,
-		SafePipeModule
+		SafePipeModule,
+		ReplaceTokensPipeModule
 	],
 	declarations: [ProtectionsInsurancePricesComponent],
 	exports: [ProtectionsInsurancePricesComponent],
