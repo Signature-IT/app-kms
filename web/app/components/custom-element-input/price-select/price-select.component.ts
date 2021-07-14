@@ -26,7 +26,7 @@ export class PriceSelectComponent extends CustomElementInputComponent implements
 	user: IUser;
 	options: OptionDTO[];
 	priceAsToken = false;
-	pricingTemplates: Template[];
+	originalPricingTemplates: any;
 	flag = false;
 
 	constructor(protected FormSvc: FormService,
@@ -88,7 +88,7 @@ export class PriceSelectComponent extends CustomElementInputComponent implements
 		const templateVars = options.map(o => o['comp_price_template_var_s']).filter(t => t);
 		if(templateVars.length) {
 			this.cngPriceSvc.getPrice(templateVars).subscribe(pricingTemplates => {
-				this.pricingTemplates = Template.createFromArray(pricingTemplates);
+				this.originalPricingTemplates = pricingTemplates;
 				return this.calcPrice(options);
 			});
 		}
@@ -96,13 +96,12 @@ export class PriceSelectComponent extends CustomElementInputComponent implements
 	}
 
 	calcPrice(options) {
-		if(!this.pricingTemplates) return options;
-		const pricingTemplates = this.cngPriceSvc.calcPrice(this.pricingTemplates, this.ans);
-		console.log(this.id, options);
+		if(!this.originalPricingTemplates) return options;
+		let pricingTemplates = Template.createFromArray(this.originalPricingTemplates);
+		pricingTemplates = this.cngPriceSvc.calcPrice(pricingTemplates, this.ans);
 		_.forEach(options, (o) => {
 			o['pricingTemplate'] = pricingTemplates.filter((pt:Template) => pt.templateVar == o['comp_price_template_var_s'])[0];
 		});
-		console.log(this.id, options);
 		return options;
 	}
 
