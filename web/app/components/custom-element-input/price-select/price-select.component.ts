@@ -107,7 +107,7 @@ export class PriceSelectComponent extends CustomElementInputComponent implements
 
 	subscribeAns() {
 		this.FormSvc.values$.subscribe(({values, skipUpdateDynamicField}) => {
-			this.ans = values;
+			this.ans = this.ans ? {...this.ans,...values}: values;
 			if(this.options.length) {
 				if(!this.flag) {
 					this.flag = true;
