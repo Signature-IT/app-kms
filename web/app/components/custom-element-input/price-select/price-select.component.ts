@@ -113,7 +113,7 @@ export class PriceSelectComponent extends CustomElementInputComponent implements
 					this.flag = true;
 					this.field.options = this.getPriceAndCalc(this.options);
 				} else {
-					this.field.options = this.calcPrice(this.options);
+					this.field.options = this.calcPrice(this.field.options);
 				}
 			}
 			if(this.form.controls[this.id] && !this.form.controls[this.id].value) {
