@@ -8,7 +8,8 @@ import {
     MainHeaderSearchFormModuleGeneric,
     PhoneOrderModule,
     GroupsMenuModuleGeneric,
-	AdditionalPaidServiceModule
+	AdditionalPaidServiceModule,
+    AddressFormModule,
 } from '@signature-it/ngx-generic';
 
 import { SearchModule_Catalogue, MainHeaderCartModuleGeneric } from '@signature-it/ngx-catalogue';
@@ -29,6 +30,7 @@ import {ProtectionsInsurancePricesComponentModule} from "../../../custom-element
         RouterModule,
         CmsModule,
         MainTopNavigationModuleGeneric,
+        AddressFormModule,
         DropdownLangsModuleGeneric,
         UserLoginModule,
         MainHeaderSearchFormModuleGeneric,
