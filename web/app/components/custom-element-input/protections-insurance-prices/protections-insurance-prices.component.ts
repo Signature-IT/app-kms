@@ -9,7 +9,7 @@ import {
 import {Observable} from "rxjs/index";
 import {PriceSelectComponent} from "../price-select/price-select.component";
 import {ProtectionsInsurancePricesComponentModule} from "./protections-insurance-prices.module";
-
+declare let _: any;
 
 @Component({
 	selector: 'protections-insurance-prices',
@@ -52,5 +52,10 @@ export class ProtectionsInsurancePricesComponent extends PriceSelectComponent im
 
 	onSubmit() {
 		this.payLoad = JSON.stringify(this.form.value);
+	}
+
+	getSelectedPrice() {
+		const s = _.filter(this.field.options, { key: this.form.value[this.selectedPrice.key] })[0];
+		return s[0]['pricingTemplate'] ?  s[0]['pricingTemplate']['price']: 0;
 	}
 }
