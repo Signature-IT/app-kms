@@ -18,6 +18,7 @@ import { MainHeaderNavbarMobileModule } from './navbar-mobile/navbar-mobile.modu
 import { MainHeaderNavbarMobileTopModule } from './navbar-mobile/top/navbar-mobile-top.module';
 import { MainHeaderComponent } from './main-header';
 import { UserLoginModule } from './user-login/user-login.module';
+import {DriverPolicyholderMotorcyclesComponentModule} from "../../../custom-element-input/driver-policyholder-motorcycles/driver-policyholder-motorcycles.module";
 import {SolrFilterFieldsMotorcyclesModule} from "../../../custom-element-input/solr-filter-fields-motorcycles/solr-filter-fields-motorcycles.module";
 import {FromToDateComponentModule} from "../../../custom-element-input/from-to-date/from-to-date.module";
 import {MandatoryInsurancePricesComponentModule} from "../../../custom-element-input/mandatory-insurance-prices/mandatory-insurance-prices.module";
@@ -43,6 +44,7 @@ import {ProtectionsInsurancePricesComponentModule} from "../../../custom-element
 		SolrFilterFieldsMotorcyclesModule,
 	    FromToDateComponentModule,
 		MandatoryInsurancePricesComponentModule,
+        DriverPolicyholderMotorcyclesComponentModule,
 		PropertyInsurancePricesComponentModule,
         ModalLinkModuleGeneric,
 		AdditionalPaidServiceModule,

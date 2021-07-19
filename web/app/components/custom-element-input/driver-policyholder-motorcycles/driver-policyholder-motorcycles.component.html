@@ -1,0 +1,15 @@
+<div *ngIf="ans['drivers'] && op">
+    <mat-button-toggle-group  name="driver-policyholder" [(ngModel)]="policyholder" (change)="onPolicyholderChange($event)">
+        <mat-button-toggle [value]="1">{{'Yes' | translate}}</mat-button-toggle>
+        <mat-button-toggle [value]="2">{{'No' | translate}}</mat-button-toggle>
+    </mat-button-toggle-group>
+    <div *ngIf="policyholder == '1' && allDates.length > 1">
+        <mat-form-field appearance="fill">
+            <mat-select  [(ngModel)]="selectedDate"  (selectionChange)="onDateSelect($event)" >
+                <mat-option *ngFor="let date of allDates" [value]="date.value">
+                    {{"Nominal driver" | translate}} {{date.value}} = {{date.date}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+</div>
