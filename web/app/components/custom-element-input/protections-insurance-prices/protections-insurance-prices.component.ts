@@ -54,8 +54,4 @@ export class ProtectionsInsurancePricesComponent extends PriceSelectComponent im
 		this.payLoad = JSON.stringify(this.form.value);
 	}
 
-	getSelectedPrice() {
-		const s = _.filter(this.field.options, { key: this.form.value[this.selectedPrice.key] })[0];
-		return s[0]['pricingTemplate'] ?  s[0]['pricingTemplate']['price']: 0;
-	}
 }
