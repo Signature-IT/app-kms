@@ -9,9 +9,10 @@ import {
     PhoneOrderModule,
     GroupsMenuModuleGeneric,
 	AdditionalPaidServiceModule,
-    AddressFormModule,
+    AddressFormModule
 } from '@signature-it/ngx-generic';
 
+import { EntityDocModule } from '@signature-it/ngx-entity';
 import { SearchModule_Catalogue, MainHeaderCartModuleGeneric } from '@signature-it/ngx-catalogue';
 import { ModalLinkModuleGeneric} from "@signature-it/ngx-entity";
 import { MainHeaderNavbarMobileModule } from './navbar-mobile/navbar-mobile.module';
@@ -48,7 +49,8 @@ import {ProtectionsInsurancePricesComponentModule} from "../../../custom-element
 		PropertyInsurancePricesComponentModule,
         ModalLinkModuleGeneric,
 		AdditionalPaidServiceModule,
-		ProtectionsInsurancePricesComponentModule
+		ProtectionsInsurancePricesComponentModule,
+		EntityDocModule
     ],
     declarations: [MainHeaderComponent],
     entryComponents: [MainHeaderComponent],
