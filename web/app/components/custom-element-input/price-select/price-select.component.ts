@@ -51,6 +51,7 @@ export class PriceSelectComponent extends CustomElementInputComponent implements
 					this.subscribeAns();
 					this.subscribeCng();
 					this.subscribeFieldChanges();
+					this.updateFormAfterLoaded();
 				});
 				this.form.addControl(this.field.key, new FormControl(this.field.getValue(), [Validators.required]));
 			}
