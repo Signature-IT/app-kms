@@ -1,4 +1,7 @@
 <div *ngIf="ans['drivers'] && op">
+    <div class="label-wrapper">
+        <label class="d-inline"><span translate>Is the policyholder a nominal driver?</span> </label>
+    </div>
     <mat-button-toggle-group  name="driver-policyholder" [(ngModel)]="policyholder" (change)="onPolicyholderChange($event)">
         <mat-button-toggle [value]="1">{{'Yes' | translate}}</mat-button-toggle>
         <mat-button-toggle [value]="2">{{'No' | translate}}</mat-button-toggle>

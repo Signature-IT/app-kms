@@ -30,11 +30,11 @@ export class DriverPolicyholderMotorcyclesComponent extends CustomElementInputCo
 		super.ngOnInit();
 		this.initDefaultValues();
 		this.subscribeAns();
-
+		this.updateFormAfterLoaded();
 	}
 
 	initDefaultValues() {
-		if(this.ans && this.ans[this.id]) {
+		if(this.ans && this.ans[this.id] ) {
 			this.values = JSON.parse(this.ans[this.id]);
 			this.op = this.values['op'];
 			this.policyholder = this.values['policyholder'];
@@ -46,29 +46,35 @@ export class DriverPolicyholderMotorcyclesComponent extends CustomElementInputCo
 		this.FormSvc.values$.subscribe(({values, skipUpdateDynamicField}) => {
 			this.ans = this.ans ? {...this.ans,...values}: values;
 			if (this.ans && this.ans['drivers']) {
-				this.op = this.validateDriversAge();
+				if(this.ans['drivers'] == "333"){
+					this.allDates = [];
+					this.op = false;
+				}else{
+					this.op = this.validateDriversAge();
+				}
 			}
 		});
 	}
 
 	validateDriversAge(){
+		var index, age, dateView,dateFormated;
 		if(this.ans['driver_birthdate']) {
-			let age = this.calculateAge(this.ans['insurance_from_date'], this.ans['driver_birthdate']);
-			var index = this.allDates.findIndex(x => x.value=="1");
+			 age = this.calculateAge(this.ans['insurance_from_date'], this.ans['driver_birthdate']);
+			 index = this.allDates.findIndex(x => x.value=="1");
 			if (age > 18) {
-				var dateView = new Date(this.ans['driver_birthdate']);
-				var dateFormated = `${dateView.getDate()}/${dateView.getMonth() + 1}/${dateView.getFullYear()}`;
+				 dateView = new Date(this.ans['driver_birthdate']);
+				 dateFormated = `${dateView.getDate()}/${dateView.getMonth() + 1}/${dateView.getFullYear()}`;
 				index === -1 ? this.allDates.push({value: '1', date: dateFormated}) : null;
 			}else if(index > -1){
 				this.allDates.splice(index, 1);
 			}
 		}
 		if(this.ans['driver_2_birthdate']){
-			let age = this.calculateAge(this.ans['insurance_from_date'],this.ans['driver_2_birthdate']);
-			var index = this.allDates.findIndex(x => x.value == "2");
-			if(age > 18){
-				var dateView = new Date(this.ans['driver_2_birthdate']);
-				var dateFormated = `${dateView.getDate()}/${dateView.getMonth() + 1}/${dateView.getFullYear()}`;
+			 age = this.calculateAge(this.ans['insurance_from_date'],this.ans['driver_2_birthdate']);
+			 index = this.allDates.findIndex(x => x.value == "2");
+			if(age > 18 && this.ans['drivers'] == "335"){
+				 dateView = new Date(this.ans['driver_2_birthdate']);
+				 dateFormated = `${dateView.getDate()}/${dateView.getMonth() + 1}/${dateView.getFullYear()}`;
 				index === -1 ? this.allDates.push({value:'2',date:dateFormated}) : null;
 			}else if(index > -1){
 				this.allDates.splice(index, 1);
