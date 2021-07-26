@@ -56,8 +56,9 @@ export class DriverPolicyholderMotorcyclesComponent extends CustomElementInputCo
 			let age = this.calculateAge(this.ans['insurance_from_date'], this.ans['driver_birthdate']);
 			var index = this.allDates.findIndex(x => x.value=="1");
 			if (age > 18) {
-				var dateView = new DateFormatPipe().transform(this.ans['driver_birthdate'], 'dd/MM/yyyy');
-				index === -1 ? this.allDates.push({value: '1', date: dateView}) : console.log("object already exists");
+				var dateView = new Date(this.ans['driver_birthdate']);
+				var dateFormated = `${dateView.getDate()}/${dateView.getMonth() + 1}/${dateView.getFullYear()}`;
+				index === -1 ? this.allDates.push({value: '1', date: dateFormated}) : null;
 			}else if(index > -1){
 				this.allDates.splice(index, 1);
 			}
@@ -66,8 +67,9 @@ export class DriverPolicyholderMotorcyclesComponent extends CustomElementInputCo
 			let age = this.calculateAge(this.ans['insurance_from_date'],this.ans['driver_2_birthdate']);
 			var index = this.allDates.findIndex(x => x.value == "2");
 			if(age > 18){
-				var dateView = new DateFormatPipe().transform(this.ans['driver_birthdate'], 'dd/MM/yyyy');
-				index === -1 ? this.allDates.push({value:'2',date:dateView}) : console.log("object already exists");
+				var dateView = new Date(this.ans['driver_2_birthdate']);
+				var dateFormated = `${dateView.getDate()}/${dateView.getMonth() + 1}/${dateView.getFullYear()}`;
+				index === -1 ? this.allDates.push({value:'2',date:dateFormated}) : null;
 			}else if(index > -1){
 				this.allDates.splice(index, 1);
 			}

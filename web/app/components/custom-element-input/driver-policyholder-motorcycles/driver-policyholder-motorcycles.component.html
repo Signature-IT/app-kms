@@ -6,6 +6,7 @@
     <div *ngIf="policyholder == '1' && allDates.length > 1">
         <mat-form-field appearance="fill">
             <mat-select  [(ngModel)]="selectedDate"  (selectionChange)="onDateSelect($event)" >
+                <mat-option [disabled]="true" [value]="0">Select</mat-option>
                 <mat-option *ngFor="let date of allDates" [value]="date.value">
                     {{"Nominal driver" | translate}} {{date.value}} = {{date.date}}
                 </mat-option>
