@@ -62,9 +62,9 @@ export class DriverPolicyholderMotorcyclesComponent extends CustomElementInputCo
 			 age = this.calculateAge(this.ans['insurance_from_date'], this.ans['driver_birthdate']);
 			 index = this.allDates.findIndex(x => x.value=="1");
 			if (age > 18) {
-				 dateView = new Date(this.ans['driver_birthdate']);
+				 dateView = new Date(this.ans['driver_birthdate'] * 1000);
 				 dateFormated = `${dateView.getDate()}/${dateView.getMonth() + 1}/${dateView.getFullYear()}`;
-				index === -1 ? this.allDates.push({value: '1', date: dateFormated}) : null;
+				index === -1 ? this.allDates.push({value: '1', date: dateFormated}) : this.allDates[index].date = dateFormated;
 			}else if(index > -1){
 				this.allDates.splice(index, 1);
 			}
@@ -73,9 +73,9 @@ export class DriverPolicyholderMotorcyclesComponent extends CustomElementInputCo
 			 age = this.calculateAge(this.ans['insurance_from_date'],this.ans['driver_2_birthdate']);
 			 index = this.allDates.findIndex(x => x.value == "2");
 			if(age > 18 && this.ans['drivers'] == "335"){
-				 dateView = new Date(this.ans['driver_2_birthdate']);
+				 dateView = new Date(this.ans['driver_2_birthdate'] * 1000);
 				 dateFormated = `${dateView.getDate()}/${dateView.getMonth() + 1}/${dateView.getFullYear()}`;
-				index === -1 ? this.allDates.push({value:'2',date:dateFormated}) : null;
+				index === -1 ? this.allDates.push({value:'2',date:dateFormated}) : this.allDates[index].date = dateFormated;
 			}else if(index > -1){
 				this.allDates.splice(index, 1);
 			}
