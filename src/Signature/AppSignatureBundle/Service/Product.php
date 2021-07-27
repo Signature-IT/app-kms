@@ -62,6 +62,9 @@ class Product extends \Signature\ProductBundle\Service\Product {
     }
 
     protected function saveLeadPrices($productId, $cngProductId, $productData){
+        $productData = array_map(function($field){
+            return is_array($field) ? $field['key'] : $field;
+        });
         $query = "
             SELECT * FROM udi_lead_prices 
             WHERE product_id = $productId
