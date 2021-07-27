@@ -33,6 +33,7 @@ export class SolrFilterFieldsMotorcyclesComponent extends SolrFilterFieldsCompon
 	ngOnInit() {
 		this.isCngInput = true;
 		super.ngOnInit();
+		this.updateValidateAfterInit();
 	}
 
 	valuesChanged(field) {
@@ -92,7 +93,7 @@ export class SolrFilterFieldsMotorcyclesComponent extends SolrFilterFieldsCompon
 		});
 	}
 
-	sunscribeCng() {
+	subscribeCng() {
 		this.FormSvc.cngData$.subscribe(cngData => {
 			if(!cngData) return;
 			this.cngData = cngData;

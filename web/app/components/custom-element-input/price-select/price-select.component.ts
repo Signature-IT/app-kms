@@ -22,7 +22,6 @@ export class PriceSelectComponent extends CustomElementInputComponent implements
 	form: FormGroup;
 	protected currLang: Observable<ILanguage>;
 	lang: ILanguage;
-	selectedPrice: SelectField;
 	user: IUser;
 	options: OptionDTO[];
 	priceAsToken = false;
@@ -50,8 +49,9 @@ export class PriceSelectComponent extends CustomElementInputComponent implements
 					this.field.options = options;
 					this.options = options;
 					this.subscribeAns();
-					this.sunscribeCng();
+					this.subscribeCng();
 					this.subscribeFieldChanges();
+					this.updateFormAfterLoaded();
 				});
 				this.form.addControl(this.field.key, new FormControl(this.field.getValue(), [Validators.required]));
 			}
@@ -63,8 +63,7 @@ export class PriceSelectComponent extends CustomElementInputComponent implements
 		return SelectField.create({});
 	}
 
-	fieldChange(e, field) {
-		this.selectedPrice = field;
+	fieldChange(e) {
 		const val = this.getValues(e.value);
 		this.updateValues(val);
 	}
@@ -76,7 +75,7 @@ export class PriceSelectComponent extends CustomElementInputComponent implements
 	}
 
 	getSelectedPrice() {
-		const s = _.filter(this.field.options, { key: this.form.value[this.selectedPrice.key] })[0];
+		const s = _.filter(this.field.options, { key: this.form.value[this.field.key] })[0];
 		return s['pricingTemplate'] ?  s['pricingTemplate']['price']: 0;
 	}
 

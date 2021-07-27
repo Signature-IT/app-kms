@@ -6,7 +6,7 @@
                      'flat-select-image-on-click': field['imageOnClick'],
                     'flat-select-with-img': field['withImages']}" >
             <mat-radio-group [id]="field.key"
-                             (change)="fieldChange($event, field)"
+                             (change)="fieldChange($event)"
                              [formControlName]="field.key"
                              [ngClass]="{'d-flex justify-content-between':field['withHoverImages']}">
                 <div [ngClass]="{'flat-select-wrap': !(field['withHoverImages'] || field['withImages']),
