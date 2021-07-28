@@ -11,6 +11,7 @@ class Product extends \Signature\ProductBundle\Service\Product {
             $attributes = [
                 'insurance_type' => $cng->getAttribute('insurance_type'),
                 'department' => $cng->getAttribute('department'),
+                'lead_status' => '',
             ];
             if(!empty($data['ans']['customer_first_name'])){
                 if($data['ans']['moto_model'] == ''){
@@ -21,6 +22,12 @@ class Product extends \Signature\ProductBundle\Service\Product {
                     $attributes['lead_status'] = 'suggestion';
                     $this->saveLeadPrices($data['product_id'], $cng->getIdValue(), $data['ans']);
                 }
+            }
+            $attributes['cng_lead_status'] = $attributes['lead_status'];
+            if($data['ans']['waiting_for_employee_call'] == 1){
+                $attributes['importance_level'] = 2;
+            } else {
+                $attributes['importance_level'] = 3;
             }
             if($insert){
                 $user = \User::current();
@@ -64,7 +71,7 @@ class Product extends \Signature\ProductBundle\Service\Product {
     protected function saveLeadPrices($productId, $cngProductId, $productData){
         $productData = array_map(function($field){
             return is_array($field) ? $field['key'] : $field;
-        });
+        }, $productData);
         $query = "
             SELECT * FROM udi_lead_prices 
             WHERE product_id = $productId
