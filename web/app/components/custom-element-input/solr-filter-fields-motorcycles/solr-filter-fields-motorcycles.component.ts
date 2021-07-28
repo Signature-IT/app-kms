@@ -77,14 +77,18 @@ export class SolrFilterFieldsMotorcyclesComponent extends SolrFilterFieldsCompon
 			this.sortLowerCost();
 			this.selectedMoto = this.responseDocs[0];
 			val = {...val, ...this.getVehicleData()};
-			val['ABS'] = this.selectedMoto['ABS_s'] || '0';
-			val['EBA'] = this.selectedMoto['EBA_s'] || '0';
-			val['ASC'] = this.selectedMoto['ASC__s'] || '0';
-			val['TCS'] = this.selectedMoto['TCS_s'] || '0';
-			val['CBS'] = this.selectedMoto['CBS_s'] || '0';
-			val['tricycle'] = this.selectedMoto['tricycle_s'] || '0';
+			val['ABS'] = this.getYesNoValue(this.selectedMoto['ABS_s']);
+			val['EBA'] = this.getYesNoValue(this.selectedMoto['EBA_s']);
+			val['ASC'] = this.getYesNoValue(this.selectedMoto['ASC__s']);
+			val['TCS'] = this.getYesNoValue(this.selectedMoto['TCS_s']);
+			val['CBS'] = this.getYesNoValue(this.selectedMoto['CBS_s']);
+			val['tricycle'] = this.getYesNoValue(this.selectedMoto['tricycle_s'] || '0');
 		}
 		this.updateValues(val);
+	}
+
+	getYesNoValue(value) {
+		return value == '1' ? '438': '439';
 	}
 
 	sortLowerCost() {
@@ -99,7 +103,7 @@ export class SolrFilterFieldsMotorcyclesComponent extends SolrFilterFieldsCompon
 			this.cngData = cngData;
 			if(this.selectedMoto && this.cngData.ans['old_new']) {
 				let selectedMoto;
-				if(this.cngData.ans['old_new'].value == 'Yes') {
+				if(this.cngData.ans['old_new'].key == '438') {
 					selectedMoto = this.responseDocs.filter(r => r['newold_s'] == '2')[0];
 				} else {
 					selectedMoto = this.responseDocs[0];
