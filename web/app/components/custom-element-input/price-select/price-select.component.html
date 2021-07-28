@@ -28,30 +28,30 @@
             </mat-radio-group>
         </div>
     </div>
-    <!--<ng-container *ngIf="allowManualPrice">-->
-    <!--<label class="d-inline">-->
-    <!--<span>{{'Vehicle Cost'|translate}}</span>-->
-    <!--</label>-->
-    <!--<mat-form-field>-->
-    <!--<input matInput-->
-    <!--id="manualCost"-->
-    <!--[formControl]="manualCost"-->
-    <!--placeholder="{{'Manual Price'| translate}}"-->
-    <!--(change)="manualCostChange($event)">-->
-    <!--</mat-form-field>-->
-    <!--<mat-form-field>-->
-    <!--<input matInput-->
-    <!--id="manualPrice"-->
-    <!--[formControl]="manualPrice"-->
-    <!--placeholder="{{'Manual Price'| translate}}"-->
-    <!--(change)="manualPriceChange($event)">-->
-    <!--</mat-form-field>-->
-    <!--<mat-form-field>-->
-    <!--<input matInput-->
-    <!--id="manualDiscount"-->
-    <!--[formControl]="manualDiscount"-->
-    <!--placeholder="{{'Manual Discount'| translate}}"-->
-    <!--(change)="manualDiscountChange($event)">-->
-    <!--</mat-form-field>-->
-    <!--</ng-container>-->
+    <ng-container *ngIf="allowManualPrice">
+        <label class="d-inline">
+            <span>{{'Vehicle Cost'|translate}}</span>
+        </label>
+        <mat-form-field>
+            <input matInput
+                   id="manualCost"
+                   [formControl]="manualCost"
+                   placeholder="{{'Manual Price'| translate}}"
+                   (change)="manualCostChange($event)">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput
+                   id="manualPrice"
+                   [formControl]="manualPrice"
+                   placeholder="{{'Manual Price'| translate}}"
+                   (change)="manualPriceChange($event)">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput
+                   id="manualDiscount"
+                   [formControl]="manualDiscount"
+                   placeholder="{{'Manual Discount'| translate}}"
+                   (change)="manualDiscountChange($event)">
+        </mat-form-field>
+    </ng-container>
 </form>
