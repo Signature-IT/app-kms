@@ -23,10 +23,10 @@ class Product extends \Signature\ProductBundle\Controller\Product {
 
 
     public function afterInsertCngProduct($data, $cng, $originReq) {
-        $this->getService()->updateSpecialFields($data, $cng, $originReq, true);
+//        $this->getService()->updateSpecialFields($data, $cng, $originReq, true);
     }
 
     public function afterUpdateCngProduct($data, $cng, $originReq) {
-        $this->getService()->updateSpecialFields($data, $cng, $originReq);
+//        $this->getService()->updateSpecialFields($data, $cng, $originReq);
     }
 }
