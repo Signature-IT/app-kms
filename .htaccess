@@ -10,8 +10,8 @@
 # MUST READ THIS DOC!
 # http://col.il1.signature-it.com/display/DEV/Remote+PHP+Debugging+%28Away+From+Office%29
 #
-php_value xdebug.remote_enable     1
-php_value xdebug.remote_autostart  1
+php_value xdebug.remote_enable     0
+php_value xdebug.remote_autostart  0
 php_value xdebug.remote_host       10.0.0.73
 php_value xdebug.remote_port       9000
 php_value xdebug.idekey           'sig-sys_idekey'
