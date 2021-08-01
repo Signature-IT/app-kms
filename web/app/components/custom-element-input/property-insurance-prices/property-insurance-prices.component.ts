@@ -12,14 +12,17 @@ import {PriceSelectComponent} from "../price-select/price-select.component";
 
 @Component({
 	selector: 'property-insurance-prices',
-	templateUrl: '../price-select/price-select.component.html',
+	templateUrl: './property-insurance-prices.component.html',
 	styleUrls: ['../price-select/price-select.component.scss']
 })
 export class PropertyInsurancePricesComponent extends PriceSelectComponent implements OnInit {
 	@Input() componentGroupId;
 	@Input() id = '';
-	allowManualPrice = false;
 	user: IUser;
+	allowManualPrice = false;
+	manualPrice = new FormControl({value: '', disabled: true});
+	manualDiscount = new FormControl({value: '', disabled: true});
+	manualCost = new FormControl();
 
 	constructor(protected FormSvc: FormService,
 				protected langSvc: LanguageService,
@@ -55,5 +58,45 @@ export class PropertyInsurancePricesComponent extends PriceSelectComponent imple
 
 	onSubmit() {
 		this.payLoad = JSON.stringify(this.form.value);
+	}
+
+	fieldChange(e) {
+		super.fieldChange(e);
+		if(this.allowManualPrice) {
+			this.manualPrice.enable();
+			this.manualDiscount.enable();
+		}
+		this.manualDiscountChange();
+	}
+
+	manualPriceChange(field) {
+		const val = {
+			'manual_price': this.manualPrice.value? parseFloat(this.manualPrice.value): 0,
+			'manual_user': this.user.user_id,
+			'manual_discount_modification': Math.round(new Date().getTime()/1000)
+		};
+		this.updateValues(val);
+	}
+
+	manualDiscountChange() {
+		if(this.manualDiscount.value) {
+			const val = {
+				'manual_price': this.getSelectedPrice() * (1 - this.manualDiscount.value/100),
+				'manual_user': this.user.user_id,
+				'manual_discount_modification': Math.round(new Date().getTime()/1000)
+			};
+			this.manualPrice.setValue(val.manual_price);
+			this.updateValues(val);
+		}
+	}
+
+	manualCostChange() {
+		const val = {
+			'vehicle_cost_actual': this.manualCost.value ? parseFloat(this.manualCost.value): this.ans['vehicle_cost'],
+			'manual_user': this.user.user_id
+		};
+		this.updateValues(val);
+
+		this.manualDiscountChange();
 	}
 }

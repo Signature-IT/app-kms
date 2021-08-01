@@ -38,7 +38,7 @@ export class ProtectionsInsurancePricesComponent extends PriceSelectComponent im
 		return val;
 	}
 
-	getFields() {
+	getField() {
 		return SelectField.create({
 			key: "additional_protections",
 			type: "Select",

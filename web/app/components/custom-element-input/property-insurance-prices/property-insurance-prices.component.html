@@ -29,3 +29,35 @@
         </div>
     </div>
 </form>
+<ng-container *ngIf="allowManualPrice">
+    <label class="d-inline">
+        <span>{{'Vehicle Cost'|translate}}</span>
+    </label>
+    <mat-form-field>
+        <input matInput
+               id="manualCost"
+               [formControl]="manualCost"
+               placeholder="{{'Manual Cost'| translate}}"
+               (change)="manualCostChange($event)">
+    </mat-form-field>
+    <label class="d-inline">
+        <span>{{'Manual Price'|translate}}</span>
+    </label>
+    <mat-form-field>
+        <input matInput
+               id="manualPrice"
+               [formControl]="manualPrice"
+               placeholder="{{'Manual Price'| translate}}"
+               (change)="manualPriceChange()">
+    </mat-form-field>
+    <label class="d-inline">
+        <span>{{'Manual Discount'|translate}}</span>
+    </label>
+    <mat-form-field>
+        <input matInput
+               id="manualDiscount"
+               [formControl]="manualDiscount"
+               placeholder="{{'Manual Discount'| translate}}"
+               (change)="manualDiscountChange()">
+    </mat-form-field>
+</ng-container>
