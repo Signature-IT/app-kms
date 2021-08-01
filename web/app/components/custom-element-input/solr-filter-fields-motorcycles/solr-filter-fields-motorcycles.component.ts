@@ -42,15 +42,17 @@ export class SolrFilterFieldsMotorcyclesComponent extends SolrFilterFieldsCompon
 	}
 
 	initDefaultValues() {
-		this.initField('name_ss', 'moto_manufacturer');
-		this.initField('year_is', 'moto_year_manufacture');
-		this.initField('model_ss', 'moto_model');
-		this.initField('NEFA_ss', 'moto_cc');
+		if(this.fields) {
+			this.initField('name_ss', 'moto_manufacturer');
+			this.initField('year_is', 'moto_year_manufacture');
+			this.initField('model_ss', 'moto_model');
+			this.initField('NEFA_ss', 'moto_cc');
+		}
 	}
 
 	initField(fieldName, fieldAnsKey) {
 		let fieldIndex = this.fields.find((f) => f.field == fieldName)?.index;
-		if (fieldIndex && this.ans[fieldAnsKey]) {
+		if (fieldIndex && this.ans[fieldAnsKey] && !this.fields[fieldIndex - 1]['value']) {
 			this.fields[fieldIndex - 1]['value'] = this.ans[fieldAnsKey];
 		}
 	}
