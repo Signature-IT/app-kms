@@ -25,7 +25,7 @@ class Product extends \Signature\ProductBundle\Service\Product {
             if($insert){
                 $user = \User::current();
                 $agentParam = $originReq['afid'] ?: '';
-                $createdBy = $agentId = 0;
+                $createdBy = $agentId = $treatBy = 0;
                 $createdByType = 'Customer';
                 if($agentParam){
                     $agent = \SigSystem::current()->newUser()->find(['c_r2' => $agentParam]);
@@ -33,6 +33,10 @@ class Product extends \Signature\ProductBundle\Service\Product {
                     if(!$user->getIdValue()){
                         $createdByType = 'Agent';
                         $createdBy = $agentId;
+                        $employees = \SigSystem::current()->newDBOWFUserProperty()->find(['property' => $agentId]);
+                        if($employees->count() == 1){
+                            $treatBy = $employees->getAttribute('user_id');
+                        }
                         $agentId = 0;
                     }
                 }
@@ -42,6 +46,7 @@ class Product extends \Signature\ProductBundle\Service\Product {
                 }
                 $attributes = array_merge($attributes, [
                     'created_by' => $createdBy,
+                    'treat_by' => $treatBy,
                     'agent_id' => $agentId,
                     'created_by_type' => $createdByType,
                     'source_lead' => $GLOBALS['fe_system'] . "/cng-page/" . $cng->getIdValue() . "?" . implode("&", array_map(function($value, $key){
