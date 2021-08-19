@@ -11,14 +11,14 @@
   }
 
   dynamic-form {
-    form{
+    form {
       mat-form-field {
         height: auto;
         .mat-form-field-wrapper {
           padding-bottom: 0 !important;
         }
       }
-      .field{
+      .field {
         &.dynamic-field {
           width: 33%;
           &.FileUpload {
@@ -29,6 +29,7 @@
           }
           .dynamic-field-label {
             max-height: 29px;
+            font-weight: 600;
             margin: 0;
             .btn {
               display: initial !important;
@@ -47,6 +48,17 @@
       }
     }
   }
+
+  .fields-wrap .dynamic-field {
+    width: 100% !important;
+    .dynamic-field-label {
+      max-height: fit-content !important;
+    }
+    .dynamic-field-wrapper .dynamic-wrap {
+      max-width: fit-content !important;
+      .mat-radio-label {
+        white-space: normal !important;
+      }
+    }
+  }
 }
-
-
