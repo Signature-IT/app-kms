@@ -1,6 +1,6 @@
 import {Component, OnInit, OnDestroy} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import { RestUrlsConfig } from '@signature-it/ngx-generic';
+import { RestUrlsConfig, SeoService_Generic } from '@signature-it/ngx-generic';
 import {
     CardComponent as CardGenericComponent,
     SharedDataService,
@@ -23,7 +23,8 @@ export class CardComponent extends CardGenericComponent implements OnInit, OnDes
         public router: Router,
         public route: ActivatedRoute,
         public utilitySvc: UtilityService,
-        public restUrlsConfig: RestUrlsConfig) {
+        public restUrlsConfig: RestUrlsConfig,
+        public seoSvc: SeoService_Generic) {
         super(solrService, sharedData, groupSvc, router, route, utilitySvc, restUrlsConfig);
     }
 
